@@ -104,6 +104,38 @@ export default function Home() {
         </div>
       </section>
 
+                  <section id="process" className="mx-auto max-w-6xl px-6 py-24">
+        <p className="section-kicker">Build process</p>
+        <h2 className="mt-5 section-title">
+          A clear path from <span className="gold-word">idea</span> to launch.
+        </h2>
+
+        <div className="premium-process-track mt-14">
+          <article className="process-step process-left rounded-[2rem] p-6">
+            <span className="step-node">01</span>
+            <h3>Plan the offer</h3>
+            <p>We lock the goal, pages, audience and conversion direction before design starts.</p>
+          </article>
+
+          <article className="process-step process-right rounded-[2rem] p-6">
+            <span className="step-node">02</span>
+            <h3>Shape the visual system</h3>
+            <p>Typography, spacing, sections and premium mood are planned around your brand.</p>
+          </article>
+
+          <article className="process-step process-left rounded-[2rem] p-6">
+            <span className="step-node">03</span>
+            <h3>Build the experience</h3>
+            <p>The approved UI becomes responsive, fast and clean production-ready code.</p>
+          </article>
+
+          <article className="process-step process-right rounded-[2rem] p-6">
+            <span className="step-node">04</span>
+            <h3>Polish and launch</h3>
+            <p>Forms, links, SEO basics, performance and final handover checks are completed.</p>
+          </article>
+        </div>
+      </section>
       <section id="reviews" className="mx-auto max-w-6xl px-6 py-24">
         <p className="section-kicker">Client proof</p>
         <h2 className="mt-5 section-title">Built to feel <span className="gold-word">credible</span> before the first call.</h2>
@@ -118,9 +150,59 @@ export default function Home() {
           <h2 className="mt-5 section-title">Tell us what you want to launch.</h2>
         </div>
       </section>
+
+                  <footer id="footer" className="mx-auto max-w-6xl px-6 pb-10 pt-20">
+        <div className="premium-footer rounded-[2.4rem] p-7 md:p-10">
+          <div className="grid gap-8 md:grid-cols-[1.2fr_.8fr_.8fr]">
+            <div>
+              <p className="text-sm font-black tracking-[.34em] text-[var(--cream)]">LUXEFORGE STUDIO</p>
+              <p className="mt-5 max-w-md leading-7 text-[#d6c8ae]">
+                Premium websites, restaurant systems, admin dashboards and digital product experiences built for serious businesses.
+              </p>
+            </div>
+
+            <div>
+              <p className="text-sm font-black text-[var(--gold)]">Studio</p>
+              <div className="mt-4 grid gap-3 text-sm font-semibold text-[#d6c8ae]">
+                <a href="#services">Services</a>
+                <a href="#showcase">Selected work</a>
+                <a href="#products">Products</a>
+              </div>
+            </div>
+
+            <div>
+              <p className="text-sm font-black text-[var(--gold)]">Contact</p>
+              <div className="mt-4 grid gap-3 text-sm font-semibold text-[#d6c8ae]">
+                <a href="#contact">Start project</a>
+                <a href="#reviews">Client proof</a>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-8 border-t border-white/10 pt-5 text-sm font-medium text-[#9f927c]">
+            &copy; 2026 LuxeForge Studio. Built for premium digital presence.
+          </div>
+        </div>
+      </footer>
     </main>
   );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
