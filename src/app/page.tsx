@@ -52,7 +52,33 @@ export default function Home() {
           {services.map((s,i)=><article key={s} className="lux-card rounded-[2rem] p-6"><p className="text-sm font-black text-[var(--gold)]">0{i+1}</p><h3 className="mt-8 text-2xl font-black tracking-[-.03em]">{s}</h3><p className="mt-4 leading-7 text-[#d6c8ae]">Strategy, interface, performance and conversion structure built for real businesses.</p></article>)}
         </div>
       </section>
-            <section id="products" className="mx-auto max-w-6xl px-6 py-24">
+      <section id="showcase" className="mx-auto max-w-6xl px-6 py-24">
+        <p className="section-kicker">Selected work</p>
+        <h2 className="mt-5 section-title">
+          Product experiences built with <span className="gold-word">business</span> clarity.
+        </h2>
+
+        <div className="mt-12 grid gap-5 lg:grid-cols-3">
+          <article className="work-card rounded-[2rem] p-6">
+            <p className="text-sm font-black text-[var(--gold)]">01</p>
+            <h3 className="mt-7 text-3xl font-black tracking-[-.04em]">CafeLuxe POS</h3>
+            <p className="mt-4 leading-7 text-[#d6c8ae]">Billing, KOT, reports, records and printer-ready restaurant operations.</p>
+          </article>
+
+          <article className="work-card rounded-[2rem] p-6">
+            <p className="text-sm font-black text-[var(--gold)]">02</p>
+            <h3 className="mt-7 text-3xl font-black tracking-[-.04em]">QR Ordering Flow</h3>
+            <p className="mt-4 leading-7 text-[#d6c8ae]">Table ordering, menu browsing, cart, offers and counter workflow.</p>
+          </article>
+
+          <article className="work-card rounded-[2rem] p-6">
+            <p className="text-sm font-black text-[var(--gold)]">03</p>
+            <h3 className="mt-7 text-3xl font-black tracking-[-.04em]">Admin Systems</h3>
+            <p className="mt-4 leading-7 text-[#d6c8ae]">Dashboards, lead handling, content controls and business management tools.</p>
+          </article>
+        </div>
+      </section>
+<section id="products" className="mx-auto max-w-6xl px-6 py-24">
         <div className="product-shell rounded-[2.4rem] p-6 md:p-8">
           <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
             <div>
@@ -95,6 +121,10 @@ export default function Home() {
     </main>
   );
 }
+
+
+
+
 
 
 

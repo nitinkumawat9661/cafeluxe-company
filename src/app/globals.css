@@ -573,3 +573,111 @@ body::after {
   opacity: .55;
   animation: bgSheen 14s linear infinite;
 }
+/* Work showcase section only */
+.work-card {
+  border: 1px solid rgba(244,229,195,.17);
+  background: linear-gradient(145deg, rgba(244,229,195,.09), rgba(255,255,255,.025));
+  box-shadow: 0 24px 80px rgba(0,0,0,.42), inset 0 1px 0 rgba(255,255,255,.10);
+  backdrop-filter: blur(24px) saturate(140%);
+  transition: transform .32s ease, box-shadow .32s ease, border-color .32s ease;
+}
+
+.work-card:hover {
+  transform: translateY(-10px);
+  border-color: rgba(244,229,195,.42);
+  box-shadow: 0 40px 120px rgba(0,0,0,.62), 0 0 32px rgba(200,155,69,.20);
+}
+
+/* LIVE PREMIUM BACKGROUND ONLY */
+body {
+  background:
+    radial-gradient(circle at 18% 22%, rgba(201,155,71,.20), transparent 30rem),
+    radial-gradient(circle at 82% 18%, rgba(244,229,195,.10), transparent 34rem),
+    radial-gradient(circle at 48% 78%, rgba(88,62,28,.26), transparent 38rem),
+    linear-gradient(135deg, #050403 0%, #100b07 45%, #060403 100%) !important;
+  background-size: 170% 170%, 190% 190%, 210% 210%, 100% 100%;
+  animation: liveLuxeBg 24s ease-in-out infinite alternate !important;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: -18%;
+  z-index: 0;
+  pointer-events: none;
+  opacity: .45;
+  filter: blur(44px);
+  background:
+    conic-gradient(from 140deg at 50% 50%,
+      transparent 0deg,
+      rgba(201,155,71,.18) 70deg,
+      transparent 145deg,
+      rgba(244,229,195,.10) 230deg,
+      transparent 360deg);
+  animation: liveLuxeAura 34s linear infinite;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: .10;
+  background:
+    linear-gradient(115deg, transparent 0%, rgba(255,255,255,.12) 45%, transparent 62%),
+    repeating-linear-gradient(0deg, rgba(255,255,255,.08) 0 1px, transparent 1px 5px);
+  mix-blend-mode: soft-light;
+  animation: liveLuxeSheen 16s ease-in-out infinite alternate;
+}
+
+main,
+header {
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes liveLuxeBg {
+  0% { background-position: 0% 20%, 100% 10%, 40% 100%, center; }
+  100% { background-position: 100% 80%, 0% 40%, 70% 0%, center; }
+}
+
+@keyframes liveLuxeAura {
+  from { transform: rotate(0deg) scale(1); }
+  to { transform: rotate(360deg) scale(1.08); }
+}
+
+@keyframes liveLuxeSheen {
+  0% { transform: translateX(-10%) skewX(-6deg); }
+  100% { transform: translateX(10%) skewX(-6deg); }
+}
+
+
+/* LIVE BACKGROUND INTENSITY BOOST ONLY */
+body {
+  background:
+    radial-gradient(circle at 16% 20%, rgba(201,155,71,.30), transparent 32rem),
+    radial-gradient(circle at 84% 16%, rgba(244,229,195,.16), transparent 36rem),
+    radial-gradient(circle at 48% 78%, rgba(116,78,31,.34), transparent 40rem),
+    linear-gradient(135deg, #050403 0%, #160f08 45%, #070403 100%) !important;
+  background-size: 175% 175%, 195% 195%, 220% 220%, 100% 100%;
+}
+
+body::before {
+  opacity: .68 !important;
+  filter: blur(40px) !important;
+  background:
+    conic-gradient(from 140deg at 50% 50%,
+      transparent 0deg,
+      rgba(201,155,71,.28) 70deg,
+      transparent 145deg,
+      rgba(244,229,195,.16) 230deg,
+      transparent 360deg) !important;
+}
+
+body::after {
+  opacity: .16 !important;
+  background:
+    linear-gradient(115deg, transparent 0%, rgba(255,255,255,.18) 45%, transparent 62%),
+    repeating-linear-gradient(0deg, rgba(255,255,255,.10) 0 1px, transparent 1px 5px) !important;
+}
