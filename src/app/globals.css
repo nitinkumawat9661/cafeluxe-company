@@ -799,3 +799,81 @@ body::after {
   color: #d6c8ae !important;
   line-height: 1.75 !important;
 }
+/* MOBILE POLISH ONLY */
+@media (max-width: 640px) {
+  html, body { overflow-x: hidden !important; }
+
+  header {
+    width: calc(100% - 1rem) !important;
+    margin-inline: .5rem !important;
+    top: .65rem !important;
+    border-radius: 999px !important;
+  }
+
+  header a[href="#studio"] {
+    font-size: .72rem !important;
+    letter-spacing: .24em !important;
+  }
+
+  header a[href="#contact"] {
+    padding: .72rem 1rem !important;
+    font-size: .82rem !important;
+  }
+
+  main section {
+    padding-left: 1.15rem !important;
+    padding-right: 1.15rem !important;
+    padding-top: 4.5rem !important;
+    padding-bottom: 4.5rem !important;
+  }
+
+  .editorial-title {
+    font-size: clamp(2.85rem, 12vw, 4rem) !important;
+    line-height: .94 !important;
+    letter-spacing: -.055em !important;
+  }
+
+  .section-title {
+    font-size: clamp(2.35rem, 10vw, 3.25rem) !important;
+    line-height: .98 !important;
+    letter-spacing: -.05em !important;
+  }
+
+  .lux-card,
+  .product-shell,
+  .premium-footer {
+    border-radius: 1.55rem !important;
+  }
+
+  .product-card,
+  .work-card,
+  #process .process-step {
+    border-radius: 1.45rem !important;
+    padding: 1.35rem !important;
+  }
+
+  .product-card h3,
+  .work-card h3,
+  #process .process-step h3 {
+    font-size: 1.62rem !important;
+    line-height: 1.12 !important;
+  }
+
+  #process .premium-process-track {
+    gap: 20px !important;
+  }
+
+  #process .premium-process-track::before {
+    left: 1.15rem !important;
+    opacity: .45 !important;
+  }
+
+  #process .process-left,
+  #process .process-right {
+    justify-self: stretch !important;
+  }
+
+  .premium-footer {
+    padding: 1.45rem !important;
+  }
+}
