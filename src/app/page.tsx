@@ -145,6 +145,53 @@ export default function Home() {
         </div>
       </section>
 
+      <section id="pricing" className="mx-auto max-w-6xl px-6 py-24">
+        <p className="section-kicker">Pricing direction</p>
+        <h2 className="mt-5 section-title">
+          Clear packages for <span className="gold-word">serious</span> business builds.
+        </h2>
+
+        <div className="mt-12 grid gap-5 lg:grid-cols-3">
+          <article className="pricing-card rounded-[2rem] p-6">
+            <p className="pricing-tag">Starter</p>
+            <h3>Website Launch</h3>
+            <strong>Starts from Rs. 7,999</strong>
+            <ul>
+              <li>Premium landing page</li>
+              <li>Mobile responsive design</li>
+              <li>Basic SEO setup</li>
+              <li>Contact / WhatsApp inquiry</li>
+            </ul>
+            <a href="#contact" className="pricing-action">Discuss this package</a>
+          </article>
+
+          <article className="pricing-card pricing-card-featured rounded-[2rem] p-6">
+            <p className="pricing-tag">Most chosen</p>
+            <h3>Business Website</h3>
+            <strong>Starts from Rs. 14,999</strong>
+            <ul>
+              <li>Multi-section premium website</li>
+              <li>Portfolio / services structure</li>
+              <li>Lead-focused contact form</li>
+              <li>Deployment support</li>
+            </ul>
+            <a href="#contact" className="pricing-action">Discuss this package</a>
+          </article>
+
+          <article className="pricing-card rounded-[2rem] p-6">
+            <p className="pricing-tag">Custom</p>
+            <h3>Software / POS</h3>
+            <strong>Custom quote</strong>
+            <ul>
+              <li>Restaurant POS / QR ordering</li>
+              <li>Admin dashboard</li>
+              <li>Custom workflow logic</li>
+              <li>Support and scaling plan</li>
+            </ul>
+            <a href="#contact" className="pricing-action">Discuss this package</a>
+          </article>
+        </div>
+      </section>
       <ContactForm />
 
                   <footer id="footer" className="mx-auto max-w-6xl px-6 pb-10 pt-20">
@@ -183,6 +230,8 @@ export default function Home() {
     </main>
   );
 }
+
+
 
 
 
