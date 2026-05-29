@@ -1,4 +1,5 @@
 ﻿import { JsonLd } from "@/components/seo/json-ld";
+import { ContactForm } from "@/components/contact-form";
 import { navLinks, products, services } from "@/lib/site";
 
 const reviews = [
@@ -144,12 +145,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="contact" className="mx-auto max-w-6xl px-6 py-24">
-        <div className="cream-panel rounded-[2.5rem] p-10">
-          <p className="text-xs font-black uppercase tracking-[.32em] text-[#7b5a1b]">Start your build</p>
-          <h2 className="mt-5 section-title">Tell us what you want to launch.</h2>
-        </div>
-      </section>
+      <ContactForm />
 
                   <footer id="footer" className="mx-auto max-w-6xl px-6 pb-10 pt-20">
         <div className="premium-footer rounded-[2.4rem] p-7 md:p-10">
@@ -187,6 +183,7 @@ export default function Home() {
     </main>
   );
 }
+
 
 
 

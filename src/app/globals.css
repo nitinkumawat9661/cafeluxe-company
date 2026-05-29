@@ -877,3 +877,8 @@ body::after {
     padding: 1.45rem !important;
   }
 }
+
+/* Contact form only */
+.contact-input{width:100%;border:1px solid rgba(11,7,4,.14);border-radius:1.2rem;background:rgba(255,255,255,.62);padding:1rem 1.1rem;color:#0b0704;font-weight:800;outline:none}
+.contact-input:focus{border-color:rgba(123,90,27,.55);box-shadow:0 0 0 4px rgba(123,90,27,.10)}
+.contact-input::placeholder{color:rgba(11,7,4,.55)}
