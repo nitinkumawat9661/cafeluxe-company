@@ -29,7 +29,7 @@ export function ContactForm() {
     if (!service) return setStatus("Please select a service.");
     if (!message || message.length < 20) return setStatus("Please write at least 20 characters.");
 
-    const text = `New project inquiry%0A%0AName: ${name}%0APhone: ${phone}%0ABusiness: ${business || "Not provided"}%0AService: ${service}%0ABudget: ${budget || "Not selected"}%0AMessage: ${message}`;
+    const text = `New project inquiry%0A%0AName: ${name}%0APhone: ${phone}%0ABusiness: ${business || "Not provided"}%0AService: ${service}%0ABudget: ${budget || "Not provided"}%0AMessage: ${message}`;
     window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${text}`, "_blank", "noopener,noreferrer");
     setStatus("WhatsApp opened. Send the message to submit your inquiry.");
   }
@@ -42,6 +42,7 @@ export function ContactForm() {
 
         <form onSubmit={submit} className="mt-8 grid gap-4">
           <input name="website" className="hidden" tabIndex={-1} autoComplete="off" />
+
           <div className="grid gap-4 md:grid-cols-2">
             <input required maxLength={40} name="name" placeholder="Name *" className="contact-input" />
             <input required minLength={10} maxLength={15} name="phone" inputMode="tel" placeholder="WhatsApp number *" className="contact-input" />
@@ -56,14 +57,25 @@ export function ContactForm() {
             </select>
             <input maxLength={30} name="budget" placeholder="Estimated budget, example: Rs. 15000" className="contact-input md:col-span-2" />
           </div>
+
           <textarea required minLength={20} maxLength={400} name="message" rows={5} placeholder="Project details *" className="contact-input resize-none" />
-          <button className="rounded-full bg-[#0b0704] px-7 py-4 font-black text-[var(--cream)]">Send on WhatsApp</button>
-          {status && <p className="text-sm font-bold text-[#7b5a1b]">{status}</p>}
+
+          <div className="mt-5 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+            <div className="max-w-2xl">
+              <p className="text-sm font-black text-[#1a140d]">Your idea stays private.</p>
+              <p className="mt-1 text-sm leading-6 text-[#6f6658]">
+                We treat every inquiry as confidential. Your business idea, workflow and project details are not shared or disclosed.
+              </p>
+            </div>
+            <button type="submit" className="inline-flex min-w-[220px] items-center justify-center rounded-full bg-[#0b0704] px-7 py-3 text-sm font-black text-[var(--cream)] transition hover:opacity-90">
+              Send inquiry
+            </button>
+          </div>
+
+          {status && <p className="mt-4 text-sm font-semibold text-[#6f6658]">{status}</p>}
         </form>
       </div>
     </section>
   );
 }
-
-
 
