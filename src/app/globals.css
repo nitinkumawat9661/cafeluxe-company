@@ -892,8 +892,27 @@ body::after {
 .pricing-card ul{margin-top:1.4rem;display:grid;gap:.8rem;color:#d6c8ae;line-height:1.6}
 .pricing-card li{list-style:none}
 .pricing-card li::before{content:"•";color:var(--gold);margin-right:.55rem}
-
-
 /* Pricing CTA only */
-.pricing-action{margin-top:1.6rem;display:inline-flex;width:100%;align-items:center;justify-content:center;border-radius:999px;border:1px solid rgba(244,229,195,.18);background:rgba(244,229,195,.08);padding:.9rem 1rem;color:var(--cream);font-size:.9rem;font-weight:900;text-align:center;transition:all .2s ease}
-.pricing-action:hover{background:var(--cream);color:#0b0704}
+.pricing-action {
+  margin-top: 1.6rem;
+  display: inline-flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1rem;
+  border: 1px solid rgba(244,229,195,.32);
+  background: rgba(244,229,195,.045);
+  padding: .95rem 1rem;
+  color: var(--cream);
+  font-size: .9rem;
+  font-weight: 900;
+  text-align: center;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.08);
+  transition: all .2s ease;
+}
+
+.pricing-action:hover {
+  border-color: rgba(244,229,195,.72);
+  background: var(--cream);
+  color: #0b0704;
+}
