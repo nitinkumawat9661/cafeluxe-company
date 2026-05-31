@@ -145,6 +145,26 @@ export default function Home() {
         </div>
       </section>
 
+      <section id="alignment" className="mx-auto max-w-6xl px-6 py-24">
+        <p className="section-kicker">Design alignment</p>
+        <h2 className="mt-5 section-title">
+          Clean layouts work because every element has a <span className="gold-word">purpose</span>.
+        </h2>
+
+        <div className="alignment-shell mt-12 grid gap-5 md:grid-cols-2">
+          {[
+            ["Grid discipline","Every section follows a clear structure, so the interface feels organised instead of random."],
+            ["Visual balance","Text, cards, space and actions are placed with proper weight, not just decoration."],
+            ["Spacing rhythm","Consistent gaps make the website easier to scan and more premium to experience."],
+            ["Component consistency","Buttons, cards, forms and sections follow one visual system across the website."],
+          ].map(([title,text])=>(
+            <article key={title} className="alignment-card rounded-[2rem] p-6">
+              <h3>{title}</h3>
+              <p>{text}</p>
+            </article>
+          ))}
+        </div>
+      </section>
       <section id="pricing" className="mx-auto max-w-6xl px-6 py-24">
         <p className="section-kicker">Pricing direction</p>
         <h2 className="mt-5 section-title">
@@ -230,6 +250,7 @@ export default function Home() {
     </main>
   );
 }
+
 
 
 

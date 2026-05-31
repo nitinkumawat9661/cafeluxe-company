@@ -916,3 +916,8 @@ body::after {
   background: var(--cream);
   color: #0b0704;
 }
+
+/* Design alignment section only */
+.alignment-card{border:1px solid rgba(244,229,195,.16);background:linear-gradient(145deg,rgba(244,229,195,.075),rgba(255,255,255,.025));box-shadow:0 24px 80px rgba(0,0,0,.38),inset 0 1px 0 rgba(255,255,255,.09)}
+.alignment-card h3{font-size:1.65rem;font-weight:900;letter-spacing:-.04em;color:var(--cream)}
+.alignment-card p{margin-top:1rem;color:#d6c8ae;line-height:1.75}
