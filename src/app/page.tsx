@@ -13,7 +13,7 @@ export default function Home() {
     <main className="min-h-screen text-[var(--ink)]">
       <JsonLd />
 
-      <header className="fixed inset-x-0 top-0 z-50">
+      <header className="site-header-fixed">
         <nav className="mx-auto mt-4 flex max-w-6xl items-center justify-between rounded-full border border-[rgba(244,229,195,.18)] bg-[#0b0805]/80 px-6 py-3 backdrop-blur-2xl">
           <a href="#studio" className="text-sm font-black tracking-[0.34em] text-[var(--cream)]">LUXEFORGE STUDIO</a>
           <div className="hidden gap-7 md:flex">
@@ -296,6 +296,7 @@ export default function Home() {
     </main>
   );
 }
+
 
 
 
