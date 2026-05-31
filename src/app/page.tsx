@@ -1,5 +1,6 @@
 ﻿import { JsonLd } from "@/components/seo/json-ld";
 import { ContactForm } from "@/components/contact-form";
+import { FloatingPreferences } from "@/components/floating-preferences";
 import { navLinks, products, services } from "@/lib/site";
 
 const reviews = [
@@ -259,6 +260,7 @@ export default function Home() {
         </div>
       </section>
       <ContactForm />
+      <FloatingPreferences />
 
                   <footer id="footer" className="mx-auto max-w-6xl px-6 pb-10 pt-20">
         <div className="premium-footer rounded-[2.4rem] p-7 md:p-10">
@@ -296,6 +298,7 @@ export default function Home() {
     </main>
   );
 }
+
 
 
 
