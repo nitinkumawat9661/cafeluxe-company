@@ -926,3 +926,9 @@ body::after {
 .faq-card{border:1px solid rgba(244,229,195,.16);background:linear-gradient(145deg,rgba(244,229,195,.075),rgba(255,255,255,.025));box-shadow:0 24px 80px rgba(0,0,0,.38),inset 0 1px 0 rgba(255,255,255,.09)}
 .faq-card h3{font-size:1.35rem;font-weight:900;letter-spacing:-.035em;color:var(--cream)}
 .faq-card p{margin-top:1rem;color:#d6c8ae;line-height:1.75}
+
+/* SEO content section only */
+.seo-panel{border:1px solid rgba(244,229,195,.16);background:linear-gradient(145deg,rgba(244,229,195,.075),rgba(255,255,255,.025));box-shadow:0 24px 80px rgba(0,0,0,.38),inset 0 1px 0 rgba(255,255,255,.09)}
+.seo-panel p{max-width:62rem;color:#d6c8ae;font-size:1.05rem;line-height:1.85}
+.seo-panel p+p{margin-top:1rem}
+.seo-tags span{border:1px solid rgba(244,229,195,.18);border-radius:999px;background:rgba(244,229,195,.07);padding:.65rem .9rem;color:var(--cream);font-size:.82rem;font-weight:900}

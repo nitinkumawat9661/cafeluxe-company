@@ -212,6 +212,30 @@ export default function Home() {
           </article>
         </div>
       </section>
+      <section id="seo-services" className="mx-auto max-w-6xl px-6 py-24">
+        <p className="section-kicker">Built for search clarity</p>
+        <h2 className="mt-5 section-title">
+          Premium websites and software for <span className="gold-word">serious businesses</span>.
+        </h2>
+
+        <div className="seo-panel mt-12 rounded-[2rem] p-6 md:p-8">
+          <p>
+            LuxeForge Studio builds premium business websites, custom software, restaurant POS systems,
+            QR ordering platforms, admin dashboards and lead-focused digital experiences for businesses
+            in Sikar, Jaipur, Rajasthan and across India.
+          </p>
+          <p>
+            Our work focuses on clean UI, mobile responsive layouts, fast loading pages, clear service
+            presentation, WhatsApp-ready inquiry flows and conversion-focused sections that help customers
+            understand your business quickly.
+          </p>
+          <div className="seo-tags mt-6 flex flex-wrap gap-3">
+            {["Business websites","Custom software","Restaurant POS","QR ordering","Admin dashboards","Sikar","Jaipur","Rajasthan"].map((tag)=>(
+              <span key={tag}>{tag}</span>
+            ))}
+          </div>
+        </div>
+      </section>
       <section id="faq" className="mx-auto max-w-6xl px-6 py-24">
         <p className="section-kicker">Common questions</p>
         <h2 className="mt-5 section-title">
@@ -272,6 +296,7 @@ export default function Home() {
     </main>
   );
 }
+
 
 
 
