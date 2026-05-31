@@ -957,3 +957,13 @@ body::after {
     margin-top:.65rem !important;
   }
 }
+
+/* Input system section only */
+.input-system-card{border:1px solid rgba(244,229,195,.16);background:linear-gradient(145deg,rgba(244,229,195,.075),rgba(255,255,255,.025));box-shadow:0 24px 80px rgba(0,0,0,.38),inset 0 1px 0 rgba(255,255,255,.09)}
+.input-system-card h3{font-size:1.7rem;font-weight:900;color:var(--cream)}
+.input-system-card p{margin-top:1rem;color:#d6c8ae;line-height:1.75}
+.input-demo label{display:block;color:var(--cream);font-weight:900}
+.demo-field{margin-top:.7rem;border:1px solid rgba(244,229,195,.25);border-radius:1rem;background:rgba(244,229,195,.08);padding:1rem;color:var(--cream);font-weight:800}
+.input-demo small{display:block;margin-top:.7rem}
+.input-demo .helper{color:#d6c8ae}
+.input-demo .error{color:#f3a77f}

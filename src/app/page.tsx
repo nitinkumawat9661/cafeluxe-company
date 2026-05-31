@@ -165,6 +165,26 @@ export default function Home() {
           ))}
         </div>
       </section>
+      <section id="input-system" className="mx-auto max-w-6xl px-6 py-24">
+        <p className="section-kicker">Input system</p>
+        <h2 className="mt-5 section-title">
+          Forms should guide users, not confuse them.
+        </h2>
+
+        <div className="input-system-card mt-12 grid gap-6 rounded-[2rem] p-6 md:grid-cols-[1fr_1.1fr] md:p-8">
+          <div>
+            <h3>Label + field + value + helper + error</h3>
+            <p>We design inputs with clear labels, real values, helper text and exact error states so users know what to enter and how to fix mistakes.</p>
+          </div>
+
+          <div className="input-demo">
+            <label>WhatsApp number *</label>
+            <div className="demo-field">74148 5XXXX</div>
+            <small className="helper">Used only to discuss your project inquiry.</small>
+            <small className="error">Enter a valid 10 digit WhatsApp number.</small>
+          </div>
+        </div>
+      </section>
       <section id="pricing" className="mx-auto max-w-6xl px-6 py-24">
         <p className="section-kicker">Pricing direction</p>
         <h2 className="mt-5 section-title">
@@ -296,6 +316,8 @@ export default function Home() {
     </main>
   );
 }
+
+
 
 
 
