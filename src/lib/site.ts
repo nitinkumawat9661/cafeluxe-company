@@ -17,8 +17,8 @@ export const navLinks = [
   { label: "Studio", href: "#studio" },
   { label: "Services", href: "#services" },
   { label: "Products", href: "#products" },
-  { label: "Reviews", href: "#reviews" },
-  { label: "Contact", href: "#contact" },
+  { label: "Pricing", href: "#pricing" },
+  { label: "FAQ", href: "#faq" },
 ];
 
 export const services = [
@@ -47,3 +47,4 @@ export const products = [
     description: "Staff-side order handling, table operations and service management.",
   },
 ];
+
