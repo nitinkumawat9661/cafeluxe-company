@@ -212,6 +212,28 @@ export default function Home() {
           </article>
         </div>
       </section>
+      <section id="faq" className="mx-auto max-w-6xl px-6 py-24">
+        <p className="section-kicker">Common questions</p>
+        <h2 className="mt-5 section-title">
+          Clear answers before you <span className="gold-word">start</span>.
+        </h2>
+
+        <div className="faq-grid mt-12 grid gap-5 md:grid-cols-2">
+          {[
+            ["How long does a website take?","A focused business website usually takes 5 to 12 days depending on pages, content and approval speed."],
+            ["How does payment work?","We usually start with an advance, then continue with milestone-based payment for larger projects."],
+            ["Will the website work on mobile?","Yes. Every website is built responsive so it works properly on mobile, tablet and desktop."],
+            ["Will my idea stay private?","Yes. Your idea, workflow and business details are treated as confidential and are not disclosed."],
+            ["Do you help with domain and hosting?","Yes. We can help with domain, hosting, deployment and basic technical setup."],
+            ["Do you build custom software too?","Yes. We build business websites, admin dashboards, restaurant POS, QR ordering and custom software."],
+          ].map(([q,a])=>(
+            <article key={q} className="faq-card rounded-[2rem] p-6">
+              <h3>{q}</h3>
+              <p>{a}</p>
+            </article>
+          ))}
+        </div>
+      </section>
       <ContactForm />
 
                   <footer id="footer" className="mx-auto max-w-6xl px-6 pb-10 pt-20">
@@ -250,6 +272,7 @@ export default function Home() {
     </main>
   );
 }
+
 
 
 
