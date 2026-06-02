@@ -1,327 +1,124 @@
 ﻿import { JsonLd } from "@/components/seo/json-ld";
-import { ContactForm } from "@/components/contact-form";
 import { FloatingPreferences } from "@/components/floating-preferences";
-import { navLinks, products, services } from "@/lib/site";
 
-const reviews = [
-  { name: "Restaurant Owner", business: "Premium Cafe", text: "The website feels polished, clear and serious. It does not look like a template." },
-  { name: "Food Business Owner", business: "Food Business", text: "The product presentation and inquiry flow make the brand feel more trusted." },
-  { name: "Cloud Kitchen Founder", business: "Restaurant Tech Client", text: "CafeLuxe ecosystem is presented like a real business product, not just software." },
-];
+const bullets=["Free consultation & tailored solution","No obligation, friendly & transparent","Quick response within 24 hours","Secure & confidential"];
 
-export default function Home() {
-  return (
-    <main className="min-h-screen text-[var(--ink)]">
+export default function Home(){
+  return(
+    <main className="min-h-screen overflow-x-hidden bg-[#050504] pb-24 text-[#f7ecd2] md:pb-0">
       <JsonLd />
 
-      <header className="site-header-fixed">
-        <nav className="mx-auto mt-4 flex max-w-6xl items-center justify-between rounded-full border border-[rgba(244,229,195,.18)] bg-[#0b0805]/80 px-6 py-3 backdrop-blur-2xl">
-          <a href="#studio" className="text-sm font-black tracking-[0.34em] text-[var(--cream)]">LUXEFORGE STUDIO</a>
-          <div className="hidden gap-7 md:flex">
-            {navLinks.map((n) => <a key={n.href} href={n.href} className="text-sm font-semibold text-[#cfc0a5] hover:text-[var(--cream)]">{n.label}</a>)}
-          </div>
-          <a href="#contact" className="rounded-full bg-[var(--cream)] px-5 py-2 text-sm font-black !text-[#0b0704]">Start project</a>
+      <header className="sticky top-0 z-[90000] border-b border-white/10 bg-[#050504]/95">
+        <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
+          <div className="text-xl font-black tracking-tight">LuxeForge <span className="text-[var(--gold)]">Studio</span></div>
+          <a href="#contact" className="rounded-full border border-[rgba(201,155,71,.4)] px-5 py-3 text-sm font-black">Start Project</a>
         </nav>
       </header>
 
-      <section id="studio" className="mx-auto grid min-h-[92vh] max-w-6xl items-center gap-12 px-6 pt-32 lg:grid-cols-[1.04fr_.96fr]">
+      <section className="mx-auto grid max-w-6xl items-start gap-8 px-5 py-8 md:px-6 md:py-12 lg:grid-cols-[.86fr_1.14fr] lg:gap-10">
         <div>
-          <p className="section-kicker">Luxury digital studio</p>
-          <h1 className="editorial-title mt-5">Build a <span className="gold-word">premium</span> brand presence that feels real.</h1>
-          <p className="mt-7 max-w-2xl text-xl font-medium leading-9 text-[#e8dcc5]">We craft high-end business websites, CafeLuxe restaurant systems, admin panels and digital products that feel expensive, clean and trustworthy.</p>
-          <div className="mt-9 flex flex-wrap gap-4">
-            <a href="#services" className="rounded-full bg-[var(--cream)] px-7 py-3 font-black !text-[#0b0704]">Explore services</a>
-            <a href="#products" className="premium-pill rounded-full px-7 py-3 font-bold">View products</a>
+          <p className="text-xs font-black uppercase tracking-[.35em] text-[var(--gold)]">Get in touch</p>
+          <h1 className="mt-5 max-w-[34rem] text-[clamp(2.35rem,4.4vw,4.05rem)] font-black leading-[1.03] tracking-[-.055em]">
+            Build a Premium <span className="text-[var(--gold)]">Website, App</span> or <span className="text-[var(--gold)]">Software</span> That Feels Trusted
+          </h1>
+          <p className="mt-5 max-w-md text-[15px] font-semibold leading-7 text-[#e7dac1] md:text-base md:leading-8">We create refined digital products for serious businesses that need trust, clarity, speed and a polished first impression.</p>
+          <div className="mt-7 grid gap-3 text-[#eadcc2]">{bullets.map((b)=><p key={b}>✓ {b}</p>)}</div>
+          <div className="mt-8 flex max-w-sm justify-between rounded-2xl border border-[rgba(201,155,71,.3)] bg-white/[.035] p-5">
+            <b>Prefer direct consultation?</b><span className="font-black text-[var(--gold)]">+91 74148 53321 →</span>
           </div>
         </div>
 
-        <div className="lux-card rounded-[2.3rem] p-5">
-          <div className="cream-panel rounded-[1.8rem] p-6 md:p-7">
-            <p className="text-[11px] font-black uppercase tracking-[.26em] text-black/70">Studio signature</p>
-            <h2 className="mt-4 max-w-[410px] text-[2.15rem] font-black leading-[0.98] tracking-[-0.045em] md:text-[2.65rem]">Premium design.<br />Clear message.<br />Better trust.</h2>
-            <p className="mt-5 max-w-[420px] text-sm font-semibold leading-6 text-black/60">A refined first impression for businesses that want to look serious, polished and expensive.</p>
+        <form id="contact" className="w-full rounded-[1.6rem] border border-[rgba(201,155,71,.35)] bg-[#0b0906]/90 p-5 shadow-2xl md:rounded-[2rem] md:p-8">
+          <h2 className="text-2xl font-black leading-tight md:text-3xl">Start Your Project</h2>
+          <p className="mt-2 text-sm text-[#d6c8ae]">Tell us what you need. We will review it and respond with the right next step.</p>
+          <div className="mt-6 grid gap-4 md:grid-cols-2">
+            {["Your Name *","Phone / WhatsApp *","Email Address *","Business / Brand Name"].map((p)=><input key={p} placeholder={p} className="rounded-xl border border-white/10 bg-white/[.055] px-4 py-4 font-bold outline-none" />)}
+            <select className="rounded-xl border border-white/10 bg-white/[.055] px-4 py-4 font-bold"><option>Service Needed *</option></select>
+            <select className="rounded-xl border border-white/10 bg-white/[.055] px-4 py-4 font-bold"><option>Budget Range *</option></select>
+            <textarea rows={4} placeholder="Describe your website, app or software requirement *" className="rounded-xl border border-white/10 bg-white/[.055] px-4 py-4 font-bold outline-none md:col-span-2" />
           </div>
-          <div className="mt-5 grid gap-4 sm:grid-cols-2">
-            {["Premium websites","CafeLuxe suite","Admin dashboards","VPS-ready builds"].map((x)=><div key={x} className="glass-chip rounded-2xl p-5 font-bold">{x}</div>)}
-          </div>
-        </div>
+          <button className="mt-5 w-full rounded-xl bg-[var(--gold)] px-6 py-4 font-black text-[#090704]">Request Consultation →</button>
+        </form>
       </section>
 
-      <section id="services" className="mx-auto max-w-6xl px-6 py-24">
-        <p className="section-kicker">What we craft</p>
-        <h2 className="mt-5 section-title">Digital work with <span className="gold-word">taste</span>, not templates.</h2>
-        <div className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-          {services.map((s,i)=><article key={s} className="lux-card rounded-[2rem] p-6"><p className="text-sm font-black text-[var(--gold)]">0{i+1}</p><h3 className="mt-8 text-2xl font-black tracking-[-.03em]">{s}</h3><p className="mt-4 leading-7 text-[#d6c8ae]">Strategy, interface, performance and conversion structure built for real businesses.</p></article>)}
-        </div>
+      <section id="proof" className="mx-auto grid max-w-6xl gap-4 px-5 pb-6 sm:grid-cols-2 md:px-6 xl:grid-cols-4">
+        {[
+          ["Phone / WhatsApp","+91 74148 53321","Mon-Fri: 9:00 AM - 6:00 PM"],
+          ["Email Us","hello@luxeforgestudio.com","We reply within 24 hours"],
+          ["Our Office","Sikar, Rajasthan","Remote projects across India"],
+          ["Business Hours","Mon-Fri: 8:00 AM - 6:00 PM","Saturday by appointment"],
+        ].map(([title,value,desc])=>(
+          <article key={title} className="rounded-2xl border border-[rgba(201,155,71,.25)] bg-white/[.035] p-5 shadow-2xl">
+            <p className="text-xs font-black uppercase tracking-[.18em] text-[var(--gold)]">{title}</p>
+            <h3 className="mt-3 break-words text-[15px] font-black leading-snug">{value}</h3>
+            <p className="mt-2 break-words text-sm leading-6 text-[#d6c8ae]">{desc}</p>
+          </article>
+        ))}
       </section>
-      <section id="showcase" className="mx-auto max-w-6xl px-6 py-24">
-        <p className="section-kicker">Selected work</p>
-        <h2 className="mt-5 section-title">
-          Product experiences built with <span className="gold-word">business</span> clarity.
-        </h2>
 
-        <div className="mt-12 grid gap-5 lg:grid-cols-3">
-          <article className="work-card rounded-[2rem] p-6">
-            <p className="text-sm font-black text-[var(--gold)]">01</p>
-            <h3 className="mt-7 text-3xl font-black tracking-[-.04em]">CafeLuxe POS</h3>
-            <p className="mt-4 leading-7 text-[#d6c8ae]">Billing, KOT, reports, records and printer-ready restaurant operations.</p>
-          </article>
-
-          <article className="work-card rounded-[2rem] p-6">
-            <p className="text-sm font-black text-[var(--gold)]">02</p>
-            <h3 className="mt-7 text-3xl font-black tracking-[-.04em]">QR Ordering Flow</h3>
-            <p className="mt-4 leading-7 text-[#d6c8ae]">Table ordering, menu browsing, cart, offers and counter workflow.</p>
-          </article>
-
-          <article className="work-card rounded-[2rem] p-6">
-            <p className="text-sm font-black text-[var(--gold)]">03</p>
-            <h3 className="mt-7 text-3xl font-black tracking-[-.04em]">Admin Systems</h3>
-            <p className="mt-4 leading-7 text-[#d6c8ae]">Dashboards, lead handling, content controls and business management tools.</p>
-          </article>
+      <section className="mx-auto grid max-w-6xl items-stretch gap-5 px-5 pb-10 md:px-6 lg:grid-cols-2">
+        <div className="rounded-[1.6rem] border border-[rgba(201,155,71,.25)] bg-white/[.035] p-5 shadow-2xl md:rounded-[2rem] md:p-7">
+          <p className="text-xs font-black uppercase tracking-[.25em] text-[var(--gold)]">Why contact us?</p>
+          <h2 className="mt-4 text-2xl font-black leading-tight md:text-3xl">We respond fast. We deliver clear results.</h2>
+          <p className="mt-4 leading-7 text-[#d6c8ae]">Your project gets a serious review, clean planning, premium UI direction and practical execution.</p>
         </div>
-      </section>
-<section id="products" className="mx-auto max-w-6xl px-6 py-24">
-        <div className="product-shell rounded-[2.4rem] p-6 md:p-8">
-          <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
-            <div>
-              <p className="section-kicker">CafeLuxe ecosystem</p>
-              <h2 className="mt-4 section-title max-w-[620px]">
-                Restaurant systems with <span className="gold-word">premium</span> control.
-              </h2>
-            </div>
-            <p className="max-w-2xl text-lg font-semibold leading-8 text-[#e8dcc5]">
-              POS, QR ordering, KOT, reports and staff workflows designed like a serious product suite.
-            </p>
-          </div>
 
-          <div className="mt-10 grid gap-5 lg:grid-cols-3">
-            {products.map((p, i) => (
-              <article key={p.slug} className="product-card rounded-[2rem] p-6">
-                <p className="text-sm font-black text-[var(--gold)]">0{i + 1}</p>
-                <h3 className="mt-6 text-[2rem] font-black leading-tight tracking-[-.04em]">{p.name}</h3>
-                <p className="mt-4 leading-7 text-[#d6c8ae]">{p.description}</p>
-              </article>
-            ))}
+        <div className="rounded-[1.6rem] border border-[rgba(201,155,71,.25)] bg-white/[.035] p-5 shadow-2xl md:rounded-[2rem] md:p-7">
+          <h2 className="text-2xl font-black leading-tight md:text-3xl">Our Response Promise</h2>
+          <div className="mt-5 grid gap-4 text-[#d6c8ae]">
+            <p><b className="text-[var(--gold)]">Within 24 Hours</b><br />We review your request and reply quickly.</p>
+            <p><b className="text-[var(--gold)]">Free Consultation</b><br />We suggest the right solution before pricing.</p>
+            <p><b className="text-[var(--gold)]">No Pressure</b><br />Clear advice, transparent pricing and no forced sales.</p>
           </div>
         </div>
       </section>
+      <section id="faq" className="mx-auto max-w-6xl px-5 pb-10 md:px-6">
+        <p className="text-xs font-black uppercase tracking-[.25em] text-[var(--gold)]">Frequently Asked Questions</p>
+        <h2 className="mt-3 text-3xl font-black">Got Questions? We&apos;ve Got Answers.</h2>
 
-                  <section id="process" className="mx-auto max-w-6xl px-6 py-24">
-        <p className="section-kicker">Build process</p>
-        <h2 className="mt-5 section-title">
-          A clear path from <span className="gold-word">idea</span> to launch.
-        </h2>
-
-        <div className="premium-process-track mt-14">
-          <article className="process-step process-left rounded-[2rem] p-6">
-            <span className="step-node">01</span>
-            <h3>Plan the offer</h3>
-            <p>We lock the goal, pages, audience and conversion direction before design starts.</p>
-          </article>
-
-          <article className="process-step process-right rounded-[2rem] p-6">
-            <span className="step-node">02</span>
-            <h3>Shape the visual system</h3>
-            <p>Typography, spacing, sections and premium mood are planned around your brand.</p>
-          </article>
-
-          <article className="process-step process-left rounded-[2rem] p-6">
-            <span className="step-node">03</span>
-            <h3>Build the experience</h3>
-            <p>The approved UI becomes responsive, fast and clean production-ready code.</p>
-          </article>
-
-          <article className="process-step process-right rounded-[2rem] p-6">
-            <span className="step-node">04</span>
-            <h3>Polish and launch</h3>
-            <p>Forms, links, SEO basics, performance and final handover checks are completed.</p>
-          </article>
-        </div>
-      </section>
-      <section id="reviews" className="mx-auto max-w-6xl px-6 py-24">
-        <p className="section-kicker">Client proof</p>
-        <h2 className="mt-5 section-title">Built to feel <span className="gold-word">credible</span> before the first call.</h2>
-        <div className="mt-10 grid gap-5 lg:grid-cols-3">
-          {reviews.map((r)=><article key={r.name} className="lux-card rounded-[2rem] p-6"><p className="text-xs font-black uppercase tracking-[.28em] text-[var(--gold)]">5/5 rating</p><p className="mt-5 text-xl font-semibold leading-8">{r.text}</p><p className="mt-6 font-black">{r.name}</p><p className="text-sm text-[#cfc0a5]">{r.business}</p></article>)}
-        </div>
-      </section>
-
-      <section id="alignment" className="mx-auto max-w-6xl px-6 py-24">
-        <p className="section-kicker">Design alignment</p>
-        <h2 className="mt-5 section-title">
-          Clean layouts work because every element has a <span className="gold-word">purpose</span>.
-        </h2>
-
-        <div className="alignment-shell mt-12 grid gap-5 md:grid-cols-2">
+        <div className="mt-5 grid gap-2">
           {[
-            ["Grid discipline","Every section follows a clear structure, so the interface feels organised instead of random."],
-            ["Visual balance","Text, cards, space and actions are placed with proper weight, not just decoration."],
-            ["Spacing rhythm","Consistent gaps make the website easier to scan and more premium to experience."],
-            ["Component consistency","Buttons, cards, forms and sections follow one visual system across the website."],
-          ].map(([title,text])=>(
-            <article key={title} className="alignment-card rounded-[2rem] p-6">
-              <h3>{title}</h3>
-              <p>{text}</p>
-            </article>
+            "How soon will you respond?",
+            "How much does a project cost?",
+            "Can you sign an NDA?",
+            "What if I am not sure about my requirements?",
+            "Do you offer ongoing support?",
+          ].map((q)=>(
+            <div key={q} className="flex items-center justify-between rounded-xl border border-white/10 bg-white/[.035] px-5 py-4 font-bold">
+              <span>{q}</span>
+              <span className="text-[var(--gold)]">⌄</span>
+            </div>
           ))}
         </div>
       </section>
-<section id="pricing" className="mx-auto max-w-6xl px-6 py-24">
-        <p className="section-kicker">Pricing direction</p>
-        <h2 className="mt-5 section-title">
-          Clear packages for <span className="gold-word">serious</span> business builds.
-        </h2>
-
-        <div className="mt-12 grid gap-5 lg:grid-cols-3">
-          <article className="pricing-card rounded-[2rem] p-6">
-            <p className="pricing-tag">Starter</p>
-            <h3>Website Launch</h3>
-            <strong>Starts from Rs. 7,999</strong>
-            <ul>
-              <li>Premium landing page</li>
-              <li>Mobile responsive design</li>
-              <li>Basic SEO setup</li>
-              <li>Contact / WhatsApp inquiry</li>
-            </ul>
-            <a href="#contact" className="pricing-action">Discuss this package</a>
-          </article>
-
-          <article className="pricing-card pricing-card-featured rounded-[2rem] p-6">
-            <p className="pricing-tag">Most chosen</p>
-            <h3>Business Website</h3>
-            <strong>Starts from Rs. 14,999</strong>
-            <ul>
-              <li>Multi-section premium website</li>
-              <li>Portfolio / services structure</li>
-              <li>Lead-focused contact form</li>
-              <li>Deployment support</li>
-            </ul>
-            <a href="#contact" className="pricing-action">Discuss this package</a>
-          </article>
-
-          <article className="pricing-card rounded-[2rem] p-6">
-            <p className="pricing-tag">Custom</p>
-            <h3>Software / POS</h3>
-            <strong>Custom quote</strong>
-            <ul>
-              <li>Restaurant POS / QR ordering</li>
-              <li>Admin dashboard</li>
-              <li>Custom workflow logic</li>
-              <li>Support and scaling plan</li>
-            </ul>
-            <a href="#contact" className="pricing-action">Discuss this package</a>
-          </article>
-        </div>
-      </section>
-      <section id="seo-services" className="mx-auto max-w-6xl px-6 py-24">
-        <p className="section-kicker">Built for search clarity</p>
-        <h2 className="mt-5 section-title">
-          Premium websites and software for <span className="gold-word">serious businesses</span>.
-        </h2>
-
-        <div className="seo-panel mt-12 rounded-[2rem] p-6 md:p-8">
-          <p>
-            LuxeForge Studio builds premium business websites, custom software, restaurant POS systems,
-            QR ordering platforms, admin dashboards and lead-focused digital experiences for businesses
-            in Sikar, Jaipur, Rajasthan and across India.
+      <section id="final-cta" className="mx-auto max-w-6xl px-6 pb-10">
+        <div className="rounded-[1.6rem] border border-[rgba(201,155,71,.35)] bg-[rgba(201,155,71,.08)] p-6 text-center shadow-2xl md:rounded-[2rem] md:p-8">
+          <p className="text-xs font-black uppercase tracking-[.25em] text-[var(--gold)]">Ready to start?</p>
+          <h2 className="mx-auto mt-4 max-w-3xl text-2xl font-black leading-tight md:text-4xl">
+            Build a premium digital presence that feels serious from the first click.
+          </h2>
+          <p className="mx-auto mt-4 max-w-2xl leading-7 text-[#d6c8ae]">
+            Share your project requirement and we will help you choose the right website, app or software direction.
           </p>
-          <p>
-            Our work focuses on clean UI, mobile responsive layouts, fast loading pages, clear service
-            presentation, WhatsApp-ready inquiry flows and conversion-focused sections that help customers
-            understand your business quickly.
-          </p>
-          <div className="seo-tags mt-6 flex flex-wrap gap-3">
-            {["Business websites","Custom software","Restaurant POS","QR ordering","Admin dashboards","Sikar","Jaipur","Rajasthan"].map((tag)=>(
-              <span key={tag}>{tag}</span>
-            ))}
-          </div>
+          <a href="#contact" className="mt-6 inline-flex rounded-full bg-[var(--gold)] px-7 py-4 font-black text-[#090704]">
+            Request Consultation →
+          </a>
         </div>
       </section>
-      <section id="faq" className="mx-auto max-w-6xl px-6 py-24">
-        <p className="section-kicker">Common questions</p>
-        <h2 className="mt-5 section-title">
-          Clear answers before you <span className="gold-word">start</span>.
-        </h2>
 
-        <div className="faq-grid mt-12 grid gap-5 md:grid-cols-2">
-          {[
-            ["How long does a website take?","A focused business website usually takes 5 to 12 days depending on pages, content and approval speed."],
-            ["How does payment work?","We usually start with an advance, then continue with milestone-based payment for larger projects."],
-            ["Will the website work on mobile?","Yes. Every website is built responsive so it works properly on mobile, tablet and desktop."],
-            ["Will my idea stay private?","Yes. Your idea, workflow and business details are treated as confidential and are not disclosed."],
-            ["Do you help with domain and hosting?","Yes. We can help with domain, hosting, deployment and basic technical setup."],
-            ["Do you build custom software too?","Yes. We build business websites, admin dashboards, restaurant POS, QR ordering and custom software."],
-          ].map(([q,a])=>(
-            <article key={q} className="faq-card rounded-[2rem] p-6">
-              <h3>{q}</h3>
-              <p>{a}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-      <ContactForm />
-      <FloatingPreferences />
-
-                  <footer id="footer" className="mx-auto max-w-6xl px-6 pb-10 pt-20">
-        <div className="premium-footer rounded-[2.4rem] p-7 md:p-10">
-          <div className="grid gap-8 md:grid-cols-[1.2fr_.8fr_.8fr]">
-            <div>
-              <p className="text-sm font-black tracking-[.34em] text-[var(--cream)]">LUXEFORGE STUDIO</p>
-              <p className="mt-5 max-w-md leading-7 text-[#d6c8ae]">
-                Premium websites, restaurant systems, admin dashboards and digital product experiences built for serious businesses.
-              </p>
-            </div>
-
-            <div>
-              <p className="text-sm font-black text-[var(--gold)]">Studio</p>
-              <div className="mt-4 grid gap-3 text-sm font-semibold text-[#d6c8ae]">
-                <a href="#services">Services</a>
-                <a href="#showcase">Selected work</a>
-                <a href="#products">Products</a>
-              </div>
-            </div>
-
-            <div>
-              <p className="text-sm font-black text-[var(--gold)]">Contact</p>
-              <div className="mt-4 grid gap-3 text-sm font-semibold text-[#d6c8ae]">
-                <a href="#contact">Start project</a>
-                <a href="#reviews">Client proof</a>
-              </div>
-            </div>
+      <footer className="border-t border-white/10 px-6 py-8">
+        <div className="mx-auto flex max-w-6xl flex-col gap-4 text-sm text-[#d6c8ae] md:flex-row md:items-center md:justify-between">
+          <div>
+            <b className="text-lg text-[#f7ecd2]">LuxeForge <span className="text-[var(--gold)]">Studio</span></b>
+            <p className="mt-1">Premium websites, apps and custom software systems.</p>
           </div>
-
-          <div className="mt-8 border-t border-white/10 pt-5 text-sm font-medium text-[#9f927c]">
-            &copy; 2026 LuxeForge Studio. Built for premium digital presence.
-          </div>
+          <p>© 2026 LuxeForge Studio. All rights reserved.</p>
         </div>
       </footer>
+      <FloatingPreferences />
     </main>
-  );
+  )
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
