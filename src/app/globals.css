@@ -988,3 +988,160 @@ html[data-visual-mode="gray"] body{background:#101214}
   55%{background-position:0 0}
   100%{background-position:-220% 0}
 }
+
+/* Remove unwanted text caret and tap lines */
+html,
+body,
+main,
+header,
+footer,
+section,
+article,
+div,
+p,
+h1,
+h2,
+h3,
+span,
+a,
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+main,
+header,
+footer,
+section,
+article,
+div,
+p,
+h1,
+h2,
+h3,
+span,
+button,
+a {
+  user-select: none;
+  caret-color: transparent;
+}
+
+input,
+textarea,
+select,
+option {
+  user-select: text;
+  caret-color: auto;
+}
+
+.phone-live-dot{width:8px;height:8px;border-radius:999px;background:var(--gold);box-shadow:0 0 18px rgba(201,155,71,.9);animation:phonePulse 1.4s infinite}
+.phone-live-row{display:flex;justify-content:space-between;border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:8px 10px;background:rgba(255,255,255,.035)}
+.phone-live-row b{color:var(--gold);font-size:10px}
+.phone-live-progress{width:72%;animation:phoneProgress 2.8s ease-in-out infinite}
+@keyframes phonePulse{50%{opacity:.35;transform:scale(.75)}}
+@keyframes phoneProgress{0%,100%{width:46%}50%{width:92%}}
+
+.live-status-pill{display:inline-flex;align-items:center;gap:8px}
+.live-status-pill span{width:7px;height:7px;border-radius:999px;background:var(--gold);box-shadow:0 0 18px rgba(201,155,71,.9);animation:livePulse 1.4s infinite}
+.live-preview-main{position:relative;overflow:hidden}
+.live-preview-main:before{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 0%,rgba(255,255,255,.08) 45%,transparent 70%);transform:translateX(-120%);animation:liveScan 4s infinite}
+.live-flow-card{position:relative;overflow:hidden;animation:cardPulse 3s infinite}
+.live-flow-card.delay-1{animation-delay:.45s}
+.live-flow-card.delay-2{animation-delay:.9s}
+.live-flow-card i{display:block;margin-top:10px;height:3px;border-radius:999px;background:linear-gradient(90deg,var(--gold),rgba(201,155,71,.15));animation:flowBar 2.4s infinite}
+@keyframes livePulse{50%{opacity:.35;transform:scale(.72)}}
+@keyframes liveScan{55%,100%{transform:translateX(120%)}}
+@keyframes cardPulse{50%{border-color:rgba(201,155,71,.32);box-shadow:0 0 22px rgba(201,155,71,.08)}}
+@keyframes flowBar{0%,100%{width:42%}50%{width:92%}}
+
+.live-status-pill{display:inline-flex;align-items:center;gap:8px}
+.live-status-pill span{width:7px;height:7px;border-radius:999px;background:var(--gold);box-shadow:0 0 18px rgba(201,155,71,.9);animation:livePulse 1.4s infinite}
+.live-preview-main{position:relative;overflow:hidden}
+.live-preview-main:before{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 0%,rgba(255,255,255,.08) 45%,transparent 70%);transform:translateX(-120%);animation:liveScan 4s infinite}
+.live-flow-card{position:relative;overflow:hidden;animation:cardPulse 3s infinite}
+.live-flow-card.delay-1{animation-delay:.45s}
+.live-flow-card.delay-2{animation-delay:.9s}
+.live-flow-card i{display:block;margin-top:10px;height:3px;border-radius:999px;background:linear-gradient(90deg,var(--gold),rgba(201,155,71,.15));animation:flowBar 2.4s infinite}
+@keyframes livePulse{50%{opacity:.35;transform:scale(.72)}}
+@keyframes liveScan{55%,100%{transform:translateX(120%)}}
+@keyframes cardPulse{50%{border-color:rgba(201,155,71,.32);box-shadow:0 0 22px rgba(201,155,71,.08)}}
+@keyframes flowBar{0%,100%{width:42%}50%{width:92%}}
+
+/* Extra premium live motion */
+.live-preview-main{
+  isolation:isolate;
+  box-shadow:inset 0 0 0 1px rgba(201,155,71,.08),0 18px 55px rgba(0,0,0,.32);
+}
+.live-preview-main:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  background:
+    radial-gradient(circle at 18% 28%,rgba(201,155,71,.16),transparent 22%),
+    radial-gradient(circle at 82% 70%,rgba(201,155,71,.12),transparent 24%);
+  animation:premiumGlowMove 6s ease-in-out infinite;
+}
+.live-status-pill{
+  box-shadow:0 0 28px rgba(201,155,71,.08);
+  animation:statusBreath 2.6s ease-in-out infinite;
+}
+.live-flow-card:before{
+  content:"";
+  position:absolute;
+  right:14px;
+  top:14px;
+  width:7px;
+  height:7px;
+  border-radius:999px;
+  background:var(--gold);
+  box-shadow:0 0 18px rgba(201,155,71,.85);
+  animation:livePulse 1.7s infinite;
+}
+.live-flow-card p{
+  animation:textSoftFade 3.2s ease-in-out infinite;
+}
+.live-flow-card:hover{
+  transform:translateY(-2px);
+  border-color:rgba(201,155,71,.45);
+}
+@keyframes premiumGlowMove{
+  0%,100%{opacity:.45;transform:translateY(0)}
+  50%{opacity:.85;transform:translateY(-8px)}
+}
+@keyframes statusBreath{
+  50%{box-shadow:0 0 32px rgba(201,155,71,.22)}
+}
+@keyframes textSoftFade{
+  50%{opacity:.72}
+}
+
+
+/* Hero typing effect */
+.hero-type-text{
+  display:inline-block;
+  width:0;
+  max-width:none;
+  white-space:nowrap;
+  overflow:hidden;
+  border-right:none;
+  color:var(--gold);
+  text-shadow:0 0 18px rgba(201,155,71,.35);
+  animation:heroTyping 4.8s steps(36,end) infinite;
+}
+.hero-type-text::selection{
+  background:transparent;
+}
+@keyframes heroTyping{
+  0%{width:0}
+  12%{width:0}
+  55%{width:34ch}
+  78%{width:34ch}
+  100%{width:0}
+}
+@keyframes heroCursor{
+  0%,100%{border-color:var(--gold)}
+  50%{border-color:transparent}
+}
+
+
+
