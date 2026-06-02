@@ -13,7 +13,7 @@ export function FloatingPreferences() {
   }, [mode]);
 
   return (
-    <div className="fixed bottom-5 left-5 z-[90000]">
+    <div className="fixed bottom-4 right-4 z-[90000] md:bottom-5 md:left-5 md:right-auto">
       {open && (
         <div className="mode-panel mb-3 w-72 rounded-[1.7rem] p-4">
           <p className="mode-kicker">Display mode</p>
@@ -45,3 +45,4 @@ export function FloatingPreferences() {
     </div>
   );
 }
+
