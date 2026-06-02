@@ -1,13 +1,19 @@
 ﻿"use client";
 
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
+
+function subscribe() {
+  return () => {};
+}
+
+function getSnapshot() {
+  if (typeof window === "undefined") return "";
+  return window.location.search;
+}
 
 export function LeadSuccess() {
-  const [sent, setSent] = useState(false);
-
-  useEffect(() => {
-    setSent(new URLSearchParams(window.location.search).get("lead") === "sent");
-  }, []);
+  const search = useSyncExternalStore(subscribe, getSnapshot, () => "");
+  const sent = new URLSearchParams(search).get("lead") === "sent";
 
   if (!sent) return null;
 
