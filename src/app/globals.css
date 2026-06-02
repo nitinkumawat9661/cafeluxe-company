@@ -971,3 +971,20 @@ body::after {
 .mode-option-active i{background:var(--gold);box-shadow:0 0 18px rgba(201,155,71,.6)}
 html[data-visual-mode="gray"]{--gold:#c4c8ce;--cream:#f5f6f7}
 html[data-visual-mode="gray"] body{background:#101214}
+
+/* Trust word shimmer */
+.trust-shimmer{
+  color:var(--gold);
+  background:linear-gradient(90deg,var(--gold),#fff2b8,var(--gold));
+  background-size:220% 100%;
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+  animation:trustShimmer 3.2s ease-in-out infinite;
+  text-shadow:0 0 22px rgba(201,155,71,.28);
+}
+@keyframes trustShimmer{
+  0%{background-position:220% 0}
+  55%{background-position:0 0}
+  100%{background-position:-220% 0}
+}

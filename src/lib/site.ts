@@ -1,11 +1,11 @@
 ﻿export const siteConfig = {
-  name: "TrustForge",
+  name: "TrustFirst Solutions",
   tagline: "Premium websites, restaurant systems and digital products.",
   description:
-    "TrustForge builds premium business websites, CafeLuxe restaurant systems, admin dashboards, QR ordering platforms and custom software for restaurants, cafes, cloud kitchens and growing businesses.",
+    "TrustFirst Solutions builds premium business websites, CafeLuxe restaurant systems, admin dashboards, QR ordering platforms and custom software for restaurants, cafes, cloud kitchens and growing businesses.",
   url: "https://example.com",
   phone: "+91 00000 00000",
-  email: "hello@trustforge.in",
+  email: "hello@trustfirstsolutions.in",
   whatsapp: "910000000000",
   city: "Kota",
   region: "Rajasthan",
@@ -47,5 +47,6 @@ export const products = [
     description: "Staff-side order handling, table operations and service management.",
   },
 ];
+
 
 
