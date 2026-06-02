@@ -1,4 +1,5 @@
 ﻿import { JsonLd } from "@/components/seo/json-ld";
+import { LeadSuccess } from "@/components/lead-success";
 import { ArrowUpRight, ChevronDown, Mail, PhoneCall } from "lucide-react";
 
 const bullets=["Free consultation & tailored solution","No obligation, friendly & transparent","Quick response within 24 hours","Secure & confidential"];
@@ -68,7 +69,7 @@ return <main className="min-h-screen overflow-x-hidden bg-[#050504] pb-24 text-[
 <section id="contact" className="mx-auto max-w-6xl px-5 pb-6 md:px-6">
 <form action="/api/contact" method="POST" className="rounded-[2rem] border border-[rgba(201,155,71,.35)] bg-white/[.035] p-6 md:p-8">
 <h2 className="text-[clamp(2rem,3vw,3rem)] font-black leading-tight tracking-[-0.03em]">Send Us a Message</h2>
-<p className="mt-2 text-[#d6c8ae]">Validated lead form. Clean details will be sent directly to Telegram.</p>
+<p className="mt-2 text-[#d6c8ae]">Validated lead form. Clean details will be sent directly to Telegram.</p><LeadSuccess />
 
 <div className="mt-6 grid gap-4 md:grid-cols-2">
 <input required minLength={2} maxLength={60} name="name" placeholder="Full Name *" className="rounded-xl border border-white/10 bg-white/[.055] px-4 py-4 font-bold outline-none"/>
@@ -104,6 +105,7 @@ return <main className="min-h-screen overflow-x-hidden bg-[#050504] pb-24 text-[
 
 </main>
 }
+
 
 
 
