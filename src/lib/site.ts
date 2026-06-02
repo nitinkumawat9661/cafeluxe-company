@@ -1,11 +1,11 @@
 ﻿export const siteConfig = {
-  name: "LuxeForge Studio",
+  name: "TrustForge",
   tagline: "Premium websites, restaurant systems and digital products.",
   description:
-    "LuxeForge Studio builds premium business websites, CafeLuxe restaurant systems, admin dashboards, QR ordering platforms and custom software for restaurants, cafes, cloud kitchens and growing businesses.",
+    "TrustForge builds premium business websites, CafeLuxe restaurant systems, admin dashboards, QR ordering platforms and custom software for restaurants, cafes, cloud kitchens and growing businesses.",
   url: "https://example.com",
   phone: "+91 00000 00000",
-  email: "hello@example.com",
+  email: "hello@trustforge.in",
   whatsapp: "910000000000",
   city: "Kota",
   region: "Rajasthan",
@@ -47,4 +47,5 @@ export const products = [
     description: "Staff-side order handling, table operations and service management.",
   },
 ];
+
 
