@@ -65,7 +65,32 @@ return <main className="min-h-screen overflow-x-hidden bg-[#050504] pb-24 text-[
 </div>
 </div>
 </section>
-<section id="contact" className="mx-auto max-w-6xl px-5 pb-6 md:px-6"><form className="rounded-[2rem] border border-[rgba(201,155,71,.35)] bg-white/[.035] p-6 md:p-8"><h2 className="text-[clamp(2rem,3vw,3rem)] font-black leading-tight tracking-[-0.03em]">Send Us a Message</h2><div className="mt-6 grid gap-4 md:grid-cols-2">{["Full Name *","Phone / WhatsApp *","Email Address *","Business Name"].map(x=><input key={x} placeholder={x} className="rounded-xl border border-white/10 bg-white/[.055] px-4 py-4 font-bold outline-none"/>)}<select className="rounded-xl border border-white/10 bg-white/[.055] px-4 py-4 font-bold"><option>Service Needed *</option></select><select className="rounded-xl border border-white/10 bg-white/[.055] px-4 py-4 font-bold"><option>Budget Range *</option></select><textarea rows={4} placeholder="Describe your project *" className="rounded-xl border border-white/10 bg-white/[.055] px-4 py-4 font-bold outline-none md:col-span-2"/><button className="rounded-xl bg-[var(--gold)] px-6 py-4 font-black text-black md:col-span-2">Send Message →</button></div></form></section>
+<section id="contact" className="mx-auto max-w-6xl px-5 pb-6 md:px-6">
+<form action="/api/contact" method="POST" className="rounded-[2rem] border border-[rgba(201,155,71,.35)] bg-white/[.035] p-6 md:p-8">
+<h2 className="text-[clamp(2rem,3vw,3rem)] font-black leading-tight tracking-[-0.03em]">Send Us a Message</h2>
+<p className="mt-2 text-[#d6c8ae]">Validated lead form. Clean details will be sent directly to Telegram.</p>
+
+<div className="mt-6 grid gap-4 md:grid-cols-2">
+<input required minLength={2} maxLength={60} name="name" placeholder="Full Name *" className="rounded-xl border border-white/10 bg-white/[.055] px-4 py-4 font-bold outline-none"/>
+<input required minLength={10} maxLength={13} inputMode="numeric" pattern="[0-9]{10,13}" name="phone" placeholder="Phone / WhatsApp *" className="rounded-xl border border-white/10 bg-white/[.055] px-4 py-4 font-bold outline-none"/>
+<input type="email" maxLength={80} name="email" placeholder="Email Address" className="rounded-xl border border-white/10 bg-white/[.055] px-4 py-4 font-bold outline-none"/>
+<input maxLength={70} name="business" placeholder="Business Name" className="rounded-xl border border-white/10 bg-white/[.055] px-4 py-4 font-bold outline-none"/>
+
+<div className="md:col-span-2">
+<p className="mb-3 text-sm font-black text-[var(--gold)]">Service Needed *</p>
+<div className="grid gap-3 sm:grid-cols-4">
+{["Website","App Development","Custom Software","UI/UX Design"].map((x)=><label key={x} className="rounded-xl border border-white/10 bg-white/[.055] p-4 text-center font-black"><input required type="radio" name="service" value={x} className="mr-2 accent-[#c99b47]"/>{x}</label>)}
+</div>
+</div>
+
+<input required type="number" min={100} max={9999999} name="budget" placeholder="Estimated Budget ₹ *" className="rounded-xl border border-white/10 bg-white/[.055] px-4 py-4 font-bold outline-none md:col-span-2"/>
+
+<textarea required minLength={10} maxLength={500} name="message" rows={4} placeholder="Describe your project in 10 to 500 characters *" className="rounded-xl border border-white/10 bg-white/[.055] px-4 py-4 font-bold outline-none md:col-span-2"/>
+
+<button className="rounded-xl bg-[var(--gold)] px-6 py-4 font-black text-black md:col-span-2">Send Message →</button>
+</div>
+</form>
+</section>
 
 <section className="mx-auto grid max-w-6xl gap-4 px-5 pb-6 sm:grid-cols-2 md:px-6 xl:grid-cols-4">{contacts.map(([a,b,c])=><article key={a} className="rounded-2xl border border-[rgba(201,155,71,.25)] bg-white/[.035] p-5"><p className="text-xs font-black uppercase tracking-[.2em] text-[var(--gold)]">{a}</p><h3 className="mt-3 break-words font-black">{b}</h3><p className="mt-2 text-sm text-[#d6c8ae]">{c}</p></article>)}</section>
 
@@ -79,6 +104,8 @@ return <main className="min-h-screen overflow-x-hidden bg-[#050504] pb-24 text-[
 
 </main>
 }
+
+
 
 
 
