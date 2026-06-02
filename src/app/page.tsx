@@ -91,6 +91,40 @@ export default function Home(){
           ))}
         </div>
       </section>
+      <section id="location-preview" className="mx-auto grid max-w-6xl gap-5 px-5 pb-10 md:px-6 lg:grid-cols-[1fr_1fr]">
+        <div className="overflow-hidden rounded-[1.6rem] border border-[rgba(201,155,71,.25)] bg-white/[.035] shadow-2xl">
+          <div className="grid min-h-56 grid-cols-[.9fr_1.1fr]">
+            <div className="p-6">
+              <p className="text-xs font-black uppercase tracking-[.22em] text-[var(--gold)]">Our Location</p>
+              <h2 className="mt-4 text-2xl font-black">LuxeForge Studio</h2>
+              <p className="mt-3 leading-7 text-[#d6c8ae]">Sikar, Rajasthan, India</p>
+              <a href="#contact" className="mt-5 inline-flex font-black text-[var(--gold)]">Get Directions →</a>
+            </div>
+            <div className="relative bg-[linear-gradient(135deg,rgba(255,255,255,.05),rgba(201,155,71,.08))]">
+              <div className="absolute inset-0 opacity-40 [background-image:linear-gradient(rgba(255,255,255,.08)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.08)_1px,transparent_1px)] [background-size:28px_28px]" />
+              <div className="absolute left-1/2 top-1/2 h-8 w-8 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[var(--gold)] shadow-[0_0_40px_rgba(201,155,71,.8)]" />
+            </div>
+          </div>
+        </div>
+
+        <div className="rounded-[1.6rem] border border-[rgba(201,155,71,.25)] bg-white/[.035] p-6 shadow-2xl">
+          <p className="text-xs font-black uppercase tracking-[.22em] text-[var(--gold)]">Office Preview</p>
+          <h2 className="mt-4 text-2xl font-black">Built for serious project work.</h2>
+
+          <div className="mt-5 grid gap-3">
+            {[
+              "Premium workspace planning",
+              "Client meeting and project review",
+              "Clean development and support process",
+            ].map((item)=>(
+              <div key={item} className="flex items-center justify-between rounded-xl border border-white/10 bg-black/20 p-4">
+                <span className="font-bold">{item}</span>
+                <span className="text-[var(--gold)]">✦</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
       <section id="final-cta" className="mx-auto max-w-6xl px-6 pb-10">
         <div className="rounded-[1.6rem] border border-[rgba(201,155,71,.35)] bg-[rgba(201,155,71,.08)] p-6 text-center shadow-2xl md:rounded-[2rem] md:p-8">
           <p className="text-xs font-black uppercase tracking-[.25em] text-[var(--gold)]">Ready to start?</p>
@@ -106,19 +140,54 @@ export default function Home(){
         </div>
       </section>
 
-      <footer className="border-t border-white/10 px-6 py-8">
-        <div className="mx-auto flex max-w-6xl flex-col gap-4 text-sm text-[#d6c8ae] md:flex-row md:items-center md:justify-between">
+            <footer className="border-t border-white/10 px-5 py-10 md:px-6">
+        <div className="mx-auto grid max-w-6xl gap-8 text-sm text-[#d6c8ae] md:grid-cols-[1.3fr_.8fr_.8fr_.8fr_1fr]">
           <div>
-            <b className="text-lg text-[#f7ecd2]">LuxeForge <span className="text-[var(--gold)]">Studio</span></b>
-            <p className="mt-1">Premium websites, apps and custom software systems.</p>
+            <b className="text-xl font-black text-[#f7ecd2]">LuxeForge <span className="text-[var(--gold)]">Studio</span></b>
+            <p className="mt-3 max-w-xs leading-6">Premium websites, apps and custom software systems for serious businesses.</p>
           </div>
-          <p>© 2026 LuxeForge Studio. All rights reserved.</p>
+
+          <div>
+            <h3 className="font-black text-[#f7ecd2]">Quick Links</h3>
+            <div className="mt-3 grid gap-2">
+              {["Home","Services","Pricing","FAQ","Contact"].map((x)=><a key={x} href="#contact">{x}</a>)}
+            </div>
+          </div>
+
+          <div>
+            <h3 className="font-black text-[#f7ecd2]">Services</h3>
+            <div className="mt-3 grid gap-2">
+              {["Website Design","App Development","Custom Software","UI/UX Design"].map((x)=><span key={x}>{x}</span>)}
+            </div>
+          </div>
+
+          <div>
+            <h3 className="font-black text-[#f7ecd2]">Company</h3>
+            <div className="mt-3 grid gap-2">
+              {["About","Process","Support","Privacy"].map((x)=><span key={x}>{x}</span>)}
+            </div>
+          </div>
+
+          <div>
+            <h3 className="font-black text-[#f7ecd2]">Contact</h3>
+            <p className="mt-3">+91 74148 53321</p>
+            <p className="mt-2 break-words">hello@luxeforgestudio.com</p>
+            <p className="mt-2">Sikar, Rajasthan</p>
+          </div>
+        </div>
+
+        <div className="mx-auto mt-8 max-w-6xl border-t border-white/10 pt-5 text-center text-sm text-[#d6c8ae]">
+          © 2026 LuxeForge Studio. All rights reserved.
         </div>
       </footer>
       <FloatingPreferences />
     </main>
   )
 }
+
+
+
+
 
 
 
