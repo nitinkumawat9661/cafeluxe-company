@@ -1,6 +1,5 @@
 ﻿import { JsonLd } from "@/components/seo/json-ld";
 import { SplashIntro } from "@/components/splash-intro";
-import { TrustParticleBg } from "@/components/trust-particle-bg";
 import { LeadSuccess } from "@/components/lead-success";
 import { ArrowUpRight, Building2, ChevronDown, Mail, MapPin, Navigation, PhoneCall, Users } from "lucide-react";
 
@@ -30,7 +29,6 @@ return <>
 <SplashIntro />
 <main className="trust-river-surface min-h-screen overflow-x-hidden bg-[#050504] pb-24 text-[#f8efd9] md:pb-0">
 <div className="trust-river-bg" aria-hidden="true"></div>
-<TrustParticleBg />
 <JsonLd/>
 <header className="sticky top-0 z-[90000] border-b border-white/10 bg-[#050504]/95"><nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5"><b className="text-xl"><span><span className="trust-shimmer">Trust</span>First Solutions</span></b><a href="#contact" className="rounded-full border border-[rgba(201,155,71,.45)] px-5 py-3 text-sm font-black">Book Strategy Call →</a></nav></header>
 
@@ -126,6 +124,7 @@ return <>
 </main>
 </>
 }
+
 
 
 

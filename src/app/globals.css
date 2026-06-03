@@ -1233,42 +1233,134 @@ html,body{background:#030302;}
 .trust-river-surface>*:not(.trust-river-bg){position:relative;z-index:1;}
 @keyframes trustRiverMove{from{transform:scale(1.05) translateX(-24px)}to{transform:scale(1.08) translateX(24px)}}
 
-/* Trust particle canvas layer */
-.trust-particle-bg{
+/* Premium splash intro */
+.splash-intro{
   position:fixed;
   inset:0;
-  z-index:0;
-  width:100vw;
-  height:100vh;
-  pointer-events:none;
-  opacity:.34;
-  mix-blend-mode:screen;
+  z-index:999999;
+  display:grid;
+  place-items:center;
+  overflow:hidden;
+  background:#030302;
+  animation:splashExit 1.35s ease forwards;
+  animation-delay:4.45s;
 }
 
-.trust-river-bg{
-  z-index:0;
+.splash-river{
+  position:absolute;
+  inset:-15%;
+  background:url("/trust-river-bg.svg") center/cover;
+  filter:saturate(1.25) contrast(1.1);
+  animation:splashRiver 5.6s ease-in-out infinite alternate;
 }
 
-.trust-river-surface > *:not(.trust-river-bg):not(.trust-particle-bg){
+.splash-center{
   position:relative;
-  z-index:1;
+  z-index:2;
+  text-align:center;
+  width:100%;
+  padding:2rem;
 }
 
-/* Premium splash intro */
-.splash-intro{position:fixed;inset:0;z-index:999999;display:grid;place-items:center;overflow:hidden;background:#030302;animation:splashExit 1.25s ease forwards;animation-delay:4.45s}
-.splash-river{position:absolute;inset:-15%;background:url("/trust-river-bg.svg") center/cover;filter:saturate(1.25) contrast(1.1);animation:splashRiver 5.6s ease-in-out infinite alternate}
-.splash-center{position:relative;z-index:2;text-align:center;padding:2rem}
-.splash-mini{color:var(--gold);font-weight:900;letter-spacing:.35em;text-transform:uppercase;opacity:0;animation:miniIn .7s ease forwards .25s}
-.splash-brand{margin-top:.8rem;font-size:clamp(3rem,9vw,8rem);line-height:.9;font-weight:1000;color:#f8efd9;text-shadow:0 0 45px rgba(201,155,71,.35)}
-.splash-letter{display:inline-block;opacity:0;will-change:transform,opacity,filter;animation:cinematicLetterIn 1.45s cubic-bezier(.16,1,.3,1) forwards,letterGlow 2.4s ease-in-out infinite}
+.splash-mini{
+  color:var(--gold);
+  font-weight:900;
+  letter-spacing:.35em;
+  text-transform:uppercase;
+  opacity:0;
+  animation:miniIn .7s ease forwards .2s;
+}
+
+.splash-brand{
+  position:relative;
+  margin:1rem auto 0;
+  width:min(92vw,900px);
+  height:clamp(4.5rem,10vw,9rem);
+  font-size:clamp(3rem,9vw,8rem);
+  font-weight:1000;
+  line-height:1;
+}
+
+.splash-letter{
+  position:absolute;
+  left:50%;
+  top:50%;
+  opacity:0;
+  display:inline-block;
+  will-change:transform,opacity,filter;
+  text-shadow:0 0 45px rgba(201,155,71,.35);
+  animation:letterAssemble 1.75s cubic-bezier(.16,1,.3,1) forwards,letterGlow 2.4s ease-in-out infinite;
+}
+
 .splash-letter:nth-child(odd){color:var(--gold)}
 .splash-letter:nth-child(3n){color:#f3d58b}
-.splash-service-words{margin-top:1.3rem;display:flex;flex-wrap:wrap;justify-content:center;gap:.7rem}
-.splash-service-words span{border:1px solid rgba(201,155,71,.35);border-radius:999px;padding:.55rem .9rem;color:#f8efd9;background:rgba(255,255,255,.035);font-weight:900;opacity:0;animation:wordInOut 2.25s ease forwards}
-.splash-center b{margin-top:1.2rem;display:block;color:#d6c8ae;opacity:0;animation:miniIn .8s ease forwards 3.35s}
-@keyframes cinematicLetterIn{0%{opacity:0;filter:blur(10px);transform:translate(var(--x),var(--y)) scale(.38) rotate(var(--r))}55%{opacity:1;filter:blur(1.5px);transform:translate(calc(var(--x) * .08),calc(var(--y) * .08)) scale(1.08) rotate(0deg)}100%{opacity:1;filter:blur(0);transform:translate(0,0) scale(1) rotate(0deg)}}
-@keyframes miniIn{to{opacity:1}}
-@keyframes wordInOut{0%{opacity:0;transform:translateY(16px) scale(.96)}25%,70%{opacity:1;transform:translateY(0) scale(1)}100%{opacity:0;transform:translateY(-14px) scale(.98)}}
-@keyframes letterGlow{50%{text-shadow:0 0 70px rgba(241,199,106,.78)}}
-@keyframes splashRiver{from{transform:scale(1.05) translateX(-18px)}to{transform:scale(1.1) translateX(18px)}}
-@keyframes splashExit{to{opacity:0;visibility:hidden;pointer-events:none}}
+.splash-letter:nth-child(even){color:#f8efd9}
+
+.splash-service-words{
+  margin-top:.6rem;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:.7rem;
+}
+
+.splash-service-words span{
+  border:1px solid rgba(201,155,71,.35);
+  border-radius:999px;
+  padding:.55rem .9rem;
+  color:#f8efd9;
+  background:rgba(255,255,255,.035);
+  font-weight:900;
+  opacity:0;
+  animation:wordInOut 2.1s ease forwards;
+}
+
+.splash-center b{
+  margin-top:1.1rem;
+  display:block;
+  color:#d6c8ae;
+  opacity:0;
+  animation:miniIn .8s ease forwards 3.45s;
+}
+
+@keyframes letterAssemble{
+  0%{
+    opacity:0;
+    filter:blur(12px);
+    transform:translate(var(--sx),var(--sy)) scale(.28) rotate(var(--r));
+  }
+  60%{
+    opacity:1;
+    filter:blur(1.5px);
+    transform:translate(calc(var(--fx) * 1.06),-50%) scale(1.08) rotate(0deg);
+  }
+  100%{
+    opacity:1;
+    filter:blur(0);
+    transform:translate(var(--fx),-50%) scale(1) rotate(0deg);
+  }
+}
+
+@keyframes miniIn{
+  to{opacity:1}
+}
+
+@keyframes wordInOut{
+  0%{opacity:0;transform:translateY(16px) scale(.96)}
+  25%,70%{opacity:1;transform:translateY(0) scale(1)}
+  100%{opacity:0;transform:translateY(-14px) scale(.98)}
+}
+
+@keyframes letterGlow{
+  50%{text-shadow:0 0 70px rgba(241,199,106,.78)}
+}
+
+@keyframes splashRiver{
+  from{transform:scale(1.05) translateX(-18px)}
+  to{transform:scale(1.1) translateX(18px)}
+}
+
+@keyframes splashExit{
+  to{opacity:0;visibility:hidden;pointer-events:none}
+}
+
