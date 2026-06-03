@@ -1145,3 +1145,71 @@ option {
 
 
 
+
+/* Premium contact form controls */
+.contact-service-card{
+  cursor:pointer;
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:74px;
+  border-radius:18px;
+  border:1px solid rgba(255,255,255,.10);
+  background:linear-gradient(135deg,rgba(255,255,255,.055),rgba(255,255,255,.025));
+  transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease,background .22s ease;
+}
+.contact-service-card:hover{
+  transform:translateY(-2px);
+  border-color:rgba(201,155,71,.42);
+  box-shadow:0 18px 45px rgba(0,0,0,.22),0 0 24px rgba(201,155,71,.08);
+}
+.contact-service-card input{
+  position:absolute;
+  opacity:0;
+  pointer-events:none;
+}
+.contact-service-card span{
+  font-weight:900;
+  color:#f8efd9;
+}
+.contact-service-card:has(input:checked){
+  border-color:rgba(201,155,71,.75);
+  background:linear-gradient(135deg,rgba(201,155,71,.20),rgba(255,255,255,.04));
+  box-shadow:0 0 35px rgba(201,155,71,.13);
+}
+.contact-service-card:has(input:checked)::after{
+  content:"✓";
+  position:absolute;
+  right:14px;
+  top:12px;
+  color:var(--gold);
+  font-weight:900;
+}
+
+/* Premium input polish */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button{
+  -webkit-appearance:none;
+  margin:0;
+}
+input[type="number"]{
+  -moz-appearance:textfield;
+}
+input,
+textarea,
+select{
+  color:#f8efd9;
+  transition:border-color .22s ease, box-shadow .22s ease, background .22s ease;
+}
+input:focus,
+textarea:focus,
+select:focus{
+  border-color:rgba(201,155,71,.65);
+  background:rgba(255,255,255,.075);
+  box-shadow:0 0 0 4px rgba(201,155,71,.08),0 0 30px rgba(201,155,71,.08);
+}
+input::placeholder,
+textarea::placeholder{
+  color:rgba(248,239,217,.48);
+}

@@ -80,7 +80,7 @@ return <main className="min-h-screen overflow-x-hidden bg-[#050504] pb-24 text-[
 <div className="md:col-span-2">
 <p className="mb-3 text-sm font-black text-[var(--gold)]">Service Needed *</p>
 <div className="grid gap-3 sm:grid-cols-4">
-{["Website","App Development","Custom Software","UI/UX Design"].map((x)=><label key={x} className="rounded-xl border border-white/10 bg-white/[.055] p-4 text-center font-black"><input required type="radio" name="service" value={x} className="mr-2 accent-[#c99b47]"/>{x}</label>)}
+{["Website","App Development","Custom Software","UI/UX Design"].map((x)=><label key={x} className="contact-service-card"><input required type="radio" name="service" value={x}/><span>{x}</span></label>)}
 </div>
 </div>
 
@@ -105,6 +105,7 @@ return <main className="min-h-screen overflow-x-hidden bg-[#050504] pb-24 text-[
 
 </main>
 }
+
 
 
 
