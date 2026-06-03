@@ -1,4 +1,6 @@
 ﻿import { JsonLd } from "@/components/seo/json-ld";
+import { SplashIntro } from "@/components/splash-intro";
+import { TrustParticleBg } from "@/components/trust-particle-bg";
 import { LeadSuccess } from "@/components/lead-success";
 import { ArrowUpRight, Building2, ChevronDown, Mail, MapPin, Navigation, PhoneCall, Users } from "lucide-react";
 
@@ -24,7 +26,11 @@ function InstaIcon({size=19}:{size?:number}){
 }
 
 export default function Home(){
-return <main className="min-h-screen overflow-x-hidden bg-[#050504] pb-24 text-[#f8efd9] md:pb-0">
+return <>
+<SplashIntro />
+<main className="trust-river-surface min-h-screen overflow-x-hidden bg-[#050504] pb-24 text-[#f8efd9] md:pb-0">
+<div className="trust-river-bg" aria-hidden="true"></div>
+<TrustParticleBg />
 <JsonLd/>
 <header className="sticky top-0 z-[90000] border-b border-white/10 bg-[#050504]/95"><nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5"><b className="text-xl"><span><span className="trust-shimmer">Trust</span>First Solutions</span></b><a href="#contact" className="rounded-full border border-[rgba(201,155,71,.45)] px-5 py-3 text-sm font-black">Book Strategy Call →</a></nav></header>
 
@@ -118,7 +124,14 @@ return <main className="min-h-screen overflow-x-hidden bg-[#050504] pb-24 text-[
 <footer className="border-t border-white/10 px-5 py-10 md:px-6"><div className="mx-auto grid max-w-6xl gap-8 text-sm text-[#d6c8ae] md:grid-cols-4"><div><b className="text-xl text-white"><span><span className="trust-shimmer">Trust</span>First Solutions</span></b><p className="mt-3">Premium websites, apps and software systems.</p></div><div><b>Quick Links</b><p className="mt-3">Home<br/>Services<br/>Pricing<br/>Contact</p></div><div><b>Services</b><p className="mt-3">Website Design<br/>App Development<br/>Custom Software<br/>UI/UX Design</p></div><div><b>Contact</b><div className="mt-3 grid gap-3"><a href="tel:+917414853321" className="flex items-center gap-2 rounded-full border border-[rgba(201,155,71,.3)] px-4 py-3 text-[#f7ecd2]"><PhoneCall size={17} strokeWidth={1.9}/> Call Now</a><a href="mailto:hello@trustfirstsolutions.in" className="flex items-center gap-2 rounded-full border border-[rgba(201,155,71,.3)] px-4 py-3 text-[#f7ecd2]"><Mail size={17} strokeWidth={1.9}/> Email Us</a><a href="https://www.instagram.com/trustfirstsolutions.in/" target="_blank" rel="noreferrer" className="flex items-center gap-2 rounded-full border border-[rgba(201,155,71,.3)] px-4 py-3 text-[#f7ecd2]"><InstaIcon size={17}/> Instagram <ArrowUpRight size={15} strokeWidth={1.9}/></a></div></div></div><p className="mt-8 text-center text-sm text-[#d6c8ae]">© 2026 TrustFirst Solutions. All rights reserved.</p></footer>
 
 </main>
+</>
 }
+
+
+
+
+
+
 
 
 

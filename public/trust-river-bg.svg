@@ -1,0 +1,27 @@
+﻿<svg width="1800" height="1000" viewBox="0 0 1800 1000" xmlns="http://www.w3.org/2000/svg">
+<rect width="1800" height="1000" fill="#030302"/>
+<defs>
+<filter id="softGlow"><feGaussianBlur stdDeviation="3"/></filter>
+<linearGradient id="gold" x1="0" x2="1">
+<stop offset="0" stop-color="#3b260b" stop-opacity=".05"/>
+<stop offset=".18" stop-color="#f0c76a" stop-opacity=".75"/>
+<stop offset=".5" stop-color="#c99b47" stop-opacity=".22"/>
+<stop offset=".82" stop-color="#ffd978" stop-opacity=".65"/>
+<stop offset="1" stop-color="#3b260b" stop-opacity=".05"/>
+</linearGradient>
+</defs>
+
+<g filter="url(#softGlow)" opacity=".95" fill="none">
+<path d="M-150 430 C250 320 470 560 790 470 S1250 340 1950 470" stroke="url(#gold)" stroke-width="2"/>
+<path d="M-150 485 C230 380 450 610 800 515 S1230 390 1950 520" stroke="#f1c76a" stroke-opacity=".34" stroke-width="1.6"/>
+<path d="M-150 535 C260 430 470 655 840 560 S1260 430 1950 575" stroke="url(#gold)" stroke-width="3.2"/>
+<path d="M-150 590 C240 505 500 705 870 625 S1290 500 1950 645" stroke="#c99b47" stroke-opacity=".32" stroke-width="1.8"/>
+<path d="M-150 650 C300 575 560 760 910 680 S1350 570 1950 710" stroke="#ffd978" stroke-opacity=".20" stroke-width="1.4"/>
+</g>
+
+<g fill="#f6cc70" opacity=".55">
+<circle cx="145" cy="520" r="2"/><circle cx="380" cy="455" r="1.4"/><circle cx="620" cy="575" r="1.8"/>
+<circle cx="910" cy="515" r="1.5"/><circle cx="1180" cy="465" r="2.1"/><circle cx="1440" cy="610" r="1.6"/>
+<circle cx="1660" cy="540" r="2"/>
+</g>
+</svg>
