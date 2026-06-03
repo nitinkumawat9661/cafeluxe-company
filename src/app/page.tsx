@@ -1,11 +1,10 @@
 ﻿import { JsonLd } from "@/components/seo/json-ld";
 import { LeadSuccess } from "@/components/lead-success";
-import { ArrowUpRight, ChevronDown, Mail, PhoneCall } from "lucide-react";
+import { ArrowUpRight, Building2, ChevronDown, Mail, MapPin, Navigation, PhoneCall, Users } from "lucide-react";
 
 const bullets=["Free consultation & tailored solution","No obligation, friendly & transparent","Quick response within 24 hours","Secure & confidential"];
 const contacts=[["Phone / WhatsApp","+91 74148 53321","Mon-Fri: 9:00 AM - 6:00 PM"],["Email Us","hello@trustfirstsolutions.in","We reply within 24 hours"],["Our Office","Sikar, Rajasthan","Remote projects across India"],["Business Hours","Mon-Fri: 8:00 AM - 6:00 PM","Saturday by appointment"]];
 const faqs=["How soon will you respond?","How much does a project cost?","Can you sign an NDA?","What if I am not sure about my requirements?","Do you offer ongoing support?"];
-const office=["Modern Workspace","Client Meeting Rooms","Creative Environment"];
 function InstaIcon({size=19}:{size?:number}){
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" aria-hidden="true">
@@ -95,16 +94,34 @@ return <main className="min-h-screen overflow-x-hidden bg-[#050504] pb-24 text-[
 
 <section className="mx-auto grid max-w-6xl gap-4 px-5 pb-6 sm:grid-cols-2 md:px-6 xl:grid-cols-4">{contacts.map(([a,b,c])=><article key={a} className="rounded-2xl border border-[rgba(201,155,71,.25)] bg-white/[.035] p-5"><p className="text-xs font-black uppercase tracking-[.2em] text-[var(--gold)]">{a}</p><h3 className="mt-3 break-words font-black">{b}</h3><p className="mt-2 text-sm text-[#d6c8ae]">{c}</p></article>)}</section>
 
-<section className="mx-auto grid max-w-6xl gap-5 px-5 pb-10 md:px-6 lg:grid-cols-2"><div className="rounded-[2rem] border border-[rgba(201,155,71,.25)] bg-white/[.035] p-7"><p className="text-xs font-black uppercase tracking-[.25em] text-[var(--gold)]">Why contact us?</p><h2 className="mt-4 text-[clamp(1.9rem,2.8vw,3rem)] font-black leading-tight tracking-[-0.03em]">We respond fast. We deliver results.</h2><p className="mt-4 text-[#d6c8ae]">Clean planning, premium UI direction and practical execution.</p></div><div className="rounded-[2rem] border border-[rgba(201,155,71,.25)] bg-white/[.035] p-7"><h2 className="text-[clamp(1.9rem,2.8vw,3rem)] font-black leading-tight tracking-[-0.03em]">Our Response Promise</h2><div className="mt-7 grid gap-4 text-[#d6c8ae]"><p><b className="text-[var(--gold)]">Within 24 Hours</b><br/>We review your request and reply quickly.</p><p><b className="text-[var(--gold)]">Free Consultation</b><br/>We suggest the right solution before pricing.</p><p><b className="text-[var(--gold)]">No Pressure</b><br/>Clear advice, transparent pricing and no forced sales.</p></div></div></section>
+
 
 <section className="mx-auto max-w-6xl px-5 pb-10 md:px-6"><p className="text-xs font-black uppercase tracking-[.25em] text-[var(--gold)]">Frequently Asked Questions</p><h2 className="mt-3 text-[clamp(1.9rem,2.8vw,3rem)] font-black leading-tight tracking-[-0.03em]">Got Questions? We&apos;ve Got Answers.</h2><div className="mt-5 grid gap-2">{faqs.map(q=><div key={q} className="flex justify-between rounded-xl border border-white/10 bg-white/[.035] px-5 py-4 font-bold"><span>{q}</span><span className="text-[var(--gold)]"><ChevronDown size={18} strokeWidth={2}/></span></div>)}</div></section>
 
-<section className="mx-auto grid max-w-6xl gap-5 px-5 pb-10 md:px-6 lg:grid-cols-2"><div className="rounded-[2rem] border border-[rgba(201,155,71,.25)] bg-white/[.035] p-6"><h2 className="text-2xl font-black">Our Location</h2><p className="mt-3 text-[#d6c8ae]">Sikar, Rajasthan, India</p><div className="mt-5 h-40 rounded-xl bg-[linear-gradient(135deg,rgba(255,255,255,.06),rgba(201,155,71,.12))]"/></div><div className="rounded-[2rem] border border-[rgba(201,155,71,.25)] bg-white/[.035] p-6"><h2 className="text-2xl font-black">Office Preview</h2>{office.map(x=><p key={x} className="mt-3 rounded-xl border border-white/10 bg-black/20 p-4">{x}</p>)}</div></section>
 
+
+<section className="mx-auto grid max-w-6xl gap-5 px-5 pb-10 md:px-6 lg:grid-cols-2">
+<div className="rounded-[2rem] border border-[rgba(201,155,71,.25)] bg-white/[.035] p-6">
+<p className="text-xs font-black uppercase tracking-[.25em] text-[var(--gold)]">Our Location</p>
+<h2 className="mt-4 text-3xl font-black">Sikar, Rajasthan</h2>
+<p className="mt-3 max-w-sm text-[#d6c8ae]">Remote-first premium digital studio working with businesses across India.</p>
+<div className="mt-8 inline-flex items-center gap-3 rounded-full border border-[rgba(201,155,71,.35)] bg-black/40 px-5 py-3 font-black text-[var(--gold)]"><MapPin size={18}/> TrustFirst Base</div>
+</div>
+<div className="rounded-[2rem] border border-[rgba(201,155,71,.25)] bg-white/[.035] p-6">
+<p className="text-xs font-black uppercase tracking-[.25em] text-[var(--gold)]">Office Preview</p>
+<h2 className="mt-4 text-3xl font-black">Built for serious project work.</h2>
+<div className="mt-6 grid gap-3">
+{[["Strategy Desk","Project planning and requirement clarity"],["Design Review","Premium UI direction before development"],["Support Flow","Clean handover and post-launch support"]].map(([a,b],i)=><div key={a} className="flex items-center gap-4 rounded-2xl border border-white/10 bg-black/20 p-4"><span className="grid h-11 w-11 place-items-center rounded-xl border border-[rgba(201,155,71,.35)] text-[var(--gold)]">{i===0?<Navigation size={18}/>:i===1?<Building2 size={18}/>:<Users size={18}/>}</span><div><b>{a}</b><p className="text-sm text-[#d6c8ae]">{b}</p></div></div>)}
+</div>
+</div>
+</section>
 <footer className="border-t border-white/10 px-5 py-10 md:px-6"><div className="mx-auto grid max-w-6xl gap-8 text-sm text-[#d6c8ae] md:grid-cols-4"><div><b className="text-xl text-white"><span><span className="trust-shimmer">Trust</span>First Solutions</span></b><p className="mt-3">Premium websites, apps and software systems.</p></div><div><b>Quick Links</b><p className="mt-3">Home<br/>Services<br/>Pricing<br/>Contact</p></div><div><b>Services</b><p className="mt-3">Website Design<br/>App Development<br/>Custom Software<br/>UI/UX Design</p></div><div><b>Contact</b><div className="mt-3 grid gap-3"><a href="tel:+917414853321" className="flex items-center gap-2 rounded-full border border-[rgba(201,155,71,.3)] px-4 py-3 text-[#f7ecd2]"><PhoneCall size={17} strokeWidth={1.9}/> Call Now</a><a href="mailto:hello@trustfirstsolutions.in" className="flex items-center gap-2 rounded-full border border-[rgba(201,155,71,.3)] px-4 py-3 text-[#f7ecd2]"><Mail size={17} strokeWidth={1.9}/> Email Us</a><a href="https://www.instagram.com/trustfirstsolutions.in/" target="_blank" rel="noreferrer" className="flex items-center gap-2 rounded-full border border-[rgba(201,155,71,.3)] px-4 py-3 text-[#f7ecd2]"><InstaIcon size={17}/> Instagram <ArrowUpRight size={15} strokeWidth={1.9}/></a></div></div></div><p className="mt-8 text-center text-sm text-[#d6c8ae]">© 2026 TrustFirst Solutions. All rights reserved.</p></footer>
 
 </main>
 }
+
+
+
 
 
 
