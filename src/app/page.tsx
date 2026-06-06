@@ -109,7 +109,10 @@ return <>
 <p className="text-xs font-black uppercase tracking-[.25em] text-[var(--gold)]">Our Location</p>
 <h2 className="mt-4 text-3xl font-black">Sikar, Rajasthan</h2>
 <p className="mt-3 max-w-sm text-[#d6c8ae]">Remote-first premium digital studio working with businesses across India.</p>
-<div className="mt-8 inline-flex items-center gap-3 rounded-full border border-[rgba(201,155,71,.35)] bg-black/40 px-5 py-3 font-black text-[var(--gold)]"><MapPin size={18}/> TrustFirst Base</div>
+<div className="mt-8 flex flex-wrap gap-3">
+  <div className="inline-flex items-center gap-3 rounded-full border border-[rgba(201,155,71,.35)] bg-black/40 px-5 py-3 font-black text-[var(--gold)]"><MapPin size={18}/> TrustFirst Base</div>
+  <a href="https://maps.app.goo.gl/rNZrVxAFoP1j1b9J7?g_st=aw" target="_blank" rel="noreferrer" className="inline-flex items-center gap-3 rounded-full bg-[var(--gold)] px-5 py-3 font-black text-black transition hover:-translate-y-1 hover:shadow-[0_0_28px_rgba(201,155,71,.28)]"><Navigation size={18}/> Open in Google Maps</a>
+</div>
 </div>
 <div className="rounded-[2rem] border border-[rgba(201,155,71,.25)] bg-white/[.035] p-6">
 <p className="text-xs font-black uppercase tracking-[.25em] text-[var(--gold)]">Office Preview</p>
@@ -124,6 +127,7 @@ return <>
 </main>
 </>
 }
+
 
 
 
