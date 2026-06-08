@@ -1364,3 +1364,42 @@ html,body{background:#030302;}
   to{opacity:0;visibility:hidden;pointer-events:none}
 }
 
+
+/* Trust location map polish */
+.trust-location-shell{
+  position:relative;
+}
+
+.trust-location-glow{
+  position:absolute;
+  inset:auto 10% -18px 10%;
+  height:90px;
+  border-radius:999px;
+  background:radial-gradient(circle, rgba(201,155,71,.22) 0%, rgba(201,155,71,.08) 38%, transparent 72%);
+  filter:blur(22px);
+  pointer-events:none;
+}
+
+.trust-location-map{
+  position:relative;
+  box-shadow:
+    0 24px 70px rgba(0,0,0,.35),
+    inset 0 1px 0 rgba(255,255,255,.04);
+}
+
+.trust-location-iframe{
+  transform:scale(1.04);
+  transform-origin:center;
+  filter: saturate(.82) brightness(.88) contrast(1.04) sepia(.08);
+}
+
+.trust-location-overlay{
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    linear-gradient(to bottom, rgba(3,3,2,.08), rgba(3,3,2,.18)),
+    radial-gradient(circle at 20% 20%, rgba(201,155,71,.08), transparent 28%),
+    radial-gradient(circle at 80% 80%, rgba(201,155,71,.10), transparent 30%);
+  box-shadow: inset 0 0 65px rgba(0,0,0,.42);
+}

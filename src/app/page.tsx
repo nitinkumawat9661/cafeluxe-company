@@ -109,11 +109,31 @@ return <>
 <p className="text-xs font-black uppercase tracking-[.25em] text-[var(--gold)]">Our Location</p>
 <h2 className="mt-4 text-3xl font-black">Sikar, Rajasthan</h2>
 <p className="mt-3 max-w-sm text-[#d6c8ae]">Remote-first premium digital studio working with businesses across India.</p>
+
 <div className="mt-8 flex flex-wrap gap-3">
-  <div className="inline-flex items-center gap-3 rounded-full border border-[rgba(201,155,71,.35)] bg-black/40 px-5 py-3 font-black text-[var(--gold)]"><MapPin size={18}/> TrustFirst Base</div>
-  <a href="https://maps.app.goo.gl/rNZrVxAFoP1j1b9J7?g_st=aw" target="_blank" rel="noreferrer" className="inline-flex items-center gap-3 rounded-full bg-[var(--gold)] px-5 py-3 font-black text-black transition hover:-translate-y-1 hover:shadow-[0_0_28px_rgba(201,155,71,.28)]"><Navigation size={18}/> Open in Google Maps</a>
+<div className="inline-flex items-center gap-3 rounded-full border border-[rgba(201,155,71,.35)] bg-black/40 px-5 py-3 font-black text-[var(--gold)]"><MapPin size={18}/> TrustFirst Base</div>
+<a href="https://www.google.com/maps?q=27.63305,75.16182" target="_blank" rel="noreferrer" className="inline-flex items-center gap-3 rounded-full bg-[var(--gold)] px-5 py-3 font-black text-black transition hover:-translate-y-1 hover:shadow-[0_0_28px_rgba(201,155,71,.28)]"><Navigation size={18}/> Open in Google Maps</a>
+</div>
+
+<div className="trust-location-shell mt-6">
+  <div className="trust-location-glow"></div>
+  <div className="trust-location-map overflow-hidden rounded-[1.7rem] border border-[rgba(201,155,71,.28)] bg-[rgba(10,8,6,.82)] backdrop-blur-xl">
+    <div className="flex items-center justify-between gap-3 border-b border-[rgba(255,255,255,.08)] px-5 py-4">
+      <div>
+        <p className="text-xs font-black uppercase tracking-[.22em] text-[var(--gold)]">Satellite Preview</p>
+        <b className="text-sm text-[#f8efd9]">TrustFirst Solutions Location</b>
+        <p className="mt-1 text-xs text-[#d6c8ae]">27.63305, 75.16182</p>
+      </div>
+      <span className="rounded-full border border-[rgba(201,155,71,.32)] bg-black/30 px-3 py-1 text-xs font-black text-[var(--gold)]">Live View</span>
+    </div>
+    <div className="relative h-64 overflow-hidden">
+      <iframe title="TrustFirst Solutions Satellite Location" src="https://maps.google.com/maps?q=27.63305,75.16182&t=k&z=17&output=embed" loading="lazy" className="trust-location-iframe h-full w-full"/>
+      <div className="trust-location-overlay"></div>
+    </div>
+  </div>
 </div>
 </div>
+
 <div className="rounded-[2rem] border border-[rgba(201,155,71,.25)] bg-white/[.035] p-6">
 <p className="text-xs font-black uppercase tracking-[.25em] text-[var(--gold)]">Office Preview</p>
 <h2 className="mt-4 text-3xl font-black">Built for serious project work.</h2>
@@ -127,6 +147,11 @@ return <>
 </main>
 </>
 }
+
+
+
+
+
 
 
 
