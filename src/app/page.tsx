@@ -86,6 +86,33 @@ return <>
 </section>
 <section className="mx-auto max-w-6xl px-5 py-10 md:px-6">
   <div className="rounded-[2rem] border border-[rgba(201,155,71,.25)] bg-white/[.035] p-6 md:p-8">
+    <p className="text-xs font-black uppercase tracking-[.25em] text-[var(--gold)]">Work Process</p>
+    <h2 className="mt-4 text-[clamp(2rem,3vw,3.2rem)] font-black leading-tight tracking-[-0.03em]">
+      A clear process from idea to launch.
+    </h2>
+    <p className="mt-3 max-w-2xl text-[#d6c8ae]">
+      We keep the project simple, transparent and structured so clients always know what is happening next.
+    </p>
+
+    <div className="mt-7 grid gap-4 md:grid-cols-5">
+      {[
+        ["01","Requirement","We understand your business, goal and exact project need."],
+        ["02","Structure","We plan pages, sections, features and user flow."],
+        ["03","Design","We prepare premium UI direction before development."],
+        ["04","Build","We develop, test and refine the website, app or software."],
+        ["05","Launch","We deploy live and support after handover."]
+      ].map(([n,t,d])=>(
+        <article key={t} className="rounded-[1.5rem] border border-white/10 bg-black/20 p-5">
+          <span className="text-sm font-black text-[var(--gold)]">{n}</span>
+          <h3 className="mt-3 text-lg font-black">{t}</h3>
+          <p className="mt-2 text-sm leading-6 text-[#d6c8ae]">{d}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+<section className="mx-auto max-w-6xl px-5 py-10 md:px-6">
+  <div className="rounded-[2rem] border border-[rgba(201,155,71,.25)] bg-white/[.035] p-6 md:p-8">
     <p className="text-xs font-black uppercase tracking-[.25em] text-[var(--gold)]">Screen Anatomy</p>
     <h2 className="mt-4 text-[clamp(2rem,3vw,3.2rem)] font-black leading-tight tracking-[-0.03em]">
       Every screen is built with a clear structure.
@@ -188,6 +215,7 @@ return <>
 </main>
 </>
 }
+
 
 
 
