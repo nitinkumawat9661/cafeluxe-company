@@ -69,6 +69,32 @@ return <>
 </div>
 </div>
 </section>
+<section className="mx-auto max-w-6xl px-5 py-10 md:px-6">
+  <div className="rounded-[2rem] border border-[rgba(201,155,71,.25)] bg-white/[.035] p-6 md:p-8">
+    <p className="text-xs font-black uppercase tracking-[.25em] text-[var(--gold)]">Screen Anatomy</p>
+    <h2 className="mt-4 text-[clamp(2rem,3vw,3.2rem)] font-black leading-tight tracking-[-0.03em]">
+      Every screen is built with a clear structure.
+    </h2>
+    <p className="mt-3 max-w-2xl text-[#d6c8ae]">
+      We design websites, apps and software in layers so the interface stays clean, scalable and easy to improve.
+    </p>
+
+    <div className="mt-7 grid gap-4 md:grid-cols-4">
+      {[
+        ["01","Page","A complete route or screen users open, like Home, Contact, Dashboard or Product."],
+        ["02","Section","A meaningful block inside a page, like Hero, Services, Pricing, FAQ or Contact."],
+        ["03","Container","A responsive wrapper that controls spacing, alignment and readable width."],
+        ["04","Component","Reusable UI parts like cards, buttons, forms, modals, tables and status blocks."]
+      ].map(([n,t,d])=>(
+        <article key={t} className="rounded-[1.5rem] border border-white/10 bg-black/20 p-5">
+          <span className="text-sm font-black text-[var(--gold)]">{n}</span>
+          <h3 className="mt-3 text-xl font-black">{t}</h3>
+          <p className="mt-2 text-sm leading-6 text-[#d6c8ae]">{d}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
 <section id="contact" className="mx-auto max-w-6xl px-5 pb-6 md:px-6">
 <form action="/api/contact" method="POST" className="rounded-[2rem] border border-[rgba(201,155,71,.35)] bg-white/[.035] p-6 md:p-8">
 <h2 className="text-[clamp(2rem,3vw,3rem)] font-black leading-tight tracking-[-0.03em]">Send Us a Message</h2>
@@ -147,6 +173,7 @@ return <>
 </main>
 </>
 }
+
 
 
 
