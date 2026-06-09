@@ -86,6 +86,33 @@ return <>
 </section>
 <section className="mx-auto max-w-6xl px-5 py-10 md:px-6">
   <div className="rounded-[2rem] border border-[rgba(201,155,71,.25)] bg-white/[.035] p-6 md:p-8">
+    <p className="text-xs font-black uppercase tracking-[.25em] text-[var(--gold)]">Recent Work</p>
+    <h2 className="mt-4 text-[clamp(2rem,3vw,3.2rem)] font-black leading-tight tracking-[-0.03em]">
+      Practical digital systems built for real business use.
+    </h2>
+    <p className="mt-3 max-w-2xl text-[#d6c8ae]">
+      We focus on useful products, clean user flow and systems that can actually help businesses operate better.
+    </p>
+
+    <div className="mt-7 grid gap-4 md:grid-cols-3">
+      {[
+        ["CafeLuxe QR Ordering","Restaurant QR ordering, billing flow and staff-side operations.","QR Menu, POS, KOT, Orders, Reports"],
+        ["Business Website","Premium landing pages for service brands that need trust and leads.","Hero, Services, Contact, SEO Base"],
+        ["Custom Dashboard","Admin panels and software screens for managing business data clearly.","Dashboard, Forms, Tables, Roles"]
+      ].map(([t,d,f])=>(
+        <article key={t} className="rounded-[1.5rem] border border-white/10 bg-black/20 p-5">
+          <p className="text-xs font-black uppercase tracking-[.18em] text-[var(--gold)]">Project</p>
+          <h3 className="mt-3 text-xl font-black">{t}</h3>
+          <p className="mt-2 text-sm leading-6 text-[#d6c8ae]">{d}</p>
+          <p className="mt-4 rounded-xl border border-[rgba(201,155,71,.18)] bg-black/20 p-3 text-xs font-bold text-[#f8efd9]">{f}</p>
+          <a href="#contact" className="mt-5 inline-flex font-black text-[var(--gold)]">Build Similar Project →</a>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+<section className="mx-auto max-w-6xl px-5 py-10 md:px-6">
+  <div className="rounded-[2rem] border border-[rgba(201,155,71,.25)] bg-white/[.035] p-6 md:p-8">
     <p className="text-xs font-black uppercase tracking-[.25em] text-[var(--gold)]">Work Process</p>
     <h2 className="mt-4 text-[clamp(2rem,3vw,3.2rem)] font-black leading-tight tracking-[-0.03em]">
       A clear process from idea to launch.
@@ -215,6 +242,7 @@ return <>
 </main>
 </>
 }
+
 
 
 
