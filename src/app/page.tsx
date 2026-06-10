@@ -1,5 +1,6 @@
 ﻿import { JsonLd } from "@/components/seo/json-ld";
 import { SplashIntro } from "@/components/splash-intro";
+import { WhyTrustFirst } from "@/components/why-trustfirst";
 import { LeadSuccess } from "@/components/lead-success";
 import { ArrowUpRight, Building2, ChevronDown, Mail, MapPin, Navigation, PhoneCall, Users } from "lucide-react";
 
@@ -84,6 +85,7 @@ return <>
 </div>
 </div>
 </section>
+<WhyTrustFirst />
 <section className="mx-auto max-w-6xl px-5 py-10 md:px-6">
   <div className="rounded-[2rem] border border-[rgba(201,155,71,.25)] bg-white/[.035] p-6 md:p-8">
     <p className="text-xs font-black uppercase tracking-[.25em] text-[var(--gold)]">Recent Work</p>
@@ -242,6 +244,9 @@ return <>
 </main>
 </>
 }
+
+
+
 
 
 
