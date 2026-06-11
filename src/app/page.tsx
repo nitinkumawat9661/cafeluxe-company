@@ -2,6 +2,7 @@
 import { SplashIntro } from "@/components/splash-intro";
 import { WhyTrustFirst } from "@/components/why-trustfirst";
 import { PricingSection } from "@/components/pricing-section";
+import { FeedbackSection } from "@/components/feedback-section";
 import { LeadSuccess } from "@/components/lead-success";
 import { ArrowUpRight, Building2, ChevronDown, Mail, MapPin, Navigation, PhoneCall, Users } from "lucide-react";
 
@@ -168,6 +169,7 @@ return <>
     </div>
   </div>
 </section>
+<FeedbackSection />
 <section id="contact" className="mx-auto max-w-6xl px-5 pb-6 md:px-6">
 <form action="/api/contact" method="POST" className="rounded-[2rem] border border-[rgba(201,155,71,.35)] bg-white/[.035] p-6 md:p-8">
 <h2 className="text-[clamp(2rem,3vw,3rem)] font-black leading-tight tracking-[-0.03em]">Send Us a Message</h2>
@@ -246,6 +248,7 @@ return <>
 </main>
 </>
 }
+
 
 
 
