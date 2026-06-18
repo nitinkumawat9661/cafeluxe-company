@@ -23,7 +23,7 @@ export function BudgetSlider() {
         type="range"
         min="0"
         max="100000"
-        step="5000"
+        step="1000Haan, slider ka step `1000` कर"
         value={budget}
         onChange={(event) => setBudget(Number(event.target.value))}
         className="mt-5 h-3 w-full cursor-pointer accent-[var(--gold)]"
@@ -37,3 +37,4 @@ export function BudgetSlider() {
     </div>
   );
 }
+
