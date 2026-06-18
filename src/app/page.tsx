@@ -4,6 +4,7 @@ import { WhyTrustFirst } from "@/components/why-trustfirst";
 import { PricingSection } from "@/components/pricing-section";
 import { FeedbackSection } from "@/components/feedback-section";
 import { FaqSection } from "@/components/faq-section";
+import { BudgetSlider } from "@/components/budget-slider";
 import { LeadSuccess } from "@/components/lead-success";
 import { ArrowUpRight, Building2, ChevronDown, Mail, MapPin, Navigation, PhoneCall, Users } from "lucide-react";
 
@@ -190,28 +191,7 @@ return <>
 </div>
 </div>
 
-<div className="rounded-xl border border-white/10 bg-black/30 px-4 py-4 md:col-span-2">
-  <div className="flex items-center justify-between gap-3">
-    <label className="text-sm font-bold text-[#f8efd9]">Project Budget</label>
-    <span className="text-xs font-black uppercase tracking-[.18em] text-[var(--gold)]">Rs. 0 to Rs. 1 Lac</span>
-  </div>
-
-  <input
-    name="budget"
-    type="range"
-    min="0"
-    max="100000"
-    step="5000"
-    defaultValue="25000"
-    className="mt-5 h-2 w-full cursor-pointer accent-[var(--gold)]"
-  />
-
-  <div className="mt-3 flex items-center justify-between text-xs font-bold text-[#d6c8ae]">
-    <span>Rs. 0</span>
-    <span>Rs. 25,000 default</span>
-    <span>Rs. 1,00,000</span>
-  </div>
-</div>
+<BudgetSlider />
 
 <textarea required minLength={10} maxLength={500} name="message" rows={4} placeholder="Describe your project in 10 to 500 characters *" className="rounded-xl border border-white/10 bg-white/[.055] px-4 py-4 font-bold outline-none md:col-span-2"/>
 
@@ -271,6 +251,7 @@ return <>
 </main>
 </>
 }
+
 
 
 
