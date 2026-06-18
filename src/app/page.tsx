@@ -5,6 +5,7 @@ import { PricingSection } from "@/components/pricing-section";
 import { FeedbackSection } from "@/components/feedback-section";
 import { FaqSection } from "@/components/faq-section";
 import { BudgetSlider } from "@/components/budget-slider";
+import { WhatsAppFloating } from "@/components/whatsapp-floating";
 import { LeadSuccess } from "@/components/lead-success";
 import { ArrowUpRight, Building2, ChevronDown, Mail, MapPin, Navigation, PhoneCall, Users } from "lucide-react";
 
@@ -32,6 +33,7 @@ function InstaIcon({size=19}:{size?:number}){
 export default function Home(){
 return <>
 <SplashIntro />
+<WhatsAppFloating />
 <main className="trust-river-surface min-h-screen overflow-x-hidden bg-[#050504] pb-24 text-[#f8efd9] md:pb-0">
 <div className="trust-river-bg" aria-hidden="true"></div>
 <JsonLd/>
@@ -251,6 +253,10 @@ return <>
 </main>
 </>
 }
+
+
+
+
 
 
 
