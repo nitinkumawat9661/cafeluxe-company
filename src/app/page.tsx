@@ -6,6 +6,7 @@ import { FeedbackSection } from "@/components/feedback-section";
 import { FaqSection } from "@/components/faq-section";
 import { BudgetSlider } from "@/components/budget-slider";
 import { WhatsAppFloating } from "@/components/whatsapp-floating";
+import { StickyNavigation } from "@/components/sticky-navigation";
 import { LeadSuccess } from "@/components/lead-success";
 import { ArrowUpRight, Building2, ChevronDown, Mail, MapPin, Navigation, PhoneCall, Users } from "lucide-react";
 
@@ -34,7 +35,8 @@ export default function Home(){
 return <>
 <SplashIntro />
 <WhatsAppFloating />
-<main className="trust-river-surface min-h-screen overflow-x-hidden bg-[#050504] pb-24 text-[#f8efd9] md:pb-0">
+<StickyNavigation />
+<main className="trust-river-surface min-h-screen overflow-x-hidden bg-[#050504] pb-24 text-[#f8efd9] md:pb-0" id="home">
 <div className="trust-river-bg" aria-hidden="true"></div>
 <JsonLd/>
 <section className="trust-topbar sticky top-0 z-50 border-b border-[rgba(201,155,71,.18)] bg-[#030302]/80 px-5 py-3 backdrop-blur-xl md:px-6">
@@ -93,9 +95,8 @@ return <>
 </section>
 <PricingSection />
 <WhyTrustFirst />
-<section className="mx-auto max-w-6xl px-5 py-10 md:px-6">
-  <div className="rounded-[2rem] border border-[rgba(201,155,71,.25)] bg-white/[.035] p-6 md:p-8">
-    <p className="text-xs font-black uppercase tracking-[.25em] text-[var(--gold)]">Recent Work</p>
+<section className="mx-auto max-w-6xl px-5 py-10 md:px-6" id="work"><div className="rounded-[2rem] border border-[rgba(201,155,71,.25)] bg-white/[.035] p-6 md:p-8">
+    <p>Recent Work</p>
     <h2 className="mt-4 text-[clamp(2rem,3vw,3.2rem)] font-black leading-tight tracking-[-0.03em]">
       Practical digital systems built for real business use.
     </h2>
@@ -253,6 +254,7 @@ return <>
 </main>
 </>
 }
+
 
 
 
