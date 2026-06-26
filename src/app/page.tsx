@@ -39,23 +39,6 @@ return <>
 <main className="trust-river-surface min-h-screen overflow-x-hidden bg-[#050504] pb-24 text-[#f8efd9] md:pb-0" id="home">
 <div className="trust-river-bg" aria-hidden="true"></div>
 <JsonLd/>
-<section className="trust-topbar sticky top-0 z-50 border-b border-[rgba(201,155,71,.18)] bg-[#030302]/80 px-5 py-3 backdrop-blur-xl md:px-6">
-  <div className="mx-auto flex max-w-6xl flex-col gap-3 text-sm font-bold text-[#d6c8ae] md:flex-row md:items-center md:justify-between">
-    <div className="flex flex-wrap items-center gap-3">
-      <span className="rounded-full border border-[rgba(201,155,71,.32)] bg-[rgba(201,155,71,.08)] px-3 py-1 text-xs font-black uppercase tracking-[.18em] text-[var(--gold)]">TrustFirst Solutions</span>
-      <span className="text-[#f8efd9]">Websites, Apps & Custom Software</span>
-    </div>
-
-    <div className="flex flex-wrap items-center gap-3">
-      <a href="tel:+917414853321" className="inline-flex items-center gap-2 transition hover:text-[var(--gold)]"><PhoneCall size={15}/> +91 74148 53321</a>
-      <a href="mailto:hello@trustfirstsolutions.in" className="inline-flex items-center gap-2 transition hover:text-[var(--gold)]"><Mail size={15}/> Email</a>
-      <a href="https://www.google.com/maps?q=27.63305,75.16182" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 transition hover:text-[var(--gold)]"><MapPin size={15}/> Sikar</a>
-      <a href="#contact" className="inline-flex items-center gap-2 rounded-full bg-[var(--gold)] px-4 py-2 font-black text-black transition hover:-translate-y-0.5">Start Project <ArrowUpRight size={14}/></a>
-    </div>
-  </div>
-</section>
-<header className="sticky top-0 z-[90000] border-b border-white/10 bg-[#050504]/95"><nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5"><b className="text-xl"><span><span className="trust-shimmer">Trust</span>First Solutions</span></b></nav></header>
-
 <section className="mx-auto grid max-w-6xl items-center gap-10 px-5 py-12 md:px-6 lg:grid-cols-[.86fr_1.14fr]">
 <div>
 <p className="text-xs font-black uppercase tracking-[.35em] text-[var(--gold)]">Get in touch</p>
@@ -254,6 +237,7 @@ return <>
 </main>
 </>
 }
+
 
 
 
