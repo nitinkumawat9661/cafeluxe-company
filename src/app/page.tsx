@@ -76,6 +76,8 @@ return <>
 </div>
 </div>
 </section>
+<span id="services" className="block scroll-mt-32"></span>
+<span id="pricing" className="block scroll-mt-32"></span>
 <PricingSection />
 <WhyTrustFirst />
 <section className="mx-auto max-w-6xl px-5 py-10 md:px-6" id="work"><div className="rounded-[2rem] border border-[rgba(201,155,71,.25)] bg-white/[.035] p-6 md:p-8">
@@ -157,6 +159,7 @@ return <>
     </div>
   </div>
 </section>
+<span id="faq" className="block scroll-mt-32"></span>
 <FaqSection />
 <FeedbackSection />
 <section id="contact" className="mx-auto max-w-6xl px-5 pb-6 md:px-6">
@@ -237,6 +240,8 @@ return <>
 </main>
 </>
 }
+
+
 
 
 
