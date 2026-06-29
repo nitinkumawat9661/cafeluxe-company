@@ -1,7 +1,6 @@
 ﻿import { JsonLd } from "@/components/seo/json-ld";
 import { SplashIntro } from "@/components/splash-intro";
 import { WhyTrustFirst } from "@/components/why-trustfirst";
-import { PricingSection } from "@/components/pricing-section";
 import { FeedbackSection } from "@/components/feedback-section";
 import { FaqSection } from "@/components/faq-section";
 import { BudgetSlider } from "@/components/budget-slider";
@@ -77,8 +76,6 @@ return <>
 </div>
 </section>
 <span id="services" className="block scroll-mt-32"></span>
-<span id="pricing" className="block scroll-mt-32"></span>
-<PricingSection />
 <WhyTrustFirst />
 <section className="mx-auto max-w-6xl px-5 py-10 md:px-6" id="work"><div className="rounded-[2rem] border border-[rgba(201,155,71,.25)] bg-white/[.035] p-6 md:p-8">
     <p>Recent Work</p>
@@ -235,11 +232,12 @@ return <>
 </div>
 </section>
 <FeedbackSection />
-<footer className="border-t border-white/10 px-5 py-10 md:px-6"><div className="mx-auto grid max-w-6xl gap-8 text-sm text-[#d6c8ae] md:grid-cols-4"><div><b className="text-xl text-white"><span><span className="trust-shimmer">Trust</span>First Solutions</span></b><p className="mt-3">Premium websites, apps and software systems.</p></div><div><b>Quick Links</b><p className="mt-3"><a href="#home" className="transition hover:text-[var(--gold)]">Home</a><br/><a href="#services" className="transition hover:text-[var(--gold)]">Services</a><br/><a href="#pricing" className="transition hover:text-[var(--gold)]">Pricing</a><br/><a href="#contact" className="transition hover:text-[var(--gold)]">Contact</a></p></div><div><b>Services</b><p className="mt-3"><a href="#services" className="transition hover:text-[var(--gold)]">Website Design</a><br/><a href="#services" className="transition hover:text-[var(--gold)]">App Development</a><br/><a href="#services" className="transition hover:text-[var(--gold)]">Custom Software</a><br/><a href="#services" className="transition hover:text-[var(--gold)]">UI/UX Design</a></p></div><div><b>Contact</b><div className="mt-3 grid gap-3"><a href="tel:+917414853321" className="flex items-center gap-2 rounded-full border border-[rgba(201,155,71,.3)] px-4 py-3 text-[#f7ecd2]"><PhoneCall size={17} strokeWidth={1.9}/> Call Now</a><a href="mailto:hello@trustfirstsolutions.in" className="flex items-center gap-2 rounded-full border border-[rgba(201,155,71,.3)] px-4 py-3 text-[#f7ecd2]"><Mail size={17} strokeWidth={1.9}/> Email Us</a><a href="https://www.instagram.com/trustfirstsolutions.in/" target="_blank" rel="noreferrer" className="flex items-center gap-2 rounded-full border border-[rgba(201,155,71,.3)] px-4 py-3 text-[#f7ecd2]"><InstaIcon size={17}/> Instagram <ArrowUpRight size={15} strokeWidth={1.9}/></a></div></div></div><p className="mt-8 text-center text-sm text-[#d6c8ae]">© 2026 TrustFirst Solutions. All rights reserved.</p></footer>
+<footer className="border-t border-white/10 px-5 py-10 md:px-6"><div className="mx-auto grid max-w-6xl gap-8 text-sm text-[#d6c8ae] md:grid-cols-4"><div><b className="text-xl text-white"><span><span className="trust-shimmer">Trust</span>First Solutions</span></b><p className="mt-3">Premium websites, apps and software systems.</p></div><div><b>Quick Links</b><p className="mt-3"><a href="#home" className="transition hover:text-[var(--gold)]">Home</a><br/><a href="#services" className="transition hover:text-[var(--gold)]">Services</a><br/><a href="#contact" className="transition hover:text-[var(--gold)]">Contact</a></p></div><div><b>Services</b><p className="mt-3"><a href="#services" className="transition hover:text-[var(--gold)]">Website Design</a><br/><a href="#services" className="transition hover:text-[var(--gold)]">App Development</a><br/><a href="#services" className="transition hover:text-[var(--gold)]">Custom Software</a><br/><a href="#services" className="transition hover:text-[var(--gold)]">UI/UX Design</a></p></div><div><b>Contact</b><div className="mt-3 grid gap-3"><a href="tel:+917414853321" className="flex items-center gap-2 rounded-full border border-[rgba(201,155,71,.3)] px-4 py-3 text-[#f7ecd2]"><PhoneCall size={17} strokeWidth={1.9}/> Call Now</a><a href="mailto:hello@trustfirstsolutions.in" className="flex items-center gap-2 rounded-full border border-[rgba(201,155,71,.3)] px-4 py-3 text-[#f7ecd2]"><Mail size={17} strokeWidth={1.9}/> Email Us</a><a href="https://www.instagram.com/trustfirstsolutions.in/" target="_blank" rel="noreferrer" className="flex items-center gap-2 rounded-full border border-[rgba(201,155,71,.3)] px-4 py-3 text-[#f7ecd2]"><InstaIcon size={17}/> Instagram <ArrowUpRight size={15} strokeWidth={1.9}/></a></div></div></div><p className="mt-8 text-center text-sm text-[#d6c8ae]">© 2026 TrustFirst Solutions. All rights reserved.</p></footer>
 
 </main>
 </>
 }
+
 
 
 

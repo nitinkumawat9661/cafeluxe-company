@@ -2,7 +2,6 @@
   const navItems = [
     { label: "Home", href: "#home" },
     { label: "Services", href: "#services" },
-    { label: "Pricing", href: "#pricing" },
     { label: "Work", href: "#work" },
     { label: "FAQ", href: "#faq" },
     { label: "Contact", href: "#contact" },
@@ -49,3 +48,4 @@
     </div>
   );
 }
+
