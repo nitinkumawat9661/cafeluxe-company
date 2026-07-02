@@ -1,30 +1,47 @@
 ﻿"use client";
 
-import { type CSSProperties, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
-const BRAND=[
-["T","-46vw","-38vh","-4.15em","-28deg"],["r","38vw","-42vh","-3.25em","24deg"],
-["u","-50vw","30vh","-2.35em","18deg"],["s","46vw","34vh","-1.45em","-26deg"],
-["t","0vw","-52vh","-.65em","18deg"],["F","-34vw","48vh",".25em","-22deg"],
-["i","30vw","50vh","1.05em","20deg"],["r","-56vw","0vh","1.65em","30deg"],
-["s","56vw","-6vh","2.45em","-30deg"],["t","10vw","56vh","3.25em","16deg"]
-];
+export function SplashIntro() {
+  const [show, setShow] = useState(true);
+  const [fade, setFade] = useState(false);
 
-const SERVICES=["Website","Apps","Software","UI/UX","Automation","Secure","Premium","Support"];
+  useEffect(() => {
+    const a = window.setTimeout(() => setFade(true), 1100);
+    const b = window.setTimeout(() => setShow(false), 1650);
 
-export function SplashIntro(){
- const[show,setShow]=useState(true);
- useEffect(()=>{const t=window.setTimeout(()=>setShow(false),5600);return()=>window.clearTimeout(t)},[]);
- if(!show)return null;
- return <div className="splash-intro">
-  <div className="splash-river" aria-hidden="true"/>
-  <div className="splash-center">
-   <p className="splash-mini">Welcome to</p>
-   <h1 className="splash-brand" aria-label="TrustFirst">
-    {BRAND.map(([l,sx,sy,fx,r],i)=><span key={i} className="splash-letter" style={{"--sx":sx,"--sy":sy,"--fx":fx,"--r":r,animationDelay:`${i*.09}s`} as CSSProperties}>{l}</span>)}
-   </h1>
-   <div className="splash-service-words">{SERVICES.map((w,i)=><span key={w} style={{animationDelay:`${1.9+i*.08}s`}}>{w}</span>)}</div>
-   <b>Premium websites, apps and software systems</b>
-  </div>
- </div>
+    return () => {
+      window.clearTimeout(a);
+      window.clearTimeout(b);
+    };
+  }, []);
+
+  if (!show) return null;
+
+  return (
+    <div
+      className={[
+        "fixed inset-0 z-[99999] grid place-items-center overflow-hidden bg-[#050504]",
+        "transition-opacity duration-500",
+        fade ? "pointer-events-none opacity-0" : "opacity-100",
+      ].join(" ")}
+    >
+      <div className="w-full max-w-[96vw] px-6 text-center">
+        <div className="mx-auto grid h-16 w-16 place-items-center rounded-2xl border border-[rgba(201,155,71,.45)] bg-[rgba(201,155,71,.1)] text-lg font-black text-[var(--gold)] shadow-[0_0_45px_rgba(201,155,71,.18)]">
+          TF
+        </div>
+
+        <h1 className="mt-6 whitespace-nowrap px-2 text-center text-[clamp(1.9rem,10.5vw,5rem)] font-black leading-none tracking-[-0.045em]">
+          <span className="bg-[linear-gradient(90deg,#fff7df,#c99b47,#fff2c2)] bg-clip-text text-transparent">
+            Trust
+          </span>
+          <span className="text-[#f8efd9]">First</span>
+        </h1>
+
+        <p className="mt-4 text-xs font-black uppercase tracking-[.36em] text-[var(--gold)]">
+          Solutions
+        </p>
+      </div>
+    </div>
+  );
 }
