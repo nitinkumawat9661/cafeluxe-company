@@ -1,4 +1,5 @@
-﻿import type { Metadata, Viewport } from "next";
+import type { Metadata, Viewport } from "next";
+import { createSeoMetadata } from "@/lib/seo";
 import { siteConfig } from "@/lib/site";
 import "./globals.css";
 
@@ -6,12 +7,12 @@ const seoDescription =
   "TrustFirst Solutions builds premium websites, business websites, web apps, custom software, dashboards and digital systems for growing businesses.";
 
 export const metadata: Metadata = {
+  ...createSeoMetadata({
+    title: siteConfig.name,
+    description: seoDescription,
+    path: "/",
+  }),
   metadataBase: new URL(siteConfig.url),
-  title: {
-    default: siteConfig.name,
-    template: `%s | ${siteConfig.name}`,
-  },
-  description: seoDescription,
   keywords: [
     "premium websites",
     "business websites",
@@ -23,20 +24,6 @@ export const metadata: Metadata = {
   ],
   creator: siteConfig.name,
   publisher: siteConfig.name,
-  alternates: { canonical: "/" },
-  openGraph: {
-    title: siteConfig.name,
-    description: seoDescription,
-    url: siteConfig.url,
-    siteName: siteConfig.name,
-    type: "website",
-    locale: "en_IN",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: siteConfig.name,
-    description: seoDescription,
-  },
   robots: {
     index: true,
     follow: true,

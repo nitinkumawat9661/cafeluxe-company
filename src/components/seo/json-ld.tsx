@@ -1,4 +1,4 @@
-﻿import { products, services, siteConfig } from "@/lib/site";
+import { services, siteConfig } from "@/lib/site";
 
 export function JsonLd() {
   const schema = {
@@ -21,10 +21,10 @@ export function JsonLd() {
         areaServed: siteConfig.serviceAreas,
         knowsAbout: [
           "Website development",
-          "Restaurant POS software",
-          "QR ordering system",
+          "Web app development",
+          "Custom software development",
           "Admin dashboard development",
-          "VPS deployment",
+          "Digital systems",
         ],
       },
       ...services.map((service) => ({
@@ -32,14 +32,6 @@ export function JsonLd() {
         name: service,
         provider: { "@id": `${siteConfig.url}/#organization` },
         areaServed: siteConfig.serviceAreas,
-      })),
-      ...products.map((product) => ({
-        "@type": "SoftwareApplication",
-        name: product.name,
-        description: product.description,
-        applicationCategory: "BusinessApplication",
-        operatingSystem: "Web",
-        provider: { "@id": `${siteConfig.url}/#organization` },
       })),
     ],
   };
@@ -52,4 +44,3 @@ export function JsonLd() {
     />
   );
 }
-

@@ -1,4 +1,6 @@
-﻿function CallIcon() {
+import { siteConfig } from "@/lib/site";
+
+function CallIcon() {
   return (
     <svg aria-hidden="true" viewBox="0 0 24 24" className="relative h-6 w-6" fill="currentColor">
       <path d="M6.62 10.79c1.44 2.83 3.76 5.15 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.61 21 3 13.39 3 4c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.24.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2Z" />
@@ -15,17 +17,17 @@ function WhatsAppIcon() {
 }
 
 export function WhatsAppFloating() {
-  const text = encodeURIComponent("Hi TrustFirst Solutions, I want to discuss a website/app/software project.");
-  const baseClass = "relative inline-flex h-14 w-14 items-center justify-center rounded-full border border-[rgba(201,155,71,.35)] bg-[var(--gold)] text-black shadow-[0_0_30px_rgba(201,155,71,.35)] transition hover:scale-105 motion-safe:animate-bounce motion-reduce:animate-none";
+  const baseClass =
+    "relative inline-flex h-14 w-14 items-center justify-center rounded-full border border-[rgba(201,155,71,.35)] bg-[var(--gold)] text-black shadow-[0_0_30px_rgba(201,155,71,.35)] transition hover:scale-105 motion-safe:animate-bounce motion-reduce:animate-none";
 
   return (
     <div className="fixed bottom-5 right-5 z-50 flex items-center gap-3">
-      <a href="tel:+917665853321" aria-label="Call TrustFirst Solutions" className={baseClass}>
+      <a href={siteConfig.phoneHref} aria-label="Call TrustFirst Solutions" className={baseClass}>
         <span className="absolute inset-0 rounded-full bg-[var(--gold)] opacity-25 motion-safe:animate-ping motion-reduce:animate-none" />
         <CallIcon />
       </a>
 
-      <a href={"https://wa.me/917414853321?text=" + text} target="_blank" rel="noreferrer" aria-label="Chat on WhatsApp" className={baseClass}>
+      <a href={siteConfig.whatsappHref} target="_blank" rel="noreferrer" aria-label="Chat on WhatsApp" className={baseClass}>
         <span className="absolute inset-0 rounded-full bg-[var(--gold)] opacity-30 motion-safe:animate-ping motion-reduce:animate-none" />
         <WhatsAppIcon />
       </a>
