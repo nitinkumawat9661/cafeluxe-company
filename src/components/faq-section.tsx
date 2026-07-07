@@ -1,50 +1,56 @@
-﻿const FAQS = [
-  [
-    "Website kitne din me ready hoti hai?",
-    "Simple landing website usually 3 to 7 days me ready ho sakti hai. Business website ya custom design me features ke hisaab se time badh sakta hai."
-  ],
-  [
-    "Payment kaise hota hai?",
-    "Project start karne se pehle scope clear hota hai. Uske baad advance payment aur remaining payment delivery stage par decide hoti hai."
-  ],
-  [
-    "Launch ke baad support milega?",
-    "Haan, basic handover aur support diya jata hai. Extra maintenance ya changes ke liye separate plan decide kiya ja sakta hai."
-  ],
-  [
-    "Custom software ban sakta hai?",
-    "Haan, dashboard, billing, records, reports, user roles, forms aur workflow-based custom software banaya ja sakta hai."
-  ],
-  [
-    "Kya Sikar ke bahar clients ke liye kaam karte ho?",
-    "Haan, online discussion, WhatsApp, call aur screen sharing ke through remote clients ke liye bhi kaam ho sakta hai."
-  ],
-  [
-    "Domain aur hosting ka process kya hai?",
-    "Domain, hosting, deployment aur basic setup requirement ke according guide kiya ja sakta hai. Final access client ke naam par rakhna best hota hai."
-  ]
+﻿const faqs = [
+  {
+    question: "How long does a website or software project take?",
+    answer:
+      "Simple business website generally 5-10 days me ready ho sakti hai. Custom software, dashboard ya app ka timeline requirement ke according decide hota hai.",
+  },
+  {
+    question: "Do you make mobile friendly websites?",
+    answer:
+      "Yes. Website desktop, tablet aur phone tino ke liye responsive banayi jati hai.",
+  },
+  {
+    question: "Can customers contact directly from the website?",
+    answer:
+      "Yes. Website me WhatsApp, call button aur enquiry form add kiya ja sakta hai.",
+  },
+  {
+    question: "Do you provide support after delivery?",
+    answer:
+      "Yes. Delivery ke baad basic support, small corrections aur guidance provide ki jati hai.",
+  },
 ];
 
 export function FaqSection() {
   return (
-    <section className="mx-auto max-w-6xl px-5 py-10 md:px-6">
-      <div className="rounded-[2rem] border border-[rgba(201,155,71,.25)] bg-white/[.035] p-6 md:p-8">
-        <p className="text-xs font-black uppercase tracking-[.25em] text-[var(--gold)]">FAQ</p>
-        <h2 className="mt-4 text-[clamp(2rem,3vw,3.2rem)] font-black leading-tight tracking-[-0.03em]">
-          Common questions before starting a project.
-        </h2>
-        <p className="mt-3 max-w-2xl text-[#d6c8ae]">
-          Basic answers for website, app and custom software clients.
+    <section id="faq" className="mx-auto max-w-5xl scroll-mt-32 px-5 py-16 md:px-6">
+      <div className="text-center">
+        <p className="text-xs font-black uppercase tracking-[.32em] text-[var(--gold)]">
+          Got Questions?
         </p>
+        <h2 className="mt-4 text-[clamp(2rem,4vw,3.6rem)] font-black leading-tight tracking-[-0.04em]">
+          Clear answers before we start.
+        </h2>
+      </div>
 
-        <div className="mt-7 grid gap-4 md:grid-cols-2">
-          {FAQS.map(([question, answer]) => (
-            <article key={question} className="rounded-[1.5rem] border border-white/10 bg-black/20 p-5">
-              <h3 className="text-lg font-black text-[#f8efd9]">{question}</h3>
-              <p className="mt-2 text-sm leading-6 text-[#d6c8ae]">{answer}</p>
-            </article>
-          ))}
-        </div>
+      <div className="mt-10 space-y-4">
+        {faqs.map((faq) => (
+          <details
+            key={faq.question}
+            className="group rounded-[1.4rem] border border-white/10 bg-white/[.035] p-5 backdrop-blur-xl open:border-[rgba(201,155,71,.35)] open:bg-[rgba(201,155,71,.06)]"
+          >
+            <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-left text-base font-black text-[#f8efd9]">
+              <span>{faq.question}</span>
+              <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full border border-white/10 text-[var(--gold)] transition group-open:rotate-45">
+                +
+              </span>
+            </summary>
+
+            <p className="mt-4 border-t border-white/10 pt-4 text-sm leading-7 text-[#d6c8ae]">
+              {faq.answer}
+            </p>
+          </details>
+        ))}
       </div>
     </section>
   );

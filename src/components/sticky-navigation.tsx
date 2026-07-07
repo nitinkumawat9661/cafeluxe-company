@@ -1,4 +1,6 @@
-﻿export function StickyNavigation() {
+﻿import Image from "next/image";
+
+export function StickyNavigation() {
   const navItems = [
     { label: "Home", href: "#home" },
     { label: "Services", href: "#services" },
@@ -42,8 +44,8 @@
           href="#contact"
           className="inline-flex items-center gap-2 rounded-full border border-[rgba(201,155,71,.4)] px-3 py-2 text-[11px] font-black uppercase tracking-[.14em] text-[var(--gold)] transition hover:bg-[rgba(201,155,71,.12)] md:px-4 md:text-xs"
         >
-          <span className="grid h-6 w-6 place-items-center rounded-full bg-[var(--gold)] text-[10px] text-black">
-            TF
+          <span className="grid h-7 w-7 place-items-center overflow-hidden rounded-full border border-[rgba(201,155,71,.45)] bg-black">
+            <Image src="/trustfirst-logo.svg" alt="" width={28} height={28} className="h-full w-full object-cover" />
           </span>
           Enquire
         </a>
@@ -63,4 +65,6 @@
     </div>
   );
 }
+
+
 

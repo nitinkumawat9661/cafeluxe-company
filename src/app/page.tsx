@@ -36,7 +36,7 @@ return <>
 <SplashIntro />
 <WhatsAppFloating />
 <StickyNavigation />
-<main className="trust-river-surface min-h-screen overflow-x-hidden bg-[#050504] pt-32 pb-24 text-[#f8efd9] md:pt-24 md:pb-0" id="home">
+<main className="trust-river-surface min-h-screen overflow-x-hidden bg-[#050504] pb-24 text-[#f8efd9] md:pb-0" id="home">
 <div className="trust-river-bg" aria-hidden="true"></div>
 <JsonLd/>
 <section className="mx-auto grid max-w-6xl items-center gap-10 px-5 py-12 md:px-6 lg:grid-cols-[.86fr_1.14fr]">
@@ -239,6 +239,7 @@ return <>
 </main>
 </>
 }
+
 
 
 
