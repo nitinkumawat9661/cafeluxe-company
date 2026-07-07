@@ -1,23 +1,21 @@
 ﻿export const siteConfig = {
   name: "TrustFirst Solutions",
-  tagline: "Premium websites, restaurant systems and digital products.",
+  tagline: "Premium websites, web apps, custom software and digital systems.",
   description:
-    "TrustFirst Solutions builds premium business websites, CafeLuxe restaurant systems, admin dashboards, QR ordering platforms and custom software for restaurants, cafes, cloud kitchens and growing businesses.",
-  url: "https://example.com",
-  phone: "+91 00000 00000",
+    "TrustFirst Solutions builds premium websites, business websites, web apps, custom software, dashboards and digital systems for growing businesses.",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://trustfirstsolutions.in",
+  phone: "+91 7665853321",
   email: "hello@trustfirstsolutions.in",
-  whatsapp: "910000000000",
-  city: "Kota",
+  whatsapp: "917414853321",
+  city: "Sikar",
   region: "Rajasthan",
   country: "India",
-  serviceAreas: ["Kota", "Jaipur", "Rajasthan", "India"],
+  serviceAreas: ["Sikar", "Jaipur", "Rajasthan", "India"],
 };
 
 export const navLinks = [
   { label: "Studio", href: "#studio" },
   { label: "Services", href: "#services" },
-  { label: "Products", href: "#products" },
-  { label: "Pricing", href: "#pricing" },
   { label: "FAQ", href: "#faq" },
 ];
 

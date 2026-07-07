@@ -3,7 +3,7 @@ import { siteConfig } from "@/lib/site";
 import "./globals.css";
 
 const seoDescription =
-  "LuxeForge Studio creates premium websites, restaurant systems, admin dashboards, QR ordering platforms and custom digital products for modern businesses.";
+  "TrustFirst Solutions builds premium websites, business websites, web apps, custom software, dashboards and digital systems for growing businesses.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -14,11 +14,12 @@ export const metadata: Metadata = {
   description: seoDescription,
   keywords: [
     "premium websites",
-    "restaurant software",
-    "QR ordering platform",
+    "business websites",
+    "web apps",
+    "custom software",
     "admin dashboard",
-    "custom digital products",
-    "CafeLuxe",
+    "digital systems",
+    "TrustFirst Solutions",
   ],
   creator: siteConfig.name,
   publisher: siteConfig.name,

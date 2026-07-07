@@ -14,8 +14,8 @@ export function StickyNavigation() {
     <div className="fixed left-0 right-0 top-0 z-[90000] border-b border-white/10 bg-[#070604]/90 shadow-[0_18px_60px_rgba(0,0,0,.35)] backdrop-blur-2xl">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-3 sm:px-6 lg:px-8">
         <a href="#home" className="flex shrink-0 items-center gap-3">
-          <span className="grid h-10 w-10 place-items-center rounded-2xl border border-[rgba(201,155,71,.45)] bg-[rgba(201,155,71,.1)] text-sm font-black text-[var(--gold)] shadow-[0_0_30px_rgba(201,155,71,.14)]">
-            TF
+          <span className="grid h-10 w-10 place-items-center overflow-hidden rounded-2xl border border-[rgba(201,155,71,.45)] bg-[rgba(201,155,71,.1)] shadow-[0_0_30px_rgba(201,155,71,.14)]">
+            <Image src="/trustfirst-logo.svg" alt="" width={40} height={40} className="h-full w-full object-cover" />
           </span>
 
           <span className="leading-none">

@@ -8,11 +8,10 @@ import { WhatsAppFloating } from "@/components/whatsapp-floating";
 import { StickyNavigation } from "@/components/sticky-navigation";
 import { TrustBuildSection } from "@/components/trust-build-section";
 import { LeadSuccess } from "@/components/lead-success";
-import { ArrowUpRight, Building2, ChevronDown, Mail, MapPin, Navigation, PhoneCall, Users } from "lucide-react";
+import { ArrowUpRight, Building2, Mail, MapPin, Navigation, PhoneCall, Users } from "lucide-react";
 
 const bullets=["Free consultation & tailored solution","No obligation, friendly & transparent","Quick response within 24 hours","Secure & confidential"];
-const contacts=[["Phone / WhatsApp","+91 74148 53321","Mon-Fri: 9:00 AM - 6:00 PM"],["Email Us","hello@trustfirstsolutions.in","We reply within 24 hours"],["Our Office","Sikar, Rajasthan","Remote projects across India"],["Business Hours","Mon-Fri: 8:00 AM - 6:00 PM","Saturday by appointment"]];
-const faqs=["How soon will you respond?","How much does a project cost?","Can you sign an NDA?","What if I am not sure about my requirements?","Do you offer ongoing support?"];
+const contacts=[["Phone / WhatsApp","+91 76658 53321 / +91 74148 53321","Mon-Fri: 9:00 AM - 6:00 PM"],["Email Us","hello@trustfirstsolutions.in","We reply within 24 hours"],["Our Office","Sikar, Rajasthan","Remote projects across India"],["Business Hours","Mon-Fri: 8:00 AM - 6:00 PM","Saturday by appointment"]];
 function InstaIcon({size=19}:{size?:number}){
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" aria-hidden="true">
@@ -68,7 +67,7 @@ return <>
 </div>
 </div>
 <div className="grid grid-cols-3 gap-3">
-<a href="tel:+917414853321" className="grid h-14 place-items-center rounded-2xl border border-[rgba(201,155,71,.35)] text-[var(--gold)]"><PhoneCall size={20}/></a>
+<a href="tel:+917665853321" className="grid h-14 place-items-center rounded-2xl border border-[rgba(201,155,71,.35)] text-[var(--gold)]"><PhoneCall size={20}/></a>
 <a href="mailto:hello@trustfirstsolutions.in" className="grid h-14 place-items-center rounded-2xl border border-[rgba(201,155,71,.35)] text-[var(--gold)]"><Mail size={20}/></a>
 <a href="https://www.instagram.com/trustfirstsolutions.in/" target="_blank" rel="noreferrer" className="grid h-14 place-items-center rounded-2xl border border-[rgba(201,155,71,.35)]"><InstaIcon size={20}/></a>
 </div>
@@ -144,7 +143,7 @@ return <>
     <div className="mt-7 grid gap-4 md:grid-cols-4">
       {[
         ["01","Page","A complete route or screen users open, like Home, Contact, Dashboard or Product."],
-        ["02","Section","A meaningful block inside a page, like Hero, Services, Pricing, FAQ or Contact."],
+        ["02","Section","A meaningful block inside a page, like Hero, Services, FAQ or Contact."],
         ["03","Container","A responsive wrapper that controls spacing, alignment and readable width."],
         ["04","Component","Reusable UI parts like cards, buttons, forms, modals, tables and status blocks."]
       ].map(([n,t,d])=>(
@@ -157,7 +156,6 @@ return <>
     </div>
   </div>
 </section>
-<span id="faq" className="block scroll-mt-32"></span>
 <FaqSection />
 <section id="contact" className="mx-auto max-w-6xl px-5 pb-6 md:px-6">
 <form action="/api/contact" method="POST" className="rounded-[2rem] border border-[rgba(201,155,71,.35)] bg-white/[.035] p-6 md:p-8">
@@ -187,10 +185,6 @@ return <>
 </section>
 
 <section className="mx-auto grid max-w-6xl gap-4 px-5 pb-6 sm:grid-cols-2 md:px-6 xl:grid-cols-4">{contacts.map(([a,b,c])=><article key={a} className="rounded-2xl border border-[rgba(201,155,71,.25)] bg-white/[.035] p-5"><p className="text-xs font-black uppercase tracking-[.2em] text-[var(--gold)]">{a}</p><h3 className="mt-3 break-words font-black">{b}</h3><p className="mt-2 text-sm text-[#d6c8ae]">{c}</p></article>)}</section>
-
-
-
-<section className="mx-auto max-w-6xl px-5 pb-10 md:px-6"><p className="text-xs font-black uppercase tracking-[.25em] text-[var(--gold)]">Frequently Asked Questions</p><h2 className="mt-3 text-[clamp(1.9rem,2.8vw,3rem)] font-black leading-tight tracking-[-0.03em]">Got Questions? We&apos;ve Got Answers.</h2><div className="mt-5 grid gap-2">{faqs.map(q=><div key={q} className="flex justify-between rounded-xl border border-white/10 bg-white/[.035] px-5 py-4 font-bold"><span>{q}</span><span className="text-[var(--gold)]"><ChevronDown size={18} strokeWidth={2}/></span></div>)}</div></section>
 
 
 
@@ -234,7 +228,7 @@ return <>
 </section>
 <TrustBuildSection />
 <FeedbackSection />
-<footer className="border-t border-white/10 px-5 py-10 md:px-6"><div className="mx-auto grid max-w-6xl gap-8 text-sm text-[#d6c8ae] md:grid-cols-4"><div><b className="text-xl text-white"><span><span className="trust-shimmer">Trust</span>First Solutions</span></b><p className="mt-3">Premium websites, apps and software systems.</p></div><div><b>Quick Links</b><p className="mt-3"><a href="#home" className="transition hover:text-[var(--gold)]">Home</a><br/><a href="#services" className="transition hover:text-[var(--gold)]">Services</a><br/><a href="#contact" className="transition hover:text-[var(--gold)]">Contact</a></p></div><div><b>Services</b><p className="mt-3"><a href="#services" className="transition hover:text-[var(--gold)]">Website Design</a><br/><a href="#services" className="transition hover:text-[var(--gold)]">App Development</a><br/><a href="#services" className="transition hover:text-[var(--gold)]">Custom Software</a><br/><a href="#services" className="transition hover:text-[var(--gold)]">UI/UX Design</a></p></div><div><b>Contact</b><div className="mt-3 grid gap-3"><a href="tel:+917414853321" className="flex items-center gap-2 rounded-full border border-[rgba(201,155,71,.3)] px-4 py-3 text-[#f7ecd2]"><PhoneCall size={17} strokeWidth={1.9}/> Call Now</a><a href="mailto:hello@trustfirstsolutions.in" className="flex items-center gap-2 rounded-full border border-[rgba(201,155,71,.3)] px-4 py-3 text-[#f7ecd2]"><Mail size={17} strokeWidth={1.9}/> Email Us</a><a href="https://www.instagram.com/trustfirstsolutions.in/" target="_blank" rel="noreferrer" className="flex items-center gap-2 rounded-full border border-[rgba(201,155,71,.3)] px-4 py-3 text-[#f7ecd2]"><InstaIcon size={17}/> Instagram <ArrowUpRight size={15} strokeWidth={1.9}/></a></div></div></div><p className="mt-8 text-center text-sm text-[#d6c8ae]">© 2026 TrustFirst Solutions. All rights reserved.</p></footer>
+<footer className="border-t border-white/10 px-5 py-10 md:px-6"><div className="mx-auto grid max-w-6xl gap-8 text-sm text-[#d6c8ae] md:grid-cols-4"><div><b className="text-xl text-white"><span><span className="trust-shimmer">Trust</span>First Solutions</span></b><p className="mt-3">Premium websites, apps and software systems.</p></div><div><b>Quick Links</b><p className="mt-3"><a href="#home" className="transition hover:text-[var(--gold)]">Home</a><br/><a href="#services" className="transition hover:text-[var(--gold)]">Services</a><br/><a href="#contact" className="transition hover:text-[var(--gold)]">Contact</a></p></div><div><b>Services</b><p className="mt-3"><a href="#services" className="transition hover:text-[var(--gold)]">Website Design</a><br/><a href="#services" className="transition hover:text-[var(--gold)]">App Development</a><br/><a href="#services" className="transition hover:text-[var(--gold)]">Custom Software</a><br/><a href="#services" className="transition hover:text-[var(--gold)]">UI/UX Design</a></p></div><div><b>Contact</b><div className="mt-3 grid gap-3"><a href="tel:+917665853321" className="flex items-center gap-2 rounded-full border border-[rgba(201,155,71,.3)] px-4 py-3 text-[#f7ecd2]"><PhoneCall size={17} strokeWidth={1.9}/> Call Now</a><a href="mailto:hello@trustfirstsolutions.in" className="flex items-center gap-2 rounded-full border border-[rgba(201,155,71,.3)] px-4 py-3 text-[#f7ecd2]"><Mail size={17} strokeWidth={1.9}/> Email Us</a><a href="https://www.instagram.com/trustfirstsolutions.in/" target="_blank" rel="noreferrer" className="flex items-center gap-2 rounded-full border border-[rgba(201,155,71,.3)] px-4 py-3 text-[#f7ecd2]"><InstaIcon size={17}/> Instagram <ArrowUpRight size={15} strokeWidth={1.9}/></a></div></div></div><p className="mt-8 text-center text-sm text-[#d6c8ae]">© 2026 TrustFirst Solutions. All rights reserved.</p></footer>
 
 </main>
 </>

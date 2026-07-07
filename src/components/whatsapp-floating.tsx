@@ -20,7 +20,7 @@ export function WhatsAppFloating() {
 
   return (
     <div className="fixed bottom-5 right-5 z-50 flex items-center gap-3">
-      <a href="tel:+917414853321" aria-label="Call TrustFirst Solutions" className={baseClass}>
+      <a href="tel:+917665853321" aria-label="Call TrustFirst Solutions" className={baseClass}>
         <span className="absolute inset-0 rounded-full bg-[var(--gold)] opacity-25 motion-safe:animate-ping motion-reduce:animate-none" />
         <CallIcon />
       </a>
