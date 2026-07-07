@@ -31,14 +31,14 @@ export async function generateMetadata({ params }: WorkDetailPageProps) {
   const study = await fetchSanity<CaseStudy>(caseStudyBySlugQuery, { slug });
 
   if (!study) {
-    return createSeoMetadata({
+    return await createSeoMetadata({
       title: "Work",
       description: "TrustFirst Solutions case studies.",
       path: `/work/${slug}`,
     });
   }
 
-  return createSeoMetadata({
+  return await createSeoMetadata({
     title: study.seoTitle || study.title || "Work",
     description: study.seoDescription || study.summary || "TrustFirst Solutions case study.",
     path: `/work/${slug}`,

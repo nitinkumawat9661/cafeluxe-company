@@ -5,11 +5,13 @@ import { createSeoMetadata } from "@/lib/seo";
 const description =
   "Custom software planning and development for business-specific workflows, internal systems and digital operations.";
 
-export const metadata = createSeoMetadata({
-  title: "Custom Software Development",
-  description,
-  path: "/services/custom-software",
-});
+export async function generateMetadata() {
+  return createSeoMetadata({
+    title: "Custom Software Development",
+    description,
+    path: "/services/custom-software",
+  });
+}
 
 export default function CustomSoftwareServicePage() {
   return (

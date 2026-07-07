@@ -10,9 +10,9 @@ import { SiteFooter } from "@/components/site-footer";
 import { TrustBuildSection } from "@/components/trust-build-section";
 import { LeadSuccess } from "@/components/lead-success";
 import { Building2, Mail, MapPin, Navigation, PhoneCall, Users } from "lucide-react";
+import { getSiteSettings } from "@/sanity/lib/site-settings";
 
 const bullets=["Free consultation & tailored solution","No obligation, friendly & transparent","Quick response within 24 hours","Secure & confidential"];
-const contacts=[["Phone / WhatsApp","+91 76658 53321 / +91 74148 53321","Mon-Fri: 9:00 AM - 6:00 PM"],["Email Us","hello@trustfirstsolutions.in","We reply within 24 hours"],["Our Office","Sikar, Rajasthan","Remote projects across India"],["Business Hours","Mon-Fri: 8:00 AM - 6:00 PM","Saturday by appointment"]];
 function InstaIcon({size=19}:{size?:number}){
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" aria-hidden="true">
@@ -31,7 +31,10 @@ function InstaIcon({size=19}:{size?:number}){
   )
 }
 
-export default function Home(){
+export default async function Home(){
+const settings = await getSiteSettings();
+const primarySocialLink = settings.socialLinks[0];
+const contacts=[["Phone / WhatsApp",`${settings.phone} / ${settings.whatsappDisplay}`,"Mon-Fri: 9:00 AM - 6:00 PM"],["Email Us",settings.email,"We reply within 24 hours"],["Our Office",settings.address,"Remote projects across India"],["Business Hours","Mon-Fri: 8:00 AM - 6:00 PM","Saturday by appointment"]];
 return <>
 <SplashIntro />
 <WhatsAppFloating />
@@ -68,9 +71,9 @@ return <>
 </div>
 </div>
 <div className="grid grid-cols-3 gap-3">
-<a href="tel:+917665853321" className="grid h-14 place-items-center rounded-2xl border border-[rgba(201,155,71,.35)] text-[var(--gold)]"><PhoneCall size={20}/></a>
-<a href="mailto:hello@trustfirstsolutions.in" className="grid h-14 place-items-center rounded-2xl border border-[rgba(201,155,71,.35)] text-[var(--gold)]"><Mail size={20}/></a>
-<a href="https://www.instagram.com/trustfirstsolutions.in/" target="_blank" rel="noreferrer" className="grid h-14 place-items-center rounded-2xl border border-[rgba(201,155,71,.35)]"><InstaIcon size={20}/></a>
+<a href={settings.phoneHref} className="grid h-14 place-items-center rounded-2xl border border-[rgba(201,155,71,.35)] text-[var(--gold)]"><PhoneCall size={20}/></a>
+<a href={`mailto:${settings.email}`} className="grid h-14 place-items-center rounded-2xl border border-[rgba(201,155,71,.35)] text-[var(--gold)]"><Mail size={20}/></a>
+{primarySocialLink && <a href={primarySocialLink.url} target="_blank" rel="noreferrer" className="grid h-14 place-items-center rounded-2xl border border-[rgba(201,155,71,.35)]"><InstaIcon size={20}/></a>}
 </div>
 </div>
 </div>
@@ -192,7 +195,7 @@ return <>
 <section className="mx-auto grid max-w-6xl gap-5 px-5 pb-10 md:px-6 lg:grid-cols-2">
 <div className="rounded-[2rem] border border-[rgba(201,155,71,.25)] bg-white/[.035] p-6">
 <p className="text-xs font-black uppercase tracking-[.25em] text-[var(--gold)]">Our Location</p>
-<h2 className="mt-4 text-3xl font-black">Sikar, Rajasthan</h2>
+<h2 className="mt-4 text-3xl font-black">{settings.address}</h2>
 <p className="mt-3 max-w-sm text-[#d6c8ae]">Remote-first premium digital studio working with businesses across India.</p>
 
 <div className="mt-8 flex flex-wrap gap-3">
@@ -206,13 +209,13 @@ return <>
     <div className="flex items-center justify-between gap-3 border-b border-[rgba(255,255,255,.08)] px-5 py-4">
       <div>
         <p className="text-xs font-black uppercase tracking-[.22em] text-[var(--gold)]">Satellite Preview</p>
-        <b className="text-sm text-[#f8efd9]">TrustFirst Solutions Location</b>
+        <b className="text-sm text-[#f8efd9]">{settings.name} Location</b>
         <p className="mt-1 text-xs text-[#d6c8ae]">27.63305, 75.16182</p>
       </div>
       <span className="rounded-full border border-[rgba(201,155,71,.32)] bg-black/30 px-3 py-1 text-xs font-black text-[var(--gold)]">Live View</span>
     </div>
     <div className="relative h-64 overflow-hidden">
-      <iframe title="TrustFirst Solutions Satellite Location" src="https://maps.google.com/maps?q=27.63305,75.16182&t=k&z=17&output=embed" loading="lazy" className="trust-location-iframe h-full w-full"/>
+      <iframe title={`${settings.name} Satellite Location`} src="https://maps.google.com/maps?q=27.63305,75.16182&t=k&z=17&output=embed" loading="lazy" className="trust-location-iframe h-full w-full"/>
       <div className="trust-location-overlay"></div>
     </div>
   </div>

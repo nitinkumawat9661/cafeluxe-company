@@ -46,14 +46,14 @@ export async function generateMetadata({ params }: ResourceDetailPageProps) {
   const resource = await fetchSanity<Resource>(resourceBySlugQuery, { slug });
 
   if (!resource) {
-    return createSeoMetadata({
+    return await createSeoMetadata({
       title: "Resources",
       description: "TrustFirst Solutions resources.",
       path: `/resources/${slug}`,
     });
   }
 
-  return createSeoMetadata({
+  return await createSeoMetadata({
     title: resource.seoTitle || resource.title || "Resources",
     description: resource.seoDescription || resource.excerpt || "TrustFirst Solutions resource.",
     path: `/resources/${slug}`,

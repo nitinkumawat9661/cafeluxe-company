@@ -5,11 +5,13 @@ import { createSeoMetadata } from "@/lib/seo";
 const description =
   "Web apps and dashboards for teams that need browser-based tools, clearer workflows and practical business operations.";
 
-export const metadata = createSeoMetadata({
-  title: "Web App Development",
-  description,
-  path: "/services/web-apps",
-});
+export async function generateMetadata() {
+  return createSeoMetadata({
+    title: "Web App Development",
+    description,
+    path: "/services/web-apps",
+  });
+}
 
 export default function WebAppsServicePage() {
   return (

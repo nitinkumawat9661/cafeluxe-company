@@ -5,11 +5,13 @@ import { createSeoMetadata } from "@/lib/seo";
 const description =
   "Premium business websites for companies that need clear positioning, trust-building design and direct enquiry paths.";
 
-export const metadata = createSeoMetadata({
-  title: "Website Design and Development",
-  description,
-  path: "/services/websites",
-});
+export async function generateMetadata() {
+  return createSeoMetadata({
+    title: "Website Design and Development",
+    description,
+    path: "/services/websites",
+  });
+}
 
 export default function WebsitesServicePage() {
   return (

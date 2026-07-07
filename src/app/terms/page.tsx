@@ -2,11 +2,13 @@ import { InnerPageShell } from "@/components/inner-page-shell";
 import { routePageContent } from "@/lib/content";
 import { createSeoMetadata } from "@/lib/seo";
 
-export const metadata = createSeoMetadata({
-  title: routePageContent.terms.title,
-  description: routePageContent.terms.description,
-  path: "/terms",
-});
+export async function generateMetadata() {
+  return createSeoMetadata({
+    title: routePageContent.terms.title,
+    description: routePageContent.terms.description,
+    path: "/terms",
+  });
+}
 
 export default function TermsPage() {
   return (

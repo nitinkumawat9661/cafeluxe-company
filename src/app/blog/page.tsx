@@ -7,11 +7,13 @@ import { fetchSanity } from "@/sanity/lib/fetch";
 import { latestBlogPostsQuery } from "@/sanity/lib/queries";
 import type { BlogPost } from "@/sanity/lib/types";
 
-export const metadata = createSeoMetadata({
-  title: routePageContent.blog.title,
-  description: routePageContent.blog.description,
-  path: "/blog",
-});
+export async function generateMetadata() {
+  return createSeoMetadata({
+    title: routePageContent.blog.title,
+    description: routePageContent.blog.description,
+    path: "/blog",
+  });
+}
 
 function formatDate(date?: string) {
   if (!date) return "";

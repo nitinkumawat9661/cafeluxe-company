@@ -2,11 +2,13 @@ import { InnerPageShell } from "@/components/inner-page-shell";
 import { routePageContent } from "@/lib/content";
 import { createSeoMetadata } from "@/lib/seo";
 
-export const metadata = createSeoMetadata({
-  title: routePageContent.privacy.title,
-  description: routePageContent.privacy.description,
-  path: "/privacy",
-});
+export async function generateMetadata() {
+  return createSeoMetadata({
+    title: routePageContent.privacy.title,
+    description: routePageContent.privacy.description,
+    path: "/privacy",
+  });
+}
 
 export default function PrivacyPage() {
   return (

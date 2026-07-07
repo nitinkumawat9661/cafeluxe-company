@@ -75,3 +75,24 @@ export type Resource = {
   seoDescription?: string;
   ogImage?: SanityImage;
 };
+
+export type SocialLink = {
+  label?: string;
+  url?: string;
+};
+
+export type SiteSettings = {
+  brandName?: string;
+  tagline?: string;
+  description?: string;
+  logo?: SanityImage;
+  phone?: string;
+  whatsapp?: string;
+  email?: string;
+  address?: string;
+  socialLinks?: SocialLink[];
+  defaultSeoTitle?: string;
+  defaultSeoDescription?: string;
+  defaultOgImage?: SanityImage;
+  favicon?: SanityImage;
+};

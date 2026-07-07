@@ -3,11 +3,13 @@ import { RouteCard } from "@/components/route-card";
 import { serviceCards, routePageContent } from "@/lib/content";
 import { createSeoMetadata } from "@/lib/seo";
 
-export const metadata = createSeoMetadata({
-  title: routePageContent.services.title,
-  description: routePageContent.services.description,
-  path: "/services",
-});
+export async function generateMetadata() {
+  return createSeoMetadata({
+    title: routePageContent.services.title,
+    description: routePageContent.services.description,
+    path: "/services",
+  });
+}
 
 export default function ServicesPage() {
   return (

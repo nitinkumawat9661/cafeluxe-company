@@ -7,11 +7,13 @@ import { fetchSanity } from "@/sanity/lib/fetch";
 import { resourcesListQuery } from "@/sanity/lib/queries";
 import type { Resource } from "@/sanity/lib/types";
 
-export const metadata = createSeoMetadata({
-  title: routePageContent.resources.title,
-  description: routePageContent.resources.description,
-  path: "/resources",
-});
+export async function generateMetadata() {
+  return createSeoMetadata({
+    title: routePageContent.resources.title,
+    description: routePageContent.resources.description,
+    path: "/resources",
+  });
+}
 
 function formatDate(date?: string) {
   if (!date) return "";

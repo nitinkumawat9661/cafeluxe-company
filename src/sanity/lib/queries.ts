@@ -81,6 +81,6 @@ export const publishedFaqsQuery = groq`
 export const siteSettingsQuery = groq`
   *[_type == "siteSettings"][0] {
     brandName, tagline, description, logo, phone, whatsapp, email, address,
-    socialLinks, defaultSeoTitle, defaultSeoDescription, defaultOgImage
+    socialLinks, defaultSeoTitle, defaultSeoDescription, defaultOgImage, favicon
   }
 `;

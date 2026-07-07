@@ -7,11 +7,13 @@ import { fetchSanity } from "@/sanity/lib/fetch";
 import { latestCaseStudiesQuery } from "@/sanity/lib/queries";
 import type { CaseStudy } from "@/sanity/lib/types";
 
-export const metadata = createSeoMetadata({
-  title: routePageContent.work.title,
-  description: routePageContent.work.description,
-  path: "/work",
-});
+export async function generateMetadata() {
+  return createSeoMetadata({
+    title: routePageContent.work.title,
+    description: routePageContent.work.description,
+    path: "/work",
+  });
+}
 
 const fallbackCards = [
   {

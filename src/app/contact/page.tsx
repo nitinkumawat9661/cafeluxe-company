@@ -3,38 +3,42 @@ import { InnerPageShell } from "@/components/inner-page-shell";
 import { BudgetSlider } from "@/components/budget-slider";
 import { routePageContent } from "@/lib/content";
 import { createSeoMetadata } from "@/lib/seo";
-import { siteConfig } from "@/lib/site";
+import { getSiteSettings } from "@/sanity/lib/site-settings";
 
-export const metadata = createSeoMetadata({
-  title: routePageContent.contact.title,
-  description: routePageContent.contact.description,
-  path: "/contact",
-});
+export async function generateMetadata() {
+  return createSeoMetadata({
+    title: routePageContent.contact.title,
+    description: routePageContent.contact.description,
+    path: "/contact",
+  });
+}
 
-export default function ContactPage() {
+export default async function ContactPage() {
+  const settings = await getSiteSettings();
+
   return (
     <InnerPageShell eyebrow="Contact" title="Start a focused project conversation." description={routePageContent.contact.description}>
       <section className="mx-auto grid max-w-6xl gap-5 px-5 pb-16 md:px-6 lg:grid-cols-[.8fr_1.2fr]">
         <div className="grid gap-3">
-          <a href={siteConfig.phoneHref} className="flex items-center gap-3 rounded-2xl border border-[rgba(201,155,71,.25)] bg-white/[.035] p-5">
+          <a href={settings.phoneHref} className="flex items-center gap-3 rounded-2xl border border-[rgba(201,155,71,.25)] bg-white/[.035] p-5">
             <PhoneCall className="text-[var(--gold)]" size={20} />
             <span>
               <b className="block text-[#f8efd9]">Call</b>
-              <span className="text-sm text-[#d6c8ae]">{siteConfig.phone}</span>
+              <span className="text-sm text-[#d6c8ae]">{settings.phone}</span>
             </span>
           </a>
-          <a href={siteConfig.whatsappHref} target="_blank" rel="noreferrer" className="flex items-center gap-3 rounded-2xl border border-[rgba(201,155,71,.25)] bg-white/[.035] p-5">
+          <a href={settings.whatsappHref} target="_blank" rel="noreferrer" className="flex items-center gap-3 rounded-2xl border border-[rgba(201,155,71,.25)] bg-white/[.035] p-5">
             <MessageCircle className="text-[var(--gold)]" size={20} />
             <span>
               <b className="block text-[#f8efd9]">WhatsApp</b>
-              <span className="text-sm text-[#d6c8ae]">+91 7414853321</span>
+              <span className="text-sm text-[#d6c8ae]">{settings.whatsappDisplay}</span>
             </span>
           </a>
-          <a href={`mailto:${siteConfig.email}`} className="flex items-center gap-3 rounded-2xl border border-[rgba(201,155,71,.25)] bg-white/[.035] p-5">
+          <a href={`mailto:${settings.email}`} className="flex items-center gap-3 rounded-2xl border border-[rgba(201,155,71,.25)] bg-white/[.035] p-5">
             <Mail className="text-[var(--gold)]" size={20} />
             <span>
               <b className="block text-[#f8efd9]">Email</b>
-              <span className="text-sm text-[#d6c8ae]">{siteConfig.email}</span>
+              <span className="text-sm text-[#d6c8ae]">{settings.email}</span>
             </span>
           </a>
         </div>

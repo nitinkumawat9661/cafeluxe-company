@@ -36,14 +36,14 @@ export async function generateMetadata({ params }: BlogDetailPageProps) {
   const post = await fetchSanity<BlogPost>(blogPostBySlugQuery, { slug });
 
   if (!post) {
-    return createSeoMetadata({
+    return await createSeoMetadata({
       title: "Blog",
       description: "TrustFirst Solutions blog.",
       path: `/blog/${slug}`,
     });
   }
 
-  return createSeoMetadata({
+  return await createSeoMetadata({
     title: post.seoTitle || post.title || "Blog",
     description: post.seoDescription || post.excerpt || "TrustFirst Solutions blog.",
     path: `/blog/${slug}`,

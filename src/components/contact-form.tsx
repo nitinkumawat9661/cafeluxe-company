@@ -1,8 +1,7 @@
 ﻿"use client";
 
 import { FormEvent, useState } from "react";
-
-const WHATSAPP_NUMBER = "917414853321";
+import { siteConfig } from "@/lib/site";
 
 function LeadForm() {
   const [status, setStatus] = useState("");
@@ -38,7 +37,7 @@ function LeadForm() {
       `Budget: ${budget || "Not provided"}%0A` +
       `Message: ${message}`;
 
-    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${text}`, "_blank", "noopener,noreferrer");
+    window.open(`https://wa.me/${siteConfig.whatsapp}?text=${text}`, "_blank", "noopener,noreferrer");
     setStatus("WhatsApp opened. Send the message to submit your inquiry.");
   }
 

@@ -1,4 +1,4 @@
-import { siteConfig } from "@/lib/site";
+import { getSiteSettings } from "@/sanity/lib/site-settings";
 
 function CallIcon() {
   return (
@@ -16,18 +16,19 @@ function WhatsAppIcon() {
   );
 }
 
-export function WhatsAppFloating() {
+export async function WhatsAppFloating() {
+  const settings = await getSiteSettings();
   const baseClass =
     "relative inline-flex h-14 w-14 items-center justify-center rounded-full border border-[rgba(201,155,71,.35)] bg-[var(--gold)] text-black shadow-[0_0_30px_rgba(201,155,71,.35)] transition hover:scale-105 motion-safe:animate-bounce motion-reduce:animate-none";
 
   return (
     <div className="fixed bottom-5 right-5 z-50 flex items-center gap-3">
-      <a href={siteConfig.phoneHref} aria-label="Call TrustFirst Solutions" className={baseClass}>
+      <a href={settings.phoneHref} aria-label={`Call ${settings.name}`} className={baseClass}>
         <span className="absolute inset-0 rounded-full bg-[var(--gold)] opacity-25 motion-safe:animate-ping motion-reduce:animate-none" />
         <CallIcon />
       </a>
 
-      <a href={siteConfig.whatsappHref} target="_blank" rel="noreferrer" aria-label="Chat on WhatsApp" className={baseClass}>
+      <a href={settings.whatsappHref} target="_blank" rel="noreferrer" aria-label="Chat on WhatsApp" className={baseClass}>
         <span className="absolute inset-0 rounded-full bg-[var(--gold)] opacity-30 motion-safe:animate-ping motion-reduce:animate-none" />
         <WhatsAppIcon />
       </a>
