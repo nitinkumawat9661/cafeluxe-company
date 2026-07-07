@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { PreviewBanner } from "@/components/preview/preview-banner";
 import { createSeoMetadata } from "@/lib/seo";
 import { getSiteSettings } from "@/sanity/lib/site-settings";
 import "./globals.css";
@@ -43,7 +44,10 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en-IN">
-      <body>{children}</body>
+      <body>
+        <PreviewBanner />
+        {children}
+      </body>
     </html>
   );
 }

@@ -1,6 +1,6 @@
 import { cache } from "react";
 import { siteConfig } from "@/lib/site";
-import { fetchSanity } from "@/sanity/lib/fetch";
+import { fetchSanityPreview } from "@/sanity/lib/fetch";
 import { urlForImage } from "@/sanity/lib/image";
 import { siteSettingsQuery } from "@/sanity/lib/queries";
 import type { SiteSettings } from "@/sanity/lib/types";
@@ -102,6 +102,6 @@ function resolveSiteSettings(settings?: SiteSettings | null): ResolvedSiteSettin
 }
 
 export const getSiteSettings = cache(async (): Promise<ResolvedSiteSettings> => {
-  const settings = await fetchSanity<SiteSettings>(siteSettingsQuery);
+  const settings = await fetchSanityPreview<SiteSettings>(siteSettingsQuery);
   return resolveSiteSettings(settings);
 });

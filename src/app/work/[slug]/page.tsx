@@ -3,8 +3,8 @@ import { CmsImage } from "@/components/cms/cms-image";
 import { PortableContent } from "@/components/cms/portable-content";
 import { InnerPageShell } from "@/components/inner-page-shell";
 import { createSeoMetadata } from "@/lib/seo";
-import { fetchSanity } from "@/sanity/lib/fetch";
-import { allCaseStudySlugsQuery, caseStudyBySlugQuery } from "@/sanity/lib/queries";
+import { fetchSanity, fetchSanityPreview } from "@/sanity/lib/fetch";
+import { allCaseStudySlugsQuery, caseStudyBySlugQuery, previewCaseStudyBySlugQuery } from "@/sanity/lib/queries";
 import { urlForImage } from "@/sanity/lib/image";
 import type { CaseStudy } from "@/sanity/lib/types";
 
@@ -28,7 +28,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: WorkDetailPageProps) {
   const { slug } = await params;
-  const study = await fetchSanity<CaseStudy>(caseStudyBySlugQuery, { slug });
+  const study = await fetchSanityPreview<CaseStudy>(caseStudyBySlugQuery, previewCaseStudyBySlugQuery, { slug });
 
   if (!study) {
     return await createSeoMetadata({
@@ -48,7 +48,7 @@ export async function generateMetadata({ params }: WorkDetailPageProps) {
 
 export default async function WorkDetailPage({ params }: WorkDetailPageProps) {
   const { slug } = await params;
-  const study = await fetchSanity<CaseStudy>(caseStudyBySlugQuery, { slug });
+  const study = await fetchSanityPreview<CaseStudy>(caseStudyBySlugQuery, previewCaseStudyBySlugQuery, { slug });
 
   if (!study) notFound();
 

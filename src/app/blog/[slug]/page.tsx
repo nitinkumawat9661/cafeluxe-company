@@ -3,8 +3,8 @@ import { CmsImage } from "@/components/cms/cms-image";
 import { PortableContent } from "@/components/cms/portable-content";
 import { InnerPageShell } from "@/components/inner-page-shell";
 import { createSeoMetadata } from "@/lib/seo";
-import { fetchSanity } from "@/sanity/lib/fetch";
-import { allBlogSlugsQuery, blogPostBySlugQuery } from "@/sanity/lib/queries";
+import { fetchSanity, fetchSanityPreview } from "@/sanity/lib/fetch";
+import { allBlogSlugsQuery, blogPostBySlugQuery, previewBlogPostBySlugQuery } from "@/sanity/lib/queries";
 import { urlForImage } from "@/sanity/lib/image";
 import type { BlogPost } from "@/sanity/lib/types";
 
@@ -33,7 +33,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: BlogDetailPageProps) {
   const { slug } = await params;
-  const post = await fetchSanity<BlogPost>(blogPostBySlugQuery, { slug });
+  const post = await fetchSanityPreview<BlogPost>(blogPostBySlugQuery, previewBlogPostBySlugQuery, { slug });
 
   if (!post) {
     return await createSeoMetadata({
@@ -53,7 +53,7 @@ export async function generateMetadata({ params }: BlogDetailPageProps) {
 
 export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
   const { slug } = await params;
-  const post = await fetchSanity<BlogPost>(blogPostBySlugQuery, { slug });
+  const post = await fetchSanityPreview<BlogPost>(blogPostBySlugQuery, previewBlogPostBySlugQuery, { slug });
 
   if (!post) notFound();
 

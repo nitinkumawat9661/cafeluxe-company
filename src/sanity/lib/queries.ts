@@ -17,6 +17,13 @@ export const blogPostBySlugQuery = groq`
   }
 `;
 
+export const previewBlogPostBySlugQuery = groq`
+  *[_type == "blogPost" && slug.current == $slug][0] {
+    _id, title, slug, excerpt, body, featuredImage, author, category, tags, publishedAt,
+    seoTitle, seoDescription, ogImage
+  }
+`;
+
 export const latestCaseStudiesQuery = groq`
   *[_type == "caseStudy" && status == "published" && defined(slug.current)] | order(publishedAt desc)[0...6] {
     _id, title, slug, clientName, industry, serviceType, summary, outcome, metrics, featuredImage, publishedAt
@@ -29,6 +36,14 @@ export const allCaseStudySlugsQuery = groq`
 
 export const caseStudyBySlugQuery = groq`
   *[_type == "caseStudy" && status == "published" && slug.current == $slug][0] {
+    _id, title, slug, clientName, industry, serviceType, summary, challenge, solution, outcome,
+    metrics, gallery, featuredImage, technologies, testimonial, publishedAt,
+    seoTitle, seoDescription, ogImage
+  }
+`;
+
+export const previewCaseStudyBySlugQuery = groq`
+  *[_type == "caseStudy" && slug.current == $slug][0] {
     _id, title, slug, clientName, industry, serviceType, summary, challenge, solution, outcome,
     metrics, gallery, featuredImage, technologies, testimonial, publishedAt,
     seoTitle, seoDescription, ogImage
@@ -48,6 +63,26 @@ export const allResourceSlugsQuery = groq`
 
 export const resourceBySlugQuery = groq`
   *[_type == "resource" && status == "published" && slug.current == $slug][0] {
+    _id, title, slug, excerpt, body, resourceType, featuredImage, category, author, publishedAt,
+    estimatedReadingTime, externalResourceUrl, attachmentPreviewImage,
+    "attachmentUrl": attachment.asset->url,
+    "attachmentName": attachment.asset->originalFilename,
+    seoTitle, seoDescription, ogImage,
+    "relatedResources": *[
+      _type == "resource" &&
+      status == "published" &&
+      defined(slug.current) &&
+      slug.current != $slug &&
+      category == ^.category
+    ] | order(publishedAt desc)[0...3] {
+      _id, title, slug, excerpt, resourceType, featuredImage, category, publishedAt,
+      estimatedReadingTime, externalResourceUrl, "attachmentUrl": attachment.asset->url
+    }
+  }
+`;
+
+export const previewResourceBySlugQuery = groq`
+  *[_type == "resource" && slug.current == $slug][0] {
     _id, title, slug, excerpt, body, resourceType, featuredImage, category, author, publishedAt,
     estimatedReadingTime, externalResourceUrl, attachmentPreviewImage,
     "attachmentUrl": attachment.asset->url,

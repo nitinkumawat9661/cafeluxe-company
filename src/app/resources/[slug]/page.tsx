@@ -5,8 +5,8 @@ import { ContentCard } from "@/components/cms/content-card";
 import { PortableContent } from "@/components/cms/portable-content";
 import { InnerPageShell } from "@/components/inner-page-shell";
 import { createSeoMetadata } from "@/lib/seo";
-import { fetchSanity } from "@/sanity/lib/fetch";
-import { allResourceSlugsQuery, resourceBySlugQuery } from "@/sanity/lib/queries";
+import { fetchSanity, fetchSanityPreview } from "@/sanity/lib/fetch";
+import { allResourceSlugsQuery, previewResourceBySlugQuery, resourceBySlugQuery } from "@/sanity/lib/queries";
 import { urlForImage } from "@/sanity/lib/image";
 import type { Resource } from "@/sanity/lib/types";
 
@@ -43,7 +43,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: ResourceDetailPageProps) {
   const { slug } = await params;
-  const resource = await fetchSanity<Resource>(resourceBySlugQuery, { slug });
+  const resource = await fetchSanityPreview<Resource>(resourceBySlugQuery, previewResourceBySlugQuery, { slug });
 
   if (!resource) {
     return await createSeoMetadata({
@@ -63,7 +63,7 @@ export async function generateMetadata({ params }: ResourceDetailPageProps) {
 
 export default async function ResourceDetailPage({ params }: ResourceDetailPageProps) {
   const { slug } = await params;
-  const resource = await fetchSanity<Resource>(resourceBySlugQuery, { slug });
+  const resource = await fetchSanityPreview<Resource>(resourceBySlugQuery, previewResourceBySlugQuery, { slug });
 
   if (!resource) notFound();
 

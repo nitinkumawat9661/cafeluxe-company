@@ -1,7 +1,9 @@
 import { dataset, projectId } from "@/sanity/env";
-import { sanityClient } from "@/sanity/lib/client";
+import { draftMode } from "next/headers";
+import { sanityClient, sanityPreviewClient } from "@/sanity/lib/client";
 
 export const hasSanityConfig = Boolean(projectId && projectId !== "placeholder" && dataset);
+export const hasSanityPreviewToken = Boolean(process.env.SANITY_API_READ_TOKEN);
 
 export async function fetchSanity<T>(query: string, params: Record<string, string> = {}): Promise<T | null> {
   if (!hasSanityConfig) return null;
@@ -10,6 +12,29 @@ export async function fetchSanity<T>(query: string, params: Record<string, strin
     return await sanityClient.fetch<T>(query, params, {
       next: { revalidate: 300 },
     });
+  } catch {
+    return null;
+  }
+}
+
+export async function isSanityPreviewEnabled() {
+  const draft = await draftMode();
+  return draft.isEnabled && hasSanityConfig && hasSanityPreviewToken;
+}
+
+export async function fetchSanityPreview<T>(
+  query: string,
+  previewQuery: string = query,
+  params: Record<string, string> = {},
+): Promise<T | null> {
+  if (!hasSanityConfig) return null;
+
+  const isPreview = await isSanityPreviewEnabled();
+  const client = isPreview ? sanityPreviewClient : sanityClient;
+  const activeQuery = isPreview ? previewQuery : query;
+
+  try {
+    return await client.fetch<T>(activeQuery, params, isPreview ? { cache: "no-store" } : { next: { revalidate: 300 } });
   } catch {
     return null;
   }

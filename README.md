@@ -16,7 +16,7 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-Sanity Studio is available at `/studio` after Sanity environment variables are configured.
+Sanity Studio is available at `/studio` after Sanity environment variables are configured. Draft preview is available through the secure `/api/draft/enable` endpoint when `SANITY_PREVIEW_SECRET` and `SANITY_API_READ_TOKEN` are set.
 
 ## CMS setup
 
