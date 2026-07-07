@@ -1,53 +1,67 @@
 import { ContentCard } from "@/components/cms/content-card";
+import { FilterBar } from "@/components/discovery/filter-bar";
+import { Pagination } from "@/components/discovery/pagination";
 import { InnerPageShell } from "@/components/inner-page-shell";
 import { RouteCard } from "@/components/route-card";
 import { routePageContent } from "@/lib/content";
+import {
+  buildHref,
+  getPageNumber,
+  getSearchParam,
+  paginateItems,
+  resourceToDiscoveryItem,
+  uniqueOptions,
+  type SearchParamsInput,
+} from "@/lib/discovery";
 import { createSeoMetadata } from "@/lib/seo";
-import { fetchSanity } from "@/sanity/lib/fetch";
-import { resourcesListQuery } from "@/sanity/lib/queries";
+import { fetchSanityPreview } from "@/sanity/lib/fetch";
+import { previewResourcesListQuery, resourcesListQuery } from "@/sanity/lib/queries";
 import type { Resource } from "@/sanity/lib/types";
 
-export async function generateMetadata() {
+type ResourcesPageProps = {
+  searchParams: Promise<SearchParamsInput>;
+};
+
+export async function generateMetadata({ searchParams }: ResourcesPageProps) {
+  const params = await searchParams;
   return createSeoMetadata({
     title: routePageContent.resources.title,
     description: routePageContent.resources.description,
-    path: "/resources",
+    path: buildHref("/resources", params, {}),
   });
 }
-
-function formatDate(date?: string) {
-  if (!date) return "";
-  return new Intl.DateTimeFormat("en-IN", { day: "numeric", month: "short", year: "numeric" }).format(new Date(date));
-}
-
-function compactStrings(items: Array<string | undefined>) {
-  return items.filter((item): item is string => Boolean(item));
-}
-
-function resourceBadges(resource: Resource) {
-  return compactStrings([
-    resource.estimatedReadingTime ? `${resource.estimatedReadingTime} min read` : undefined,
-    resource.attachmentUrl ? "Download" : undefined,
-    resource.externalResourceUrl ? "External" : undefined,
-  ]);
-}
-
-export default async function ResourcesPage() {
-  const resources = (await fetchSanity<Resource[]>(resourcesListQuery)) ?? [];
+export default async function ResourcesPage({ searchParams }: ResourcesPageProps) {
+  const params = await searchParams;
+  const category = getSearchParam(params, "category");
+  const resourceType = getSearchParam(params, "resourceType");
+  const resources = (await fetchSanityPreview<Resource[]>(resourcesListQuery, previewResourcesListQuery)) ?? [];
+  const filtered = resources.filter((resource) => {
+    const categoryMatch = !category || resource.category === category;
+    const typeMatch = !resourceType || resource.resourceType === resourceType;
+    return categoryMatch && typeMatch;
+  });
+  const pagination = paginateItems(filtered.map(resourceToDiscoveryItem), getPageNumber(params));
 
   return (
     <InnerPageShell eyebrow="Resources" title="Guides and planning resources." description={routePageContent.resources.description}>
+      <FilterBar
+        action="/resources"
+        filters={[
+          { label: "Category", name: "category", value: category, options: uniqueOptions(resources.map((resource) => resource.category)) },
+          { label: "Resource Type", name: "resourceType", value: resourceType, options: uniqueOptions(resources.map((resource) => resource.resourceType)) },
+        ]}
+      />
       <section className="mx-auto grid max-w-6xl gap-4 px-5 pb-16 md:grid-cols-3 md:px-6">
-        {resources.length > 0 ? (
-          resources.map((resource) => (
+        {pagination.items.length > 0 ? (
+          pagination.items.map((resource) => (
             <ContentCard
-              key={resource._id}
-              href={`/resources/${resource.slug?.current}`}
-              title={resource.title || "Untitled resource"}
-              description={resource.excerpt || "Open this TrustFirst resource."}
-              image={resource.featuredImage}
-              meta={compactStrings([resource.category, resource.resourceType, formatDate(resource.publishedAt)])}
-              badges={resourceBadges(resource)}
+              key={resource.id}
+              href={resource.href}
+              title={resource.title}
+              description={resource.description}
+              image={resource.image}
+              meta={resource.meta}
+              badges={resource.badges}
             />
           ))
         ) : (
@@ -57,6 +71,7 @@ export default async function ResourcesPage() {
           />
         )}
       </section>
+      <Pagination pathname="/resources" params={params} page={pagination.page} totalPages={pagination.totalPages} />
     </InnerPageShell>
   );
 }

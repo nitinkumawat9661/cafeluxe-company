@@ -5,7 +5,9 @@ import { sanityClient, sanityPreviewClient } from "@/sanity/lib/client";
 export const hasSanityConfig = Boolean(projectId && projectId !== "placeholder" && dataset);
 export const hasSanityPreviewToken = Boolean(process.env.SANITY_API_READ_TOKEN);
 
-export async function fetchSanity<T>(query: string, params: Record<string, string> = {}): Promise<T | null> {
+type SanityParams = Record<string, string | number | boolean | null | undefined>;
+
+export async function fetchSanity<T>(query: string, params: SanityParams = {}): Promise<T | null> {
   if (!hasSanityConfig) return null;
 
   try {
@@ -25,7 +27,7 @@ export async function isSanityPreviewEnabled() {
 export async function fetchSanityPreview<T>(
   query: string,
   previewQuery: string = query,
-  params: Record<string, string> = {},
+  params: SanityParams = {},
 ): Promise<T | null> {
   if (!hasSanityConfig) return null;
 

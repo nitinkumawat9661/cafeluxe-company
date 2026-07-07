@@ -6,6 +6,18 @@ export const latestBlogPostsQuery = groq`
   }
 `;
 
+export const blogDiscoveryQuery = groq`
+  *[_type == "blogPost" && status == "published" && defined(slug.current)] | order(publishedAt desc) {
+    _id, title, slug, excerpt, featuredImage, author, category, tags, publishedAt
+  }
+`;
+
+export const previewBlogDiscoveryQuery = groq`
+  *[_type == "blogPost" && defined(slug.current)] | order(coalesce(publishedAt, _updatedAt) desc) {
+    _id, title, slug, excerpt, featuredImage, author, category, tags, publishedAt
+  }
+`;
+
 export const allBlogSlugsQuery = groq`
   *[_type == "blogPost" && status == "published" && defined(slug.current)] { "slug": slug.current }
 `;
@@ -27,6 +39,18 @@ export const previewBlogPostBySlugQuery = groq`
 export const latestCaseStudiesQuery = groq`
   *[_type == "caseStudy" && status == "published" && defined(slug.current)] | order(publishedAt desc)[0...6] {
     _id, title, slug, clientName, industry, serviceType, summary, outcome, metrics, featuredImage, publishedAt
+  }
+`;
+
+export const caseStudyDiscoveryQuery = groq`
+  *[_type == "caseStudy" && status == "published" && defined(slug.current)] | order(publishedAt desc) {
+    _id, title, slug, clientName, industry, serviceType, summary, outcome, metrics, featuredImage, technologies, publishedAt
+  }
+`;
+
+export const previewCaseStudyDiscoveryQuery = groq`
+  *[_type == "caseStudy" && defined(slug.current)] | order(coalesce(publishedAt, _updatedAt) desc) {
+    _id, title, slug, clientName, industry, serviceType, summary, outcome, metrics, featuredImage, technologies, publishedAt
   }
 `;
 
@@ -52,6 +76,13 @@ export const previewCaseStudyBySlugQuery = groq`
 
 export const resourcesListQuery = groq`
   *[_type == "resource" && status == "published" && defined(slug.current)] | order(publishedAt desc) {
+    _id, title, slug, excerpt, resourceType, featuredImage, category, publishedAt,
+    estimatedReadingTime, externalResourceUrl, "attachmentUrl": attachment.asset->url
+  }
+`;
+
+export const previewResourcesListQuery = groq`
+  *[_type == "resource" && defined(slug.current)] | order(coalesce(publishedAt, _updatedAt) desc) {
     _id, title, slug, excerpt, resourceType, featuredImage, category, publishedAt,
     estimatedReadingTime, externalResourceUrl, "attachmentUrl": attachment.asset->url
   }
@@ -104,7 +135,20 @@ export const previewResourceBySlugQuery = groq`
 export const serviceListQuery = groq`
   *[_type == "service" && published == true && defined(slug.current)] | order(coalesce(displayOrder, 999) asc, title asc) {
     _id, title, slug, shortDescription, heroImage, icon, serviceCategory,
-    featured, displayOrder, ctaLabel, ctaHref
+    featured, displayOrder, ctaLabel, ctaHref, technologies
+  }
+`;
+
+export const previewServiceListQuery = groq`
+  *[_type == "service" && defined(slug.current)] | order(coalesce(displayOrder, 999) asc, title asc) {
+    _id, title, slug, shortDescription, heroImage, icon, serviceCategory,
+    featured, displayOrder, ctaLabel, ctaHref, technologies
+  }
+`;
+
+export const rssBlogPostsQuery = groq`
+  *[_type == "blogPost" && status == "published" && defined(slug.current)] | order(publishedAt desc)[0...30] {
+    _id, title, slug, excerpt, publishedAt
   }
 `;
 
