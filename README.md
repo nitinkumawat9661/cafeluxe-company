@@ -1,4 +1,4 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+This is the TrustFirst Solutions company website built with Next.js, TypeScript, Tailwind, App Router and Vercel.
 
 ## Getting Started
 
@@ -16,9 +16,11 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Sanity Studio is available at `/studio` after Sanity environment variables are configured.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## CMS setup
+
+See [docs/cms-setup.md](docs/cms-setup.md) for Sanity project setup, required environment variables, `/studio` access, publishing flow and image guidance.
 
 ## Learn More
 
