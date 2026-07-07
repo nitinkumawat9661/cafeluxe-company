@@ -53,3 +53,25 @@ export type CaseStudy = {
   seoDescription?: string;
   ogImage?: SanityImage;
 };
+
+export type Resource = {
+  _id: string;
+  title?: string;
+  slug?: SanitySlug;
+  excerpt?: string;
+  body?: PortableTextBlock[];
+  resourceType?: string;
+  featuredImage?: SanityImage;
+  category?: string;
+  author?: string;
+  publishedAt?: string;
+  estimatedReadingTime?: number;
+  attachmentUrl?: string;
+  attachmentName?: string;
+  attachmentPreviewImage?: SanityImage;
+  externalResourceUrl?: string;
+  relatedResources?: Resource[];
+  seoTitle?: string;
+  seoDescription?: string;
+  ogImage?: SanityImage;
+};

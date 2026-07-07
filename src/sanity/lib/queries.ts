@@ -36,8 +36,33 @@ export const caseStudyBySlugQuery = groq`
 `;
 
 export const resourcesListQuery = groq`
-  *[_type == "resource" && status == "published"] | order(publishedAt desc) {
-    _id, title, slug, excerpt, resourceType, featuredImage, category, publishedAt
+  *[_type == "resource" && status == "published" && defined(slug.current)] | order(publishedAt desc) {
+    _id, title, slug, excerpt, resourceType, featuredImage, category, publishedAt,
+    estimatedReadingTime, externalResourceUrl, "attachmentUrl": attachment.asset->url
+  }
+`;
+
+export const allResourceSlugsQuery = groq`
+  *[_type == "resource" && status == "published" && defined(slug.current)] { "slug": slug.current }
+`;
+
+export const resourceBySlugQuery = groq`
+  *[_type == "resource" && status == "published" && slug.current == $slug][0] {
+    _id, title, slug, excerpt, body, resourceType, featuredImage, category, author, publishedAt,
+    estimatedReadingTime, externalResourceUrl, attachmentPreviewImage,
+    "attachmentUrl": attachment.asset->url,
+    "attachmentName": attachment.asset->originalFilename,
+    seoTitle, seoDescription, ogImage,
+    "relatedResources": *[
+      _type == "resource" &&
+      status == "published" &&
+      defined(slug.current) &&
+      slug.current != $slug &&
+      category == ^.category
+    ] | order(publishedAt desc)[0...3] {
+      _id, title, slug, excerpt, resourceType, featuredImage, category, publishedAt,
+      estimatedReadingTime, externalResourceUrl, "attachmentUrl": attachment.asset->url
+    }
   }
 `;
 
