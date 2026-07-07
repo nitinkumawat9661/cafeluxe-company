@@ -1,27 +1,3 @@
-export const serviceCards = [
-  {
-    title: "Websites",
-    href: "/services/websites",
-    description:
-      "Premium business websites built for trust, clear messaging, lead capture and strong mobile performance.",
-    points: ["Landing pages", "Business websites", "SEO-ready structure"],
-  },
-  {
-    title: "Web Apps",
-    href: "/services/web-apps",
-    description:
-      "Browser-based tools, dashboards and customer-facing apps that help teams operate with more clarity.",
-    points: ["Client portals", "Admin screens", "Interactive workflows"],
-  },
-  {
-    title: "Custom Software",
-    href: "/services/custom-software",
-    description:
-      "Practical digital systems for business workflows, internal operations and custom data management.",
-    points: ["Workflow systems", "Dashboards", "Automation support"],
-  },
-];
-
 export const routePageContent = {
   services: {
     title: "Services",

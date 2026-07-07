@@ -60,7 +60,7 @@ Sanity may ask you to log in and allow the local URL as a CORS origin.
 7. Set `Status` to `Published`.
 8. Fill SEO title, SEO description and OG image when available.
 
-Public blog pages are not connected to CMS content yet. This Phase 2 setup only creates the admin foundation and query helpers.
+Published Blog Posts, Case Studies, Resources and Services are shown on the public website when their required fields are filled and their publish controls are enabled.
 
 ## 5. Publish and unpublish content
 
@@ -87,6 +87,7 @@ Local preview workflow:
 http://localhost:3000/api/draft/enable?secret=YOUR_SECRET&slug=/blog/your-post-slug
 http://localhost:3000/api/draft/enable?secret=YOUR_SECRET&slug=/work/your-case-study-slug
 http://localhost:3000/api/draft/enable?secret=YOUR_SECRET&slug=/resources/your-resource-slug
+http://localhost:3000/api/draft/enable?secret=YOUR_SECRET&slug=/services/your-service-slug
 ```
 
 Production preview workflow:

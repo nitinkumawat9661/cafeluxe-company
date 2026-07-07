@@ -102,8 +102,49 @@ export const previewResourceBySlugQuery = groq`
 `;
 
 export const serviceListQuery = groq`
-  *[_type == "service" && published == true] | order(title asc) {
-    _id, title, slug, shortDescription, heroImage, ctaLabel
+  *[_type == "service" && published == true && defined(slug.current)] | order(coalesce(displayOrder, 999) asc, title asc) {
+    _id, title, slug, shortDescription, heroImage, icon, serviceCategory,
+    featured, displayOrder, ctaLabel, ctaHref
+  }
+`;
+
+export const allServiceSlugsQuery = groq`
+  *[_type == "service" && published == true && defined(slug.current)] { "slug": slug.current }
+`;
+
+export const serviceBySlugQuery = groq`
+  *[_type == "service" && published == true && slug.current == $slug][0] {
+    _id, title, slug, shortDescription, fullDescription, heroImage, icon, serviceCategory,
+    features, benefits, deliverables, processSteps, process, technologies, faqs,
+    featured, displayOrder, ctaTitle, ctaDescription, ctaLabel, ctaHref,
+    seoTitle, seoDescription, ogImage,
+    "relatedServices": *[
+      _type == "service" &&
+      published == true &&
+      defined(slug.current) &&
+      slug.current != $slug
+    ] | order(coalesce(displayOrder, 999) asc, title asc)[0...3] {
+      _id, title, slug, shortDescription, heroImage, icon, serviceCategory,
+      featured, displayOrder, ctaLabel, ctaHref
+    }
+  }
+`;
+
+export const previewServiceBySlugQuery = groq`
+  *[_type == "service" && slug.current == $slug][0] {
+    _id, title, slug, shortDescription, fullDescription, heroImage, icon, serviceCategory,
+    features, benefits, deliverables, processSteps, process, technologies, faqs,
+    featured, displayOrder, ctaTitle, ctaDescription, ctaLabel, ctaHref,
+    seoTitle, seoDescription, ogImage,
+    "relatedServices": *[
+      _type == "service" &&
+      published == true &&
+      defined(slug.current) &&
+      slug.current != $slug
+    ] | order(coalesce(displayOrder, 999) asc, title asc)[0...3] {
+      _id, title, slug, shortDescription, heroImage, icon, serviceCategory,
+      featured, displayOrder, ctaLabel, ctaHref
+    }
   }
 `;
 

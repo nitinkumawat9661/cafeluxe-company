@@ -76,6 +76,44 @@ export type Resource = {
   ogImage?: SanityImage;
 };
 
+export type ServiceProcessStep = {
+  title?: string;
+  description?: string;
+};
+
+export type ServiceFaq = {
+  question?: string;
+  answer?: string;
+};
+
+export type Service = {
+  _id: string;
+  title?: string;
+  slug?: SanitySlug;
+  shortDescription?: string;
+  fullDescription?: PortableTextBlock[];
+  heroImage?: SanityImage;
+  icon?: string;
+  serviceCategory?: string;
+  features?: string[];
+  benefits?: string[];
+  deliverables?: string[];
+  processSteps?: string[];
+  process?: ServiceProcessStep[];
+  technologies?: string[];
+  faqs?: ServiceFaq[];
+  featured?: boolean;
+  displayOrder?: number;
+  ctaTitle?: string;
+  ctaDescription?: string;
+  ctaLabel?: string;
+  ctaHref?: string;
+  relatedServices?: Service[];
+  seoTitle?: string;
+  seoDescription?: string;
+  ogImage?: SanityImage;
+};
+
 export type SocialLink = {
   label?: string;
   url?: string;
