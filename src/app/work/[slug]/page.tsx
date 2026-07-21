@@ -2,20 +2,18 @@ import { notFound } from "next/navigation";
 import { CmsImage } from "@/components/cms/cms-image";
 import { PortableContent } from "@/components/cms/portable-content";
 import { InnerPageShell } from "@/components/inner-page-shell";
-import { createSeoMetadata } from "@/lib/seo";
+import { Breadcrumbs } from "@/components/seo/breadcrumbs";
+import { JsonLdScript } from "@/components/seo/json-ld-script";
+import { absoluteUrl, createSeoMetadata } from "@/lib/seo";
+import { caseStudySchema } from "@/lib/seo/structured-data";
 import { fetchSanity, fetchSanityPreview } from "@/sanity/lib/fetch";
 import { allCaseStudySlugsQuery, caseStudyBySlugQuery, previewCaseStudyBySlugQuery } from "@/sanity/lib/queries";
-import { urlForImage } from "@/sanity/lib/image";
+import { getSiteSettings } from "@/sanity/lib/site-settings";
 import type { CaseStudy } from "@/sanity/lib/types";
 
 type WorkDetailPageProps = {
   params: Promise<{ slug: string }>;
 };
-
-function imageUrl(image?: CaseStudy["ogImage"]) {
-  if (!image?.asset?._ref) return undefined;
-  return urlForImage(image).width(1200).height(630).fit("crop").auto("format").url();
-}
 
 function compactStrings(items: Array<string | undefined>) {
   return items.filter((item): item is string => Boolean(item));
@@ -42,13 +40,15 @@ export async function generateMetadata({ params }: WorkDetailPageProps) {
     title: study.seoTitle || study.title || "Work",
     description: study.seoDescription || study.summary || "TrustFirst Solutions case study.",
     path: `/work/${slug}`,
-    image: imageUrl(study.ogImage || study.featuredImage),
+    image: absoluteUrl(`/work/${slug}/opengraph-image`),
+    imageAlt: study.title,
   });
 }
 
 export default async function WorkDetailPage({ params }: WorkDetailPageProps) {
   const { slug } = await params;
   const study = await fetchSanityPreview<CaseStudy>(caseStudyBySlugQuery, previewCaseStudyBySlugQuery, { slug });
+  const settings = await getSiteSettings();
 
   if (!study) notFound();
 
@@ -58,6 +58,14 @@ export default async function WorkDetailPage({ params }: WorkDetailPageProps) {
 
   return (
     <InnerPageShell eyebrow="Work" title={study.title || "Untitled case study"} description={study.summary || "TrustFirst Solutions case study."}>
+      <Breadcrumbs
+        items={[
+          { label: "Home", href: "/" },
+          { label: "Work", href: "/work" },
+          { label: study.title || "Case Study", href: `/work/${slug}` },
+        ]}
+      />
+      <JsonLdScript data={caseStudySchema(study, settings, `/work/${slug}`)} />
       <article className="mx-auto max-w-5xl px-5 pb-16 md:px-6">
         {meta.length > 0 && (
           <div className="mb-6 flex flex-wrap gap-2">

@@ -152,6 +152,21 @@ export const rssBlogPostsQuery = groq`
   }
 `;
 
+export const sitemapContentQuery = groq`{
+  "blog": *[_type == "blogPost" && status == "published" && defined(slug.current)] {
+    "slug": slug.current, "lastModified": coalesce(publishedAt, _updatedAt)
+  },
+  "work": *[_type == "caseStudy" && status == "published" && defined(slug.current)] {
+    "slug": slug.current, "lastModified": coalesce(publishedAt, _updatedAt)
+  },
+  "resources": *[_type == "resource" && status == "published" && defined(slug.current)] {
+    "slug": slug.current, "lastModified": coalesce(publishedAt, _updatedAt)
+  },
+  "services": *[_type == "service" && published == true && defined(slug.current)] {
+    "slug": slug.current, "lastModified": _updatedAt
+  }
+}`;
+
 export const allServiceSlugsQuery = groq`
   *[_type == "service" && published == true && defined(slug.current)] { "slug": slug.current }
 `;

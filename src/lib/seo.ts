@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { draftMode } from "next/headers";
 import { siteConfig } from "@/lib/site";
 import { getSiteSettings } from "@/sanity/lib/site-settings";
 
@@ -7,14 +8,17 @@ type SeoInput = {
   description?: string;
   path?: string;
   image?: string;
+  imageAlt?: string;
+  type?: "website" | "article";
 };
 
 export function absoluteUrl(path = "/", baseUrl = siteConfig.url) {
   return new URL(path, baseUrl).toString();
 }
 
-export async function createSeoMetadata({ title, description, path = "/", image }: SeoInput): Promise<Metadata> {
+export async function createSeoMetadata({ title, description, path = "/", image, imageAlt, type = "website" }: SeoInput): Promise<Metadata> {
   const settings = await getSiteSettings();
+  const draft = await draftMode();
   const url = absoluteUrl(path, settings.url);
   const resolvedTitle = title || settings.defaultSeoTitle || siteConfig.name;
   const resolvedDescription = description || settings.defaultSeoDescription || siteConfig.description;
@@ -23,7 +27,7 @@ export async function createSeoMetadata({ title, description, path = "/", image 
       ? resolvedTitle
       : `${resolvedTitle} | ${settings.name}`;
   const resolvedImage = image || settings.defaultOgImageUrl;
-  const images = resolvedImage ? [{ url: resolvedImage }] : undefined;
+  const images = resolvedImage ? [{ url: resolvedImage, alt: imageAlt || pageTitle }] : undefined;
 
   return {
     title: pageTitle,
@@ -36,7 +40,7 @@ export async function createSeoMetadata({ title, description, path = "/", image 
       description: resolvedDescription,
       url,
       siteName: settings.name,
-      type: "website",
+      type,
       locale: "en_IN",
       images,
     },
@@ -45,6 +49,17 @@ export async function createSeoMetadata({ title, description, path = "/", image 
       title: pageTitle,
       description: resolvedDescription,
       images: resolvedImage ? [resolvedImage] : undefined,
+      site: settings.name,
     },
+    robots: draft.isEnabled
+      ? {
+          index: false,
+          follow: false,
+          googleBot: {
+            index: false,
+            follow: false,
+          },
+        }
+      : undefined,
   };
 }

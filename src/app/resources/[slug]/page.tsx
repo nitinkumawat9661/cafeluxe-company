@@ -4,10 +4,13 @@ import { CmsImage } from "@/components/cms/cms-image";
 import { ContentCard } from "@/components/cms/content-card";
 import { PortableContent } from "@/components/cms/portable-content";
 import { InnerPageShell } from "@/components/inner-page-shell";
-import { createSeoMetadata } from "@/lib/seo";
+import { Breadcrumbs } from "@/components/seo/breadcrumbs";
+import { JsonLdScript } from "@/components/seo/json-ld-script";
+import { absoluteUrl, createSeoMetadata } from "@/lib/seo";
+import { resourceSchema } from "@/lib/seo/structured-data";
 import { fetchSanity, fetchSanityPreview } from "@/sanity/lib/fetch";
 import { allResourceSlugsQuery, previewResourceBySlugQuery, resourceBySlugQuery } from "@/sanity/lib/queries";
-import { urlForImage } from "@/sanity/lib/image";
+import { getSiteSettings } from "@/sanity/lib/site-settings";
 import type { Resource } from "@/sanity/lib/types";
 
 type ResourceDetailPageProps = {
@@ -21,11 +24,6 @@ function formatDate(date?: string) {
 
 function compactStrings(items: Array<string | undefined>) {
   return items.filter((item): item is string => Boolean(item));
-}
-
-function imageUrl(image?: Resource["ogImage"]) {
-  if (!image?.asset?._ref) return undefined;
-  return urlForImage(image).width(1200).height(630).fit("crop").auto("format").url();
 }
 
 function resourceBadges(resource: Resource) {
@@ -57,13 +55,16 @@ export async function generateMetadata({ params }: ResourceDetailPageProps) {
     title: resource.seoTitle || resource.title || "Resources",
     description: resource.seoDescription || resource.excerpt || "TrustFirst Solutions resource.",
     path: `/resources/${slug}`,
-    image: imageUrl(resource.ogImage || resource.featuredImage),
+    image: absoluteUrl(`/resources/${slug}/opengraph-image`),
+    imageAlt: resource.title,
+    type: "article",
   });
 }
 
 export default async function ResourceDetailPage({ params }: ResourceDetailPageProps) {
   const { slug } = await params;
   const resource = await fetchSanityPreview<Resource>(resourceBySlugQuery, previewResourceBySlugQuery, { slug });
+  const settings = await getSiteSettings();
 
   if (!resource) notFound();
 
@@ -82,6 +83,14 @@ export default async function ResourceDetailPage({ params }: ResourceDetailPageP
       title={resource.title || "Untitled resource"}
       description={resource.excerpt || "TrustFirst Solutions resource."}
     >
+      <Breadcrumbs
+        items={[
+          { label: "Home", href: "/" },
+          { label: "Resources", href: "/resources" },
+          { label: resource.title || "Resource", href: `/resources/${slug}` },
+        ]}
+      />
+      <JsonLdScript data={resourceSchema(resource, settings, `/resources/${slug}`)} />
       <article className="mx-auto max-w-4xl px-5 pb-16 md:px-6">
         {meta.length > 0 && (
           <div className="mb-6 flex flex-wrap gap-2">

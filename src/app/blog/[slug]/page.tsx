@@ -2,10 +2,13 @@ import { notFound } from "next/navigation";
 import { CmsImage } from "@/components/cms/cms-image";
 import { PortableContent } from "@/components/cms/portable-content";
 import { InnerPageShell } from "@/components/inner-page-shell";
-import { createSeoMetadata } from "@/lib/seo";
+import { Breadcrumbs } from "@/components/seo/breadcrumbs";
+import { JsonLdScript } from "@/components/seo/json-ld-script";
+import { absoluteUrl, createSeoMetadata } from "@/lib/seo";
+import { blogArticleSchema } from "@/lib/seo/structured-data";
 import { fetchSanity, fetchSanityPreview } from "@/sanity/lib/fetch";
 import { allBlogSlugsQuery, blogPostBySlugQuery, previewBlogPostBySlugQuery } from "@/sanity/lib/queries";
-import { urlForImage } from "@/sanity/lib/image";
+import { getSiteSettings } from "@/sanity/lib/site-settings";
 import type { BlogPost } from "@/sanity/lib/types";
 
 type BlogDetailPageProps = {
@@ -19,11 +22,6 @@ function formatDate(date?: string) {
 
 function compactStrings(items: Array<string | undefined>) {
   return items.filter((item): item is string => Boolean(item));
-}
-
-function imageUrl(image?: BlogPost["ogImage"]) {
-  if (!image?.asset?._ref) return undefined;
-  return urlForImage(image).width(1200).height(630).fit("crop").auto("format").url();
 }
 
 export async function generateStaticParams() {
@@ -47,13 +45,16 @@ export async function generateMetadata({ params }: BlogDetailPageProps) {
     title: post.seoTitle || post.title || "Blog",
     description: post.seoDescription || post.excerpt || "TrustFirst Solutions blog.",
     path: `/blog/${slug}`,
-    image: imageUrl(post.ogImage || post.featuredImage),
+    image: absoluteUrl(`/blog/${slug}/opengraph-image`),
+    imageAlt: post.title,
+    type: "article",
   });
 }
 
 export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
   const { slug } = await params;
   const post = await fetchSanityPreview<BlogPost>(blogPostBySlugQuery, previewBlogPostBySlugQuery, { slug });
+  const settings = await getSiteSettings();
 
   if (!post) notFound();
 
@@ -61,6 +62,14 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
 
   return (
     <InnerPageShell eyebrow="Blog" title={post.title || "Untitled post"} description={post.excerpt || "TrustFirst Solutions insight."}>
+      <Breadcrumbs
+        items={[
+          { label: "Home", href: "/" },
+          { label: "Blog", href: "/blog" },
+          { label: post.title || "Post", href: `/blog/${slug}` },
+        ]}
+      />
+      <JsonLdScript data={blogArticleSchema(post, settings, `/blog/${slug}`)} />
       <article className="mx-auto max-w-4xl px-5 pb-16 md:px-6">
         {meta.length > 0 && (
           <div className="mb-6 flex flex-wrap gap-2">

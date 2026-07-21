@@ -134,3 +134,15 @@ export type SiteSettings = {
   defaultOgImage?: SanityImage;
   favicon?: SanityImage;
 };
+
+export type SitemapContentItem = {
+  slug: string;
+  lastModified?: string;
+};
+
+export type SitemapContent = {
+  blog?: SitemapContentItem[];
+  work?: SitemapContentItem[];
+  resources?: SitemapContentItem[];
+  services?: SitemapContentItem[];
+};
