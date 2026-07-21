@@ -1,5 +1,6 @@
 ﻿"use client";
 
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
 export function SplashIntro() {
@@ -27,16 +28,16 @@ export function SplashIntro() {
       ].join(" ")}
     >
       <div className="w-full max-w-[96vw] px-6 text-center">
-        <div className="mx-auto grid h-16 w-16 place-items-center rounded-2xl border border-[rgba(201,155,71,.45)] bg-[rgba(201,155,71,.1)] text-lg font-black text-[var(--gold)] shadow-[0_0_45px_rgba(201,155,71,.18)]">
-          TF
+        <div className="mx-auto grid h-16 w-16 place-items-center overflow-hidden rounded-2xl border border-[rgba(201,155,71,.45)] bg-[rgba(201,155,71,.1)] shadow-[0_0_45px_rgba(201,155,71,.18)]">
+          <Image src="/trustfirst-logo-original.png" alt="" width={64} height={64} className="h-full w-full object-cover" priority />
         </div>
 
-        <h1 className="mt-6 whitespace-nowrap px-2 text-center text-[clamp(1.9rem,10.5vw,5rem)] font-black leading-none tracking-[-0.045em]">
+        <div className="mt-6 whitespace-nowrap px-2 text-center text-[clamp(1.9rem,10.5vw,5rem)] font-black leading-none tracking-[-0.045em]">
           <span className="bg-[linear-gradient(90deg,#fff7df,#c99b47,#fff2c2)] bg-clip-text text-transparent">
             Trust
           </span>
           <span className="text-[#f8efd9]">First</span>
-        </h1>
+        </div>
 
         <p className="mt-4 text-xs font-black uppercase tracking-[.36em] text-[var(--gold)]">
           Solutions

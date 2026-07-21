@@ -9,6 +9,7 @@ import {
   serviceListQuery,
 } from "@/sanity/lib/queries";
 import { fetchSanityPreview } from "@/sanity/lib/fetch";
+import { growthServiceFallbacks } from "@/lib/service-fallbacks";
 import type { BlogPost, CaseStudy, Resource, SanityImage, Service } from "@/sanity/lib/types";
 
 export const DISCOVERY_PAGE_SIZE = 6;
@@ -125,11 +126,18 @@ export async function getDiscoveryData(): Promise<DiscoveryData> {
     fetchSanityPreview<Service[]>(serviceListQuery, previewServiceListQuery),
   ]);
 
+  const cmsServices = services ?? [];
+  const cmsSlugs = new Set(cmsServices.map((service) => service.slug?.current).filter(Boolean));
+  const legacySlugs = new Set(["web-apps", "custom-software"]);
+
   return {
     blog: blog ?? [],
     work: work ?? [],
     resources: resources ?? [],
-    services: services ?? [],
+    services: [
+      ...cmsServices.filter((service) => !legacySlugs.has(service.slug?.current || "")),
+      ...growthServiceFallbacks.filter((service) => !cmsSlugs.has(service.slug?.current)),
+    ],
   };
 }
 
@@ -156,7 +164,7 @@ export function workToDiscoveryItem(study: CaseStudy): DiscoveryItem {
     id: study._id,
     type: "Case Study",
     title: study.title || "Untitled case study",
-    description: study.summary || "Read the TrustFirst project story.",
+    description: study.summary || "Read the TrustFirst growth story.",
     href: `/work/${study.slug?.current}`,
     image: study.featuredImage,
     meta: compactStrings([study.clientName, study.industry, study.serviceType]),

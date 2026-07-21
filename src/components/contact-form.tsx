@@ -29,7 +29,7 @@ function LeadForm() {
     if (!message || message.length < 20) return setStatus("Please write at least 20 characters.");
 
     const text =
-      `New project inquiry%0A%0A` +
+      `New growth audit inquiry%0A%0A` +
       `Name: ${name}%0A` +
       `Phone: ${phone}%0A` +
       `Business: ${business || "Not provided"}%0A` +
@@ -52,28 +52,33 @@ function LeadForm() {
 
         <select required name="service" className="contact-input">
           <option value="">Service needed *</option>
-          <option>Business website</option>
-          <option>Restaurant POS / QR ordering</option>
-          <option>Admin dashboard</option>
-          <option>App / custom software</option>
+          <option>Free Digital Growth Audit</option>
+          <option>Meta Ads</option>
+          <option>Google Ads</option>
+          <option>Social Media Management</option>
+          <option>SEO</option>
+          <option>Google Business Profile</option>
+          <option>Website / Landing Page</option>
+          <option>Lead Generation</option>
+          <option>Automation & Follow-up</option>
           <option>Other</option>
         </select>
 
         <input maxLength={30} name="budget" placeholder="Estimated budget, example: Rs. 15000" className="contact-input md:col-span-2" />
       </div>
 
-      <textarea required minLength={20} maxLength={400} name="message" rows={4} placeholder="Project details *" className="contact-input resize-none" />
+      <textarea required minLength={20} maxLength={400} name="message" rows={4} placeholder="Short business challenge *" className="contact-input resize-none" />
 
       <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
         <div className="max-w-2xl">
           <p className="text-sm font-black text-[#1a140d]">Your idea stays private.</p>
           <p className="mt-1 text-sm leading-6 text-[#6f6658]">
-            Your business idea, workflow and project details are not shared or disclosed.
+            Your business context, growth challenge and enquiry details are not shared or disclosed.
           </p>
         </div>
 
         <button type="submit" className="inline-flex min-w-[220px] items-center justify-center rounded-full bg-[#0b0704] px-7 py-3 text-sm font-black text-[var(--cream)]">
-          Send inquiry
+          Send audit request
         </button>
       </div>
 
@@ -88,7 +93,7 @@ export function ContactForm() {
   return (
     <>
 <button onClick={() => setOpen(true)} className="fixed bottom-5 right-5 z-[9999] rounded-full bg-[var(--cream)] px-5 py-3 text-sm font-black text-[#0b0704] shadow-2xl">
-        Start inquiry
+        Free audit
       </button>
 
       {open && (
@@ -96,8 +101,8 @@ export function ContactForm() {
           <div className="cream-panel w-full max-w-2xl rounded-[1.7rem] p-5 md:p-6">
             <div className="flex items-start justify-between gap-4">
               <div>
-                <p className="text-xs font-black uppercase tracking-[.28em] text-[#7b5a1b]">Quick inquiry</p>
-                <h3 className="mt-2 text-2xl font-black text-[#0b0704]">Start your project.</h3>
+                <p className="text-xs font-black uppercase tracking-[.28em] text-[#7b5a1b]">Quick audit</p>
+                <h3 className="mt-2 text-2xl font-black text-[#0b0704]">Request a growth audit.</h3>
               </div>
               <button onClick={() => setOpen(false)} className="rounded-full bg-[#0b0704] px-4 py-2 text-sm font-black text-[var(--cream)]">
                 Close

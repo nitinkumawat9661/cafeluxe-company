@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowUpRight, Mail, MapPin, MessageCircle, PhoneCall } from "lucide-react";
 import { footerGroups } from "@/lib/routes";
 import { getSiteSettings } from "@/sanity/lib/site-settings";
@@ -8,14 +9,19 @@ export async function SiteFooter() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-white/10 px-5 py-10 md:px-6">
-      <div className="mx-auto grid max-w-6xl gap-8 text-sm text-[#d6c8ae] md:grid-cols-[1.3fr_repeat(4,1fr)]">
+    <footer className="border-t border-white/10 px-5 pb-28 pt-10 md:px-6 md:pb-10">
+      <div className="mx-auto grid max-w-6xl gap-8 text-sm text-[#d6c8ae] sm:grid-cols-2 lg:grid-cols-[1.2fr_.75fr_1fr_.85fr_.7fr]">
         <div>
-          <b className="text-xl text-white">
-            <span>
-              <span className="trust-shimmer">{settings.name.split(" ")[0]}</span>{settings.name.split(" ").slice(1).join(" ") ? ` ${settings.name.split(" ").slice(1).join(" ")}` : ""}
+          <div className="flex items-center gap-3">
+            <span className="grid h-12 w-12 place-items-center overflow-hidden rounded-2xl border border-[rgba(201,155,71,.45)] bg-[rgba(201,155,71,.1)] shadow-[0_0_30px_rgba(201,155,71,.14)]">
+              <Image src={settings.logoUrl} alt={`${settings.name} logo`} width={48} height={48} className="h-full w-full object-cover" />
             </span>
-          </b>
+            <b className="text-xl text-white">
+              <span>
+                <span className="trust-shimmer">{settings.name.split(" ")[0]}</span>{settings.name.split(" ").slice(1).join(" ") ? ` ${settings.name.split(" ").slice(1).join(" ")}` : ""}
+              </span>
+            </b>
+          </div>
           <p className="mt-3 max-w-xs">{settings.tagline}</p>
           <div className="mt-4 grid gap-3">
             <a

@@ -34,11 +34,11 @@ export async function generateMetadata({ searchParams }: WorkPageProps) {
 const fallbackCards = [
   {
     title: "CMS content coming soon",
-    description: "Case studies will appear here after real project stories are published from TrustFirst Studio.",
+    description: "Case studies will appear here after real business growth stories are published from TrustFirst Studio.",
   },
   {
-    title: "Project story",
-    description: "Future case studies can explain the business context, goal, scope and result.",
+    title: "Growth story",
+    description: "Future case studies can explain the business context, goal, scope and verified result.",
   },
   {
     title: "Outcome focus",

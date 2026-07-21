@@ -1,23 +1,48 @@
-﻿const faqs = [
+const faqs = [
   {
-    question: "How long does a website or software project take?",
+    question: "What services does TrustFirst Solutions provide?",
     answer:
-      "Simple business website generally 5-10 days me ready ho sakti hai. Custom software, dashboard ya app ka timeline requirement ke according decide hota hai.",
+      "We help with Meta Ads, Google Ads, social media management, content strategy, SEO, Google Business Profile, websites, landing pages, lead generation systems, automation and growth consultation.",
   },
   {
-    question: "Do you make mobile friendly websites?",
+    question: "Do you work with small and local businesses?",
     answer:
-      "Yes. Website desktop, tablet aur phone tino ke liye responsive banayi jati hai.",
+      "Yes. We work with local shops, service businesses and growing brands in Sikar, Jaipur, Rajasthan and other parts of India.",
   },
   {
-    question: "Can customers contact directly from the website?",
+    question: "How much does digital marketing cost?",
     answer:
-      "Yes. Website me WhatsApp, call button aur enquiry form add kiya ja sakta hai.",
+      "Cost depends on the services, campaign scope, content needs and ad spend. The free audit helps identify the right starting point before budget is discussed deeply.",
   },
   {
-    question: "Do you provide support after delivery?",
+    question: "How soon can results appear?",
     answer:
-      "Yes. Delivery ke baad basic support, small corrections aur guidance provide ki jati hai.",
+      "Some improvements can be visible quickly, especially in tracking, content clarity or enquiry flow. Ads, SEO and brand trust usually need consistent testing and optimization.",
+  },
+  {
+    question: "Do you guarantee leads?",
+    answer:
+      "No. We do not give fake guarantees. We build and improve the system around visibility, offer, landing experience, follow-up and data so lead quality can improve over time.",
+  },
+  {
+    question: "Do you manage ad spend?",
+    answer:
+      "We can guide or manage campaigns, but ad spend remains separate from service fees and should be planned according to the business goal and market.",
+  },
+  {
+    question: "Can you handle website and ads together?",
+    answer:
+      "Yes. That is often stronger because ad traffic needs a clear landing page, trust signals, lead capture and follow-up path.",
+  },
+  {
+    question: "What is included in the free growth audit?",
+    answer:
+      "We review your social presence, Google visibility, ads opportunity, website or landing page gaps, and lead follow-up basics using the details you share.",
+  },
+  {
+    question: "Do you work outside Sikar or Rajasthan?",
+    answer:
+      "Yes. TrustFirst is based in Sikar and serves businesses across Jaipur, Rajasthan and India through remote-first communication.",
   },
 ];
 
@@ -29,7 +54,7 @@ export function FaqSection() {
           Got Questions?
         </p>
         <h2 className="mt-4 text-[clamp(2rem,4vw,3.6rem)] font-black leading-tight tracking-[-0.04em]">
-          Clear answers before we start.
+          Clear answers before the audit.
         </h2>
       </div>
 

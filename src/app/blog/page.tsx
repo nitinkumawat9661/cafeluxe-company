@@ -37,12 +37,12 @@ const fallbackCards = [
     description: "Blog posts will appear here after they are published from TrustFirst Studio.",
   },
   {
-    title: "Website planning",
-    description: "Future posts can help business owners understand structure, content and lead flow.",
+    title: "Growth planning",
+    description: "Future posts can help business owners understand offers, visibility, content and lead flow.",
   },
   {
-    title: "Software decisions",
-    description: "Articles can explain when a business needs a dashboard, web app or custom system.",
+    title: "Marketing clarity",
+    description: "Articles will cover ads, SEO, social media, local visibility, websites and lead generation for business owners.",
   },
 ];
 

@@ -14,10 +14,13 @@ export async function POST(request: Request) {
     const phone = clean(form.get("phone"));
     const service = clean(form.get("service"));
     const budget = clean(form.get("budget"));
+    const business = clean(form.get("business"));
+    const businessType = clean(form.get("businessType"));
+    const location = clean(form.get("location"));
+    const onlineUrl = clean(form.get("onlineUrl"));
     const message = clean(form.get("message"));
 
     const phoneDigits = phone.replace(/\D/g, "");
-    const budgetNumber = Number(budget);
 
     const invalid =
       name.length < 2 ||
@@ -25,9 +28,6 @@ export async function POST(request: Request) {
       phoneDigits.length < 10 ||
       phoneDigits.length > 13 ||
       !service ||
-      Number.isNaN(budgetNumber) ||
-      budgetNumber < 0 ||
-      budgetNumber > 100000 ||
       message.length < 10 ||
       message.length > 500;
 
@@ -43,14 +43,18 @@ export async function POST(request: Request) {
     }
 
     const text = [
-      "New TrustFirst Website Lead",
+      "New TrustFirst Growth Lead",
       "",
       `Name: ${name}`,
       `Phone: ${phone}`,
+      `Business: ${business || "Not provided"}`,
+      `Business Type: ${businessType || "Not provided"}`,
+      `Location: ${location || "Not provided"}`,
       `Service: ${service}`,
-      `Budget: Rs. ${budgetNumber.toLocaleString("en-IN")}`,
+      `Budget: ${budget || "Not sure yet"}`,
+      `Website/Instagram: ${onlineUrl || "Not provided"}`,
       "",
-      `Message: ${message}`
+      `Challenge: ${message}`
     ].join("\n");
 
     const telegramResponse = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {

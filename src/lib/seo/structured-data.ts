@@ -25,11 +25,15 @@ export function organizationSchema(settings: ResolvedSiteSettings) {
     sameAs: settings.socialLinks.map((link) => link.url),
     areaServed: siteConfig.serviceAreas,
     knowsAbout: [
-      "Website development",
-      "Web app development",
-      "Custom software development",
-      "Admin dashboard development",
-      "Digital systems",
+      "Digital marketing",
+      "Meta Ads",
+      "Google Ads",
+      "SEO",
+      "Social media management",
+      "Google Business Profile management",
+      "Lead generation",
+      "Landing pages",
+      "Marketing automation",
     ],
   };
 }

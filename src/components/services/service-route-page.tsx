@@ -2,6 +2,7 @@ import { InnerPageShell } from "@/components/inner-page-shell";
 import { Breadcrumbs } from "@/components/seo/breadcrumbs";
 import { JsonLdScript } from "@/components/seo/json-ld-script";
 import { ServiceDetail } from "@/components/services/service-detail";
+import { getGrowthServiceFallback } from "@/lib/service-fallbacks";
 import { absoluteUrl, createSeoMetadata } from "@/lib/seo";
 import { serviceSchema } from "@/lib/seo/structured-data";
 import { fetchSanityPreview } from "@/sanity/lib/fetch";
@@ -23,8 +24,19 @@ function titleFromSlug(slug: string) {
     .join(" ");
 }
 
-export async function generateServiceMetadata({ slug, fallbackTitle, fallbackDescription }: ServiceRoutePageProps) {
+async function getServiceForSlug(slug: string) {
   const service = await fetchSanityPreview<Service>(serviceBySlugQuery, previewServiceBySlugQuery, { slug });
+  if (service) return service;
+
+  if (slug === "content-strategy") {
+    return fetchSanityPreview<Service>(serviceBySlugQuery, previewServiceBySlugQuery, { slug: "content-strategy-creation" });
+  }
+
+  return null;
+}
+
+export async function generateServiceMetadata({ slug, fallbackTitle, fallbackDescription }: ServiceRoutePageProps) {
+  const service = (await getServiceForSlug(slug)) ?? getGrowthServiceFallback(slug);
 
   return createSeoMetadata({
     title: service?.seoTitle || service?.title || fallbackTitle || titleFromSlug(slug),
@@ -36,7 +48,7 @@ export async function generateServiceMetadata({ slug, fallbackTitle, fallbackDes
 }
 
 export async function ServiceRoutePage({ slug, fallbackTitle, fallbackDescription }: ServiceRoutePageProps) {
-  const service = await fetchSanityPreview<Service>(serviceBySlugQuery, previewServiceBySlugQuery, { slug });
+  const service = (await getServiceForSlug(slug)) ?? getGrowthServiceFallback(slug);
   const settings = await getSiteSettings();
   const title = service?.title || fallbackTitle || titleFromSlug(slug);
   const description = service?.shortDescription || fallbackDescription || "Service information coming soon.";

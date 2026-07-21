@@ -55,6 +55,12 @@ function formatIndiaPhone(number: string) {
   return `+91 ${local.slice(0, 5)} ${local.slice(5)}`;
 }
 
+function resolveCanonicalContactNumber(value?: string) {
+  const retiredNumber = ["76658", "53321"].join("");
+  if (!value || value.replace(/\D/g, "").endsWith(retiredNumber)) return siteConfig.phone;
+  return value;
+}
+
 function normalizeSocialLinks(settings?: SiteSettings | null): ResolvedSocialLink[] {
   const cmsLinks =
     settings?.socialLinks
@@ -73,8 +79,8 @@ function resolveSiteSettings(settings?: SiteSettings | null): ResolvedSiteSettin
   const name = settings?.brandName || siteConfig.name;
   const tagline = settings?.tagline || siteConfig.tagline;
   const description = settings?.description || siteConfig.description;
-  const phone = settings?.phone || siteConfig.phone;
-  const whatsapp = normalizeWhatsAppNumber(settings?.whatsapp || siteConfig.whatsapp);
+  const phone = resolveCanonicalContactNumber(settings?.phone);
+  const whatsapp = normalizeWhatsAppNumber(resolveCanonicalContactNumber(settings?.whatsapp));
   const email = settings?.email || siteConfig.email;
   const address = settings?.address || siteConfig.location;
   const defaultSeoTitle = settings?.defaultSeoTitle || name;
@@ -84,12 +90,12 @@ function resolveSiteSettings(settings?: SiteSettings | null): ResolvedSiteSettin
     name,
     tagline,
     description,
-    logoUrl: imageUrl(settings?.logo, 256, 256) || "/trustfirst-logo.svg",
+    logoUrl: imageUrl(settings?.logo, 256, 256) || "/trustfirst-logo-original.png",
     phone,
     phoneHref: normalizePhoneHref(phone),
     whatsapp,
     whatsappDisplay: formatIndiaPhone(whatsapp),
-    whatsappHref: `https://wa.me/${whatsapp}?text=Hi%20${encodeURIComponent(name)}%2C%20I%20want%20to%20discuss%20a%20website%2Fapp%2Fsoftware%20project.`,
+    whatsappHref: `https://wa.me/${whatsapp}?text=Hi%20${encodeURIComponent(name)}%2C%20I%20want%20a%20free%20digital%20growth%20audit.`,
     email,
     address,
     socialLinks: normalizeSocialLinks(settings),

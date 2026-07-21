@@ -33,7 +33,7 @@ export async function createTrustFirstOgImage({ title, eyebrow }: OgImageInput) 
           {/* next/image is not supported inside next/og ImageResponse trees. */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src={`${settings.url}/trustfirst-logo.svg`}
+            src={`${settings.url}/trustfirst-logo-original.png`}
             alt=""
             width={72}
             height={72}
@@ -55,7 +55,7 @@ export async function createTrustFirstOgImage({ title, eyebrow }: OgImageInput) 
         </div>
 
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", color: "#d6c8ae", fontSize: 22 }}>
-          <span>Premium websites, apps and digital systems</span>
+          <span>Digital growth agency for serious businesses</span>
           <span style={{ color: "#c99b47" }}>trustfirstsolutions.in</span>
         </div>
       </div>

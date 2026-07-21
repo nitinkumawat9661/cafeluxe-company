@@ -16,11 +16,11 @@ export default async function AboutPage() {
   const settings = await getSiteSettings();
 
   return (
-    <InnerPageShell eyebrow="About" title="Built around clarity, trust and careful delivery." description={routePageContent.about.description}>
+    <InnerPageShell eyebrow="About" title="A growth agency built around clarity, trust and practical execution." description={routePageContent.about.description}>
       <section className="mx-auto grid max-w-6xl gap-4 px-5 pb-16 md:grid-cols-3 md:px-6">
         <RouteCard title="Location" description={settings.address} />
-        <RouteCard title="Working style" description="Clear scope, practical communication and premium UI direction before development goes deep." />
-        <RouteCard title="Focus" description="Websites, web apps, dashboards, custom software and digital systems for growing businesses." />
+        <RouteCard title="Working style" description="Audit first, clear strategy, transparent execution and practical reporting." />
+        <RouteCard title="Focus" description="Meta Ads, Google Ads, SEO, social media, Google Business Profile, websites, landing pages and lead generation systems." />
       </section>
     </InnerPageShell>
   );

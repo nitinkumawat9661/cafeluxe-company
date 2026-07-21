@@ -1,16 +1,20 @@
 # TrustFirst Solutions
 
-TrustFirst Solutions is a premium digital studio based in Sikar, Rajasthan, India.
+TrustFirst Solutions is a premium digital growth agency based in Sikar, Rajasthan, India.
 
-## What we build
+## What we do
 
-- Premium business websites
-- Website development in Sikar
-- Website development in Jaipur
-- Web apps
-- Custom software
-- Admin dashboards and CRM panels
-- Digital systems
+- Meta Ads
+- Google Ads
+- Social Media Management
+- Content Strategy and Creation
+- SEO
+- Google Business Profile Management
+- Websites
+- Landing Pages
+- Lead Generation Systems
+- Automation and Follow-up Systems
+- Business Growth Consultation
 
 ## Service areas
 
@@ -21,11 +25,10 @@ TrustFirst Solutions is a premium digital studio based in Sikar, Rajasthan, Indi
 
 ## Target customers
 
-TrustFirst Solutions works with local shops, service businesses and growing companies that need premium websites, lead capture systems, web apps, dashboards or custom business software.
+TrustFirst Solutions works with local shops, service businesses and growing companies that need more visibility, stronger trust, better content, qualified leads, conversion-focused websites and follow-up systems.
 
 ## Contact
 
 Website: Use NEXT_PUBLIC_SITE_URL when configured.
 Email: hello@trustfirstsolutions.in
-Phone: +91 7665853321
-WhatsApp: +91 7414853321
+Phone / WhatsApp: +91 7414853321

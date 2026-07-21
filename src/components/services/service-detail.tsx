@@ -38,12 +38,61 @@ function BulletGrid({ title, items }: { title: string; items?: string[] }) {
   );
 }
 
+function serviceVisualKind(title?: string): [string, string[]] {
+  const value = title?.toLowerCase() ?? "";
+  if (value.includes("meta")) return ["Campaign Flow", ["Creative", "Audience", "Lead Form", "Follow-up"]];
+  if (value.includes("google ads")) return ["Search Intent", ["Keyword", "Ad", "Landing Page", "Enquiry"]];
+  if (value.includes("social")) return ["Content Rhythm", ["Reel", "Post", "Story", "DM"]];
+  if (value.includes("business profile")) return ["Local Discovery", ["Maps", "Profile", "Calls", "Direction"]];
+  if (value.includes("seo")) return ["Search Growth", ["Technical", "Content", "Local", "Authority"]];
+  if (value.includes("landing")) return ["Conversion Page", ["Offer", "Proof", "Form", "WhatsApp"]];
+  if (value.includes("website")) return ["Trust Website", ["Hero", "Services", "Proof", "Contact"]];
+  if (value.includes("lead")) return ["Lead System", ["Ad", "Page", "Form", "WhatsApp"]];
+  if (value.includes("automation")) return ["Follow-up Workflow", ["Capture", "Route", "Reply", "Review"]];
+  if (value.includes("consultation")) return ["Growth Clarity", ["Audit", "Priority", "Plan", "Next Step"]];
+  return ["Growth Capability", ["Audit", "System", "Action", "Improve"]];
+}
+
+function whoItIsFor(service: Service) {
+  const title = service.title?.toLowerCase() ?? "";
+  if (title.includes("meta") || title.includes("google ads")) return "For businesses ready to test offers, improve lead quality and connect paid traffic to a clear enquiry path.";
+  if (title.includes("seo") || title.includes("business profile")) return "For local and service businesses that need stronger discovery before customers decide who to contact.";
+  if (title.includes("social") || title.includes("content")) return "For businesses that need consistent visibility, trust-building content and clearer communication with their audience.";
+  if (title.includes("website") || title.includes("landing")) return "For businesses sending traffic from ads, search or social and needing a clearer conversion experience.";
+  if (title.includes("lead") || title.includes("automation")) return "For businesses losing enquiries because capture, routing or follow-up is not structured enough.";
+  return "For business owners who want practical clarity before investing in growth activity.";
+}
+
+function ServiceVisual({ service }: { service: Service }) {
+  const [title, steps] = serviceVisualKind(service.title);
+
+  return (
+    <section className="rounded-[1.5rem] border border-[rgba(201,155,71,.28)] bg-[linear-gradient(135deg,rgba(255,255,255,.055),rgba(201,155,71,.045),rgba(0,0,0,.32))] p-6">
+      <div className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
+        <div>
+          <p className="text-xs font-black uppercase tracking-[.24em] text-[var(--gold)]">{title}</p>
+          <h2 className="mt-3 text-3xl font-black text-[#f8efd9]">A practical system, not random activity.</h2>
+        </div>
+        <div className="grid gap-3 sm:grid-cols-4 md:min-w-[52%]">
+          {steps.map((step, index) => (
+            <div key={step} className="relative rounded-2xl border border-white/10 bg-black/30 p-4">
+              <span className="text-xs font-black text-[var(--gold)]">{String(index + 1).padStart(2, "0")}</span>
+              <p className="mt-2 text-sm font-black text-[#f8efd9]">{step}</p>
+              {index < steps.length - 1 && <span className="absolute -right-2 top-1/2 hidden h-px w-4 bg-[var(--gold)] sm:block" />}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export function ServiceDetail({ service }: ServiceDetailProps) {
   const steps = processItems(service);
   const faqs = service.faqs?.filter((faq) => faq.question && faq.answer) ?? [];
   const relatedServices = service.relatedServices ?? [];
-  const ctaHref = service.ctaHref || "/contact";
-  const ctaLabel = service.ctaLabel || "Start a Project";
+  const ctaHref = service.ctaHref || "/#audit";
+  const ctaLabel = service.ctaLabel || "Get Free Growth Audit";
 
   return (
     <>
@@ -58,12 +107,18 @@ export function ServiceDetail({ service }: ServiceDetailProps) {
           </div>
         )}
 
-        <section className="rounded-[1.5rem] border border-white/10 bg-black/20 p-6">
+        <ServiceVisual service={service} />
+
+        <section className="mt-8 rounded-[1.5rem] border border-white/10 bg-black/20 p-6">
           <h2 className="text-3xl font-black text-[#f8efd9]">Overview</h2>
           <PortableContent value={service.fullDescription} fallback={service.shortDescription || "Service information coming soon."} />
         </section>
 
         <div className="mt-10 grid gap-10">
+          <section>
+            <h2 className="text-3xl font-black text-[#f8efd9]">Who it is for</h2>
+            <p className="mt-4 max-w-3xl text-base leading-8 text-[#d6c8ae]">{whoItIsFor(service)}</p>
+          </section>
           <BulletGrid title="Features" items={service.features || service.deliverables} />
           <BulletGrid title="Benefits" items={service.benefits} />
 
@@ -100,9 +155,9 @@ export function ServiceDetail({ service }: ServiceDetailProps) {
         </div>
 
         <section className="mt-10 rounded-[1.5rem] border border-[rgba(201,155,71,.3)] bg-black/20 p-6">
-          <h2 className="text-3xl font-black text-[#f8efd9]">{service.ctaTitle || "Start a focused project conversation."}</h2>
+          <h2 className="text-3xl font-black text-[#f8efd9]">{service.ctaTitle || "Start with a free growth audit."}</h2>
           <p className="mt-3 max-w-2xl text-sm leading-6 text-[#d6c8ae]">
-            {service.ctaDescription || service.shortDescription || "Share the basics and we will help clarify the right next step."}
+            {service.ctaDescription || service.shortDescription || "Share the basics and we will help clarify the right growth priority."}
           </p>
           <a href={ctaHref} className="mt-5 inline-flex w-fit items-center gap-2 rounded-full bg-[var(--gold)] px-5 py-3 text-sm font-black text-black transition hover:-translate-y-0.5">
             {ctaLabel} <ArrowRight size={17} />

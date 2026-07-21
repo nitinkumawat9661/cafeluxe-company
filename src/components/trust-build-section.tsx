@@ -1,8 +1,10 @@
-﻿const trustPoints = [
-  ["Clear Scope", "Requirement, pages, features aur timeline pehle clear rakhe jate hain."],
-  ["Premium UI", "Design clean, mobile friendly aur serious business look ke according hota hai."],
-  ["Fast Handover", "Website/app live hone ke baad basic guidance aur support flow clean milta hai."],
-  ["Direct Contact", "Customer ko call, WhatsApp aur form ke through simple enquiry path milta hai."],
+import Link from "next/link";
+
+const trustPoints = [
+  ["Clear Offer", "Business message, services and next step should be easy to understand."],
+  ["Visible Proof Path", "Content, search presence and profile signals should help customers trust faster."],
+  ["Direct Contact", "Call, WhatsApp and form paths should make enquiry simple on mobile."],
+  ["Follow-up Clarity", "Every lead needs a response flow so warm enquiries are not wasted."],
 ];
 
 export function TrustBuildSection() {
@@ -13,14 +15,14 @@ export function TrustBuildSection() {
           <div>
             <p className="text-xs font-black uppercase tracking-[.32em] text-[var(--gold)]">Trust Build</p>
             <h2 className="mt-4 text-[clamp(2rem,3.4vw,3.5rem)] font-black leading-tight tracking-[-0.04em]">
-              Built to earn trust before the first call.
+              Trust comes before the customer fills the form.
             </h2>
             <p className="mt-4 max-w-xl text-base leading-8 text-[#d6c8ae]">
-              TrustFirst Solutions ka focus sirf website banana nahi hai. Goal ye hai ki client ko first visit par clarity, premium feel aur direct enquiry ka confidence mile.
+              TrustFirst Solutions focuses on the visible details that make a customer feel confident enough to call, message or submit an enquiry.
             </p>
-            <a href="#contact" className="mt-7 inline-flex rounded-full bg-[var(--gold)] px-5 py-3 text-sm font-black text-black transition hover:-translate-y-0.5">
-              Start a Trusted Project
-            </a>
+            <Link href="/#audit" className="mt-7 inline-flex rounded-full bg-[var(--gold)] px-5 py-3 text-sm font-black text-black transition hover:-translate-y-0.5">
+              Get Free Growth Audit
+            </Link>
           </div>
 
           <div className="grid gap-4 sm:grid-cols-2">

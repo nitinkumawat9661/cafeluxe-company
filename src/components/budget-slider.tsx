@@ -12,7 +12,7 @@ export function BudgetSlider() {
   return (
     <div className="rounded-xl border border-white/10 bg-black/30 px-4 py-4 md:col-span-2">
       <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-        <label className="text-sm font-bold text-[#f8efd9]">Project Budget</label>
+        <label className="text-sm font-bold text-[#f8efd9]">Monthly Growth Budget</label>
         <span className="text-xs font-black uppercase tracking-[.18em] text-[var(--gold)]">
           Selected: {formatBudget(budget)}
         </span>

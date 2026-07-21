@@ -23,6 +23,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const settings = await getSiteSettings();
   const content = await fetchSanity<SitemapContent>(sitemapContentQuery);
   const now = new Date();
+  const staticRouteSet = new Set(sitemapRoutes);
+  const legacyServiceSlugs = new Set(["web-apps", "custom-software"]);
+  const aliasServiceSlugs = new Set(["content-strategy-creation"]);
 
   const staticRoutes = sitemapRoutes.map((route) =>
     sitemapEntry(
@@ -46,9 +49,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       sitemapEntry(new URL(`/resources/${item.slug}`, settings.url).toString(), item.lastModified ? new Date(item.lastModified) : now, 0.6, "weekly"),
     ) ?? [];
   const serviceRoutes =
-    content?.services?.map((item) =>
-      sitemapEntry(new URL(`/services/${item.slug}`, settings.url).toString(), item.lastModified ? new Date(item.lastModified) : now, 0.8, "monthly"),
-    ) ?? [];
+    content?.services
+      ?.filter((item) => !legacyServiceSlugs.has(item.slug) && !aliasServiceSlugs.has(item.slug) && !staticRouteSet.has(`/services/${item.slug}`))
+      .map((item) =>
+        sitemapEntry(new URL(`/services/${item.slug}`, settings.url).toString(), item.lastModified ? new Date(item.lastModified) : now, 0.8, "monthly"),
+      ) ?? [];
 
   return [...staticRoutes, ...serviceRoutes, ...workRoutes, ...blogRoutes, ...resourceRoutes];
 }
