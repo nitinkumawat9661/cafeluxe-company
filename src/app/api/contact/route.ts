@@ -4,6 +4,18 @@ function clean(value: unknown) {
   return String(value ?? "").trim();
 }
 
+function wantsJson(request: Request) {
+  return request.headers.get("accept")?.includes("application/json") || request.headers.get("x-requested-with") === "fetch";
+}
+
+function contactResponse(request: Request, url: URL, status: string, message: string, ok = false) {
+  if (wantsJson(request)) {
+    return NextResponse.json({ ok, status, message }, { status: ok ? 200 : 400 });
+  }
+
+  return NextResponse.redirect(new URL(`/?lead=${status}#contact`, url), 303);
+}
+
 export async function POST(request: Request) {
   const url = new URL(request.url);
 
@@ -32,14 +44,14 @@ export async function POST(request: Request) {
       message.length > 500;
 
     if (invalid) {
-      return NextResponse.redirect(new URL("/?lead=invalid#contact", url), 303);
+      return contactResponse(request, url, "invalid", "Please check the required fields and try again.");
     }
 
     const token = process.env.TELEGRAM_BOT_TOKEN;
     const chatId = process.env.TELEGRAM_CHAT_ID;
 
     if (!token || !chatId) {
-      return NextResponse.redirect(new URL("/?lead=config#contact", url), 303);
+      return contactResponse(request, url, "config", "Lead delivery is not configured yet.");
     }
 
     const text = [
@@ -64,11 +76,11 @@ export async function POST(request: Request) {
     });
 
     if (!telegramResponse.ok) {
-      return NextResponse.redirect(new URL("/?lead=telegram#contact", url), 303);
+      return contactResponse(request, url, "telegram", "Telegram delivery failed. Please try again.");
     }
 
-    return NextResponse.redirect(new URL("/?lead=sent#contact", url), 303);
+    return contactResponse(request, url, "sent", "Message sent successfully. We received your request and will contact you soon.", true);
   } catch {
-    return NextResponse.redirect(new URL("/?lead=error#contact", url), 303);
+    return contactResponse(request, url, "error", "Something went wrong. Please try again.");
   }
 }

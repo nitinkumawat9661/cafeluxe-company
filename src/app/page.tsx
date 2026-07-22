@@ -1,5 +1,6 @@
 import { FaqSection } from "@/components/faq-section";
-import { LeadSuccess } from "@/components/lead-success";
+import { GrowthAuditForm } from "@/components/growth-audit-form";
+import { HeroGrowthVisual, LeadGenerationRail, ServiceStoryVisual } from "@/components/growth-visuals";
 import { JsonLd } from "@/components/seo/json-ld";
 import { SiteFooter } from "@/components/site-footer";
 import { SplashIntro } from "@/components/splash-intro";
@@ -7,7 +8,7 @@ import { StickyNavigation } from "@/components/sticky-navigation";
 import { WhatsAppFloating } from "@/components/whatsapp-floating";
 import { WhyTrustFirst } from "@/components/why-trustfirst";
 import { getSiteSettings } from "@/sanity/lib/site-settings";
-import { Mail, MapPin, MessageCircle, PhoneCall, Search, Target } from "lucide-react";
+import { MapPin, MessageCircle, Search, Target } from "lucide-react";
 import Link from "next/link";
 
 const problems = [
@@ -24,6 +25,7 @@ const serviceGroups = [
   {
     title: "Acquire",
     description: "Bring the right attention and enquiries into the business.",
+    visual: "acquire",
     services: [
       ["Meta Ads", "/services/meta-ads"],
       ["Google Ads", "/services/google-ads"],
@@ -33,6 +35,7 @@ const serviceGroups = [
   {
     title: "Build Trust",
     description: "Make the business look active, credible and easy to find.",
+    visual: "content",
     services: [
       ["Social Media Management", "/services/social-media-management"],
       ["Content Strategy & Creation", "/services/content-strategy"],
@@ -43,6 +46,7 @@ const serviceGroups = [
   {
     title: "Convert",
     description: "Turn clicks, visits and attention into real conversations.",
+    visual: "conversion",
     services: [
       ["Websites", "/services/websites"],
       ["Landing Pages", "/services/landing-pages"],
@@ -51,18 +55,12 @@ const serviceGroups = [
   {
     title: "Scale",
     description: "Improve follow-up, reporting and decision-making over time.",
+    visual: "automation",
     services: [
       ["Automation & Follow-up", "/services/automation-follow-up-systems"],
       ["Growth Consultation", "/services/business-growth-consultation"],
     ],
   },
-];
-
-const growthSystem = [
-  ["ATTRACT", "Attention + Visibility"],
-  ["CONVERT", "Offer + Landing Experience"],
-  ["CAPTURE", "Lead Capture + Follow-up"],
-  ["IMPROVE", "Conversion + Optimization"],
 ];
 
 const auditChecks = [
@@ -94,27 +92,8 @@ const serviceOptions = [
   "Business Growth Consultation",
 ];
 
-function InstaIcon({ size = 19 }: { size?: number }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 24 24" aria-hidden="true">
-      <defs>
-        <linearGradient id="igGradient" x1="2" y1="22" x2="22" y2="2">
-          <stop offset="0%" stopColor="#f58529" />
-          <stop offset="35%" stopColor="#dd2a7b" />
-          <stop offset="65%" stopColor="#8134af" />
-          <stop offset="100%" stopColor="#515bd4" />
-        </linearGradient>
-      </defs>
-      <rect x="3" y="3" width="18" height="18" rx="5" fill="url(#igGradient)" />
-      <circle cx="12" cy="12" r="4" fill="none" stroke="white" strokeWidth="1.8" />
-      <circle cx="17" cy="7" r="1.2" fill="white" />
-    </svg>
-  );
-}
-
 export default async function Home() {
   const settings = await getSiteSettings();
-  const primarySocialLink = settings.socialLinks[0];
 
   return (
     <>
@@ -125,14 +104,14 @@ export default async function Home() {
         <div className="trust-river-bg" aria-hidden="true" />
         <JsonLd />
 
-        <section className="mx-auto grid max-w-6xl items-center gap-10 px-5 py-12 md:px-6 lg:grid-cols-[.92fr_1.08fr]">
+        <section className="hero-editorial mx-auto grid max-w-6xl items-center gap-10 px-5 py-12 md:px-6 lg:grid-cols-[.92fr_1.08fr]">
           <div>
             <p className="text-xs font-black uppercase tracking-[.35em] text-[var(--gold)]">Digital Growth Agency</p>
             <h1 className="mt-5 max-w-[38rem] text-[clamp(2.4rem,4.8vw,5.2rem)] font-black leading-[1.02] tracking-[-0.045em]">
               Aap Business Sambhaliye, <span className="text-[var(--gold)]">Growth Hum Dekh Lenge.</span>
             </h1>
             <p className="mt-6 max-w-xl text-[16px] leading-8 text-[#e7dac1]">
-              We help businesses generate more leads, improve online visibility and build systems that turn attention into customers through Ads, Content, SEO, Websites and Automation.
+              We build connected growth systems for visibility, leads, conversion and follow-up through Ads, Content, SEO, Websites and Automation.
             </p>
             <p className="mt-5 inline-flex max-w-full rounded-full border border-[rgba(201,155,71,.28)] bg-white/[.035] px-4 py-3 text-sm font-black text-[var(--gold)]">
               Sikar • Jaipur • Rajasthan • Serving Businesses Across India
@@ -147,47 +126,22 @@ export default async function Home() {
             </div>
           </div>
 
-          <div className="relative md:min-h-[420px]">
-            <div className="absolute inset-0 rounded-full bg-[rgba(201,155,71,.14)] blur-3xl" />
-            <div className="relative rounded-[2rem] border border-[rgba(201,155,71,.28)] bg-[linear-gradient(135deg,rgba(255,255,255,.06),rgba(201,155,71,.05),rgba(0,0,0,.5))] p-4 shadow-[0_35px_120px_rgba(0,0,0,.6)]">
-              <div className="rounded-[1.5rem] border border-white/10 bg-[#070604] p-5">
-                <div className="flex items-center justify-between border-b border-white/10 pb-4">
-                  <b><span className="trust-shimmer">Trust</span>First Growth System</b>
-                  <span className="live-status-pill rounded-full border border-[rgba(201,155,71,.35)] px-3 py-1 text-xs font-black text-[var(--gold)]"><span /> Lead Focused</span>
-                </div>
-                <div className="grid gap-4 py-5 md:grid-cols-[1.05fr_.95fr] md:py-6">
-                  <div className="live-preview-main hidden rounded-2xl border border-[rgba(201,155,71,.25)] bg-black/35 p-5 md:block">
-                    <p className="text-xs uppercase tracking-[.25em] text-[var(--gold)]">Free 5-Point Audit</p>
-                    <h2 className="mt-3 text-3xl font-black leading-tight">Find what is stopping leads, visibility and conversions.</h2>
-                    <a href="#audit" className="mt-5 inline-flex rounded-full bg-[var(--gold)] px-5 py-3 text-sm font-black text-black">Get Audit →</a>
-                  </div>
-                  <div className="grid gap-3 text-sm">
-                    <div className="live-flow-card rounded-xl border border-white/10 bg-white/[.035] p-4"><b className="text-[var(--gold)]">VISIBILITY</b><p>Search • Maps • Social</p><i /></div>
-                    <div className="live-flow-card delay-1 rounded-xl border border-white/10 bg-white/[.035] p-4"><b className="text-[var(--gold)]">CONVERSION</b><p>Offer • Landing Page • Lead Capture</p><i /></div>
-                    <div className="live-flow-card delay-2 rounded-xl border border-white/10 bg-white/[.035] p-4"><b className="text-[var(--gold)]">FOLLOW-UP</b><p>WhatsApp • Calls • Response Flow</p><i /></div>
-                  </div>
-                </div>
-                <div className="hidden grid-cols-3 gap-3 md:grid">
-                  <a href={settings.phoneHref} className="grid h-14 place-items-center rounded-2xl border border-[rgba(201,155,71,.35)] text-[var(--gold)]"><PhoneCall size={20} /></a>
-                  <a href={`mailto:${settings.email}`} className="grid h-14 place-items-center rounded-2xl border border-[rgba(201,155,71,.35)] text-[var(--gold)]"><Mail size={20} /></a>
-                  {primarySocialLink && <a href={primarySocialLink.url} target="_blank" rel="noreferrer" className="grid h-14 place-items-center rounded-2xl border border-[rgba(201,155,71,.35)]"><InstaIcon size={20} /></a>}
-                </div>
-              </div>
-            </div>
+          <div className="hero-visual-wrap">
+            <HeroGrowthVisual />
           </div>
         </section>
 
         <section className="mx-auto max-w-6xl px-5 py-10 md:px-6">
-          <div className="grid gap-8 rounded-[2rem] border border-[rgba(201,155,71,.25)] bg-white/[.035] p-6 md:p-8 lg:grid-cols-[.75fr_1.25fr]">
+          <div className="editorial-split grid gap-8 p-1 lg:grid-cols-[.72fr_1.28fr]">
             <div>
               <p className="text-xs font-black uppercase tracking-[.25em] text-[var(--gold)]">Business Problems</p>
               <h2 className="mt-4 text-[clamp(2rem,3vw,3.3rem)] font-black leading-tight tracking-[-0.03em]">Growth usually stops before the customer ever calls.</h2>
               <p className="mt-4 text-[#d6c8ae]">Most businesses do not need random marketing. They need the weak points in visibility, offer, conversion and follow-up fixed in the right order.</p>
             </div>
-            <div className="grid gap-3">
+            <div className="problem-list">
               {problems.map((problem, index) => (
-                <article key={problem} className="flex items-start gap-4 border-b border-white/10 py-3 last:border-b-0">
-                  <span className="mt-1 text-sm font-black text-[var(--gold)]">{String(index + 1).padStart(2, "0")}</span>
+                <article key={problem} className="problem-row">
+                  <span>{String(index + 1).padStart(2, "0")}</span>
                   <p className="text-lg font-black leading-7 text-[#f8efd9]">{problem}</p>
                 </article>
               ))}
@@ -199,14 +153,22 @@ export default async function Home() {
         <section className="mx-auto max-w-6xl px-5 py-10 md:px-6">
           <p className="text-xs font-black uppercase tracking-[.25em] text-[var(--gold)]">Digital Growth Services</p>
           <h2 className="mt-4 max-w-3xl text-[clamp(2rem,3vw,3.2rem)] font-black leading-tight tracking-[-0.03em]">One connected system for attention, trust, conversion and scale.</h2>
-          <div className="mt-7 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+          <div className="service-editorial-grid mt-8">
             {serviceGroups.map((group) => (
-              <article key={group.title} className="rounded-[1.5rem] border border-white/10 bg-black/20 p-5">
-                <h3 className="text-2xl font-black text-[var(--gold)]">{group.title}</h3>
+              <article key={group.title} className={`service-editorial-panel service-editorial-panel-${group.title.toLowerCase().replace(/\s+/g, "-")}`}>
+                <ServiceStoryVisual type={group.visual} />
+                <h3 className="mt-5 text-2xl font-black text-[#f8efd9]">{group.title}</h3>
                 <p className="mt-2 min-h-12 text-sm leading-6 text-[#d6c8ae]">{group.description}</p>
+                {group.title === "Scale" && (
+                  <div className="scale-flow" aria-label="Follow-up flow">
+                    <span>New Lead</span>
+                    <span>Reply</span>
+                    <span>Reminder</span>
+                  </div>
+                )}
                 <div className="mt-5 grid gap-2">
                   {group.services.map(([label, href]) => (
-                    <Link key={href} href={href} className="rounded-xl border border-[rgba(201,155,71,.18)] bg-white/[.035] px-4 py-3 text-sm font-black text-[#f8efd9] transition hover:border-[rgba(201,155,71,.45)] hover:text-[var(--gold)]">
+                    <Link key={href} href={href} className="service-text-link">
                       {label} →
                     </Link>
                   ))}
@@ -217,17 +179,14 @@ export default async function Home() {
         </section>
 
         <section className="mx-auto max-w-6xl px-5 py-8 md:px-6 md:py-10">
-          <div className="rounded-[2rem] border border-[rgba(201,155,71,.25)] bg-[linear-gradient(135deg,rgba(255,255,255,.055),rgba(201,155,71,.04),rgba(0,0,0,.38))] p-5 md:p-8">
+          <div className="growth-system-layout">
             <p className="text-xs font-black uppercase tracking-[.25em] text-[var(--gold)]">How We Grow Businesses</p>
             <h2 className="mt-4 max-w-3xl text-[clamp(2rem,3vw,3.2rem)] font-black leading-tight tracking-[-0.03em]">Growth works when every step connects to the next.</h2>
-            <div className="mt-6 grid grid-cols-2 gap-3 md:grid-cols-4">
-              {growthSystem.map(([title, desc], index) => (
-                <article key={title} className="rounded-[1.1rem] border border-white/10 bg-black/25 p-4 md:p-5">
-                  <span className="text-sm font-black text-[var(--gold)]">{String(index + 1).padStart(2, "0")}</span>
-                  <h3 className="mt-3 text-base font-black md:text-lg">{title}</h3>
-                  <p className="mt-1 text-xs font-bold leading-5 text-[#d6c8ae] md:text-sm">{desc}</p>
-                </article>
-              ))}
+            <p className="growth-pull mt-6">
+              A lead is not just captured once. It moves through attention, landing experience, conversation and follow-up until the business has a real chance to convert.
+            </p>
+            <div className="mt-8">
+              <LeadGenerationRail />
             </div>
           </div>
         </section>
@@ -250,53 +209,20 @@ export default async function Home() {
               </a>
             </div>
 
-            <form action="/api/contact" method="POST" className="rounded-[1.5rem] border border-white/10 bg-black/25 p-5">
-              <h3 className="text-2xl font-black">Get My Free Growth Audit</h3>
-              <p className="mt-2 text-sm leading-6 text-[#d6c8ae]">Clean details go directly to the TrustFirst lead flow.</p>
-              <LeadSuccess />
-              <div className="mt-5 grid gap-4 md:grid-cols-2">
-                <input required minLength={2} maxLength={60} name="name" placeholder="Full Name *" className="rounded-xl border border-white/10 bg-white/[.055] px-4 py-4 font-bold outline-none" />
-                <input required minLength={10} maxLength={13} inputMode="numeric" pattern="[0-9]{10,13}" name="phone" placeholder="Phone / WhatsApp *" className="rounded-xl border border-white/10 bg-white/[.055] px-4 py-4 font-bold outline-none" />
-                <select required name="service" defaultValue="" className="rounded-xl border border-white/10 bg-white/[.055] px-4 py-4 font-bold outline-none md:col-span-2">
-                  <option value="" disabled>What help do you need? *</option>
-                  {serviceOptions.map((option) => (
-                    <option key={option} value={option}>{option}</option>
-                  ))}
-                </select>
-                <textarea required minLength={10} maxLength={500} name="message" rows={4} placeholder="Short business challenge *" className="rounded-xl border border-white/10 bg-white/[.055] px-4 py-4 font-bold outline-none md:col-span-2" />
-                <details className="rounded-xl border border-white/10 bg-white/[.035] p-4 md:col-span-2">
-                  <summary className="cursor-pointer text-sm font-black text-[var(--gold)]">Add more business details (optional)</summary>
-                  <div className="mt-4 grid gap-4 md:grid-cols-2">
-                    <input maxLength={70} name="business" placeholder="Business Name" className="rounded-xl border border-white/10 bg-white/[.055] px-4 py-4 font-bold outline-none" />
-                    <input maxLength={70} name="businessType" placeholder="Business Type" className="rounded-xl border border-white/10 bg-white/[.055] px-4 py-4 font-bold outline-none" />
-                    <input maxLength={70} name="location" placeholder="Location" className="rounded-xl border border-white/10 bg-white/[.055] px-4 py-4 font-bold outline-none" />
-                    <input maxLength={120} name="onlineUrl" placeholder="Website / Instagram URL" className="rounded-xl border border-white/10 bg-white/[.055] px-4 py-4 font-bold outline-none" />
-                    <select name="budget" className="rounded-xl border border-white/10 bg-white/[.055] px-4 py-4 font-bold outline-none md:col-span-2">
-                      <option value="">Budget range optional</option>
-                      <option>Not sure yet</option>
-                      <option>Under ₹15k</option>
-                      <option>₹15k-₹30k</option>
-                      <option>₹30k-₹50k</option>
-                      <option>₹50k+</option>
-                    </select>
-                  </div>
-                </details>
-                <button className="rounded-xl bg-[var(--gold)] px-6 py-4 font-black text-black md:col-span-2">Get Free Growth Audit →</button>
-              </div>
-            </form>
+            <GrowthAuditForm services={serviceOptions} />
           </div>
         </section>
 
-        <section className="mx-auto max-w-6xl px-5 py-8 md:px-6 md:py-10">
-          <div className="rounded-[2rem] border border-[rgba(201,155,71,.25)] bg-white/[.035] p-5 md:p-8">
+        <section id="process" className="mx-auto max-w-6xl px-5 py-8 md:px-6 md:py-10">
+          <div className="process-editorial">
             <p className="text-xs font-black uppercase tracking-[.25em] text-[var(--gold)]">Process</p>
             <h2 className="mt-4 text-[clamp(2rem,3vw,3.2rem)] font-black leading-tight tracking-[-0.03em]">Simple, credible and focused on improvement.</h2>
-            <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-6">
-              {process.map(([n, t, d]) => (
-                <article key={t} className="rounded-[1.1rem] border border-white/10 bg-black/20 p-4">
-                  <span className="text-sm font-black text-[var(--gold)]">{n}</span>
-                  <h3 className="mt-2 text-base font-black">{t}</h3>
-                  <p className="mt-1 text-xs leading-5 text-[#d6c8ae]">{d}</p>
+            <div className="process-rail mt-7">
+              {process.map(([n, t, d], index) => (
+                <article key={t} className={index % 2 ? "process-rail-step process-rail-step-right" : "process-rail-step"}>
+                  <span>{n}</span>
+                  <h3>{t}</h3>
+                  <p>{d}</p>
                 </article>
               ))}
             </div>
