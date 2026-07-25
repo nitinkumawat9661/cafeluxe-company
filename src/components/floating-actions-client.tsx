@@ -25,6 +25,9 @@ type FloatingActionsClientProps = {
 
 export function FloatingActionsClient({ settings }: FloatingActionsClientProps) {
   const [footerVisible, setFooterVisible] = useState(false);
+  const [heroVisible, setHeroVisible] = useState(true);
+  const [growthGapsVisualVisible, setGrowthGapsVisualVisible] = useState(false);
+  const [servicesVisible, setServicesVisible] = useState(false);
   const baseClass =
     "relative inline-flex h-12 w-12 items-center justify-center rounded-full border border-[rgba(201,155,71,.35)] bg-[var(--gold)] text-black shadow-[0_0_24px_rgba(201,155,71,.3)] transition hover:scale-105 motion-safe:animate-[cardPulse_3s_ease-in-out_infinite] motion-reduce:animate-none md:h-14 md:w-14 md:shadow-[0_0_30px_rgba(201,155,71,.35)]";
 
@@ -55,11 +58,94 @@ export function FloatingActionsClient({ settings }: FloatingActionsClientProps) 
     };
   }, []);
 
+  useEffect(() => {
+    const hero = document.querySelector(".hero-editorial");
+    if (!(hero instanceof HTMLElement)) {
+      const frame = window.requestAnimationFrame(() => setHeroVisible(false));
+      return () => window.cancelAnimationFrame(frame);
+    }
+    const heroElement = hero;
+
+    function updateHeroVisibility() {
+      if (window.matchMedia("(min-width: 768px)").matches) {
+        setHeroVisible(false);
+        return;
+      }
+
+      const rect = heroElement.getBoundingClientRect();
+      setHeroVisible(rect.bottom > window.innerHeight * 0.18);
+    }
+
+    const frame = window.requestAnimationFrame(updateHeroVisibility);
+    window.addEventListener("scroll", updateHeroVisibility, { passive: true });
+    window.addEventListener("resize", updateHeroVisibility);
+
+    return () => {
+      window.cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", updateHeroVisibility);
+      window.removeEventListener("resize", updateHeroVisibility);
+    };
+  }, []);
+
+  useEffect(() => {
+    const visual = document.querySelector(".growth-gaps-art");
+    if (!(visual instanceof HTMLElement)) return;
+    const visualElement = visual;
+
+    function updateGrowthGapsVisibility() {
+      if (window.matchMedia("(min-width: 768px)").matches) {
+        setGrowthGapsVisualVisible(false);
+        return;
+      }
+
+      const rect = visualElement.getBoundingClientRect();
+      setGrowthGapsVisualVisible(rect.top < window.innerHeight && rect.bottom > window.innerHeight * 0.08);
+    }
+
+    const frame = window.requestAnimationFrame(updateGrowthGapsVisibility);
+    window.addEventListener("scroll", updateGrowthGapsVisibility, { passive: true });
+    window.addEventListener("resize", updateGrowthGapsVisibility);
+
+    return () => {
+      window.cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", updateGrowthGapsVisibility);
+      window.removeEventListener("resize", updateGrowthGapsVisibility);
+    };
+  }, []);
+
+  useEffect(() => {
+    const services = document.querySelector(".services-journey-section");
+    if (!(services instanceof HTMLElement)) return;
+    const servicesElement = services;
+
+    function updateServicesVisibility() {
+      if (window.matchMedia("(min-width: 768px)").matches) {
+        setServicesVisible(false);
+        return;
+      }
+
+      const rect = servicesElement.getBoundingClientRect();
+      setServicesVisible(rect.top < window.innerHeight && rect.bottom > window.innerHeight * 0.08);
+    }
+
+    const frame = window.requestAnimationFrame(updateServicesVisibility);
+    window.addEventListener("scroll", updateServicesVisibility, { passive: true });
+    window.addEventListener("resize", updateServicesVisibility);
+
+    return () => {
+      window.cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", updateServicesVisibility);
+      window.removeEventListener("resize", updateServicesVisibility);
+    };
+  }, []);
+
+  const hideOnMobile = footerVisible || heroVisible || growthGapsVisualVisible || servicesVisible;
+
   return (
     <div
       className={[
         "floating-actions fixed bottom-[calc(env(safe-area-inset-bottom)+1rem)] right-4 z-50 flex items-center gap-3 transition duration-200 md:bottom-5 md:right-5",
-        footerVisible ? "max-md:pointer-events-none max-md:translate-y-4 max-md:opacity-0" : "translate-y-0 opacity-100",
+        hideOnMobile ? "max-md:pointer-events-none max-md:translate-y-4 max-md:opacity-0" : "translate-y-0 opacity-100",
       ].join(" ")}
     >
       <a href={settings.phoneHref} aria-label={`Call ${settings.name}`} className={`${baseClass} floating-call-action hidden md:inline-flex`}>
