@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState, type FormEvent } from "react";
 
@@ -17,7 +17,7 @@ export function FeedbackSection() {
     try {
       const response = await fetch("/api/feedback", {
         method: "POST",
-        body: formData
+        body: formData,
       });
 
       const data = await response.json();
@@ -62,7 +62,7 @@ export function FeedbackSection() {
           </button>
 
           {status === "sent" && <p className="text-sm font-bold text-[var(--gold)]">Feedback sent successfully.</p>}
-          {status === "error" && <p className="text-sm font-bold text-red-300">Feedback send nahi hua. Telegram config ya Vercel access check karo.</p>}
+          {status === "error" && <p className="text-sm font-bold text-red-300">Feedback send nahi hua. Server notification configuration check karo.</p>}
         </form>
       </div>
     </section>
