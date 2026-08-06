@@ -1,9 +1,22 @@
 import type { Metadata, Viewport } from "next";
+import { Manrope, Space_Grotesk } from "next/font/google";
 import { PreviewBanner } from "@/components/preview/preview-banner";
 import { createSeoMetadata } from "@/lib/seo";
 import { localSearchKeywords } from "@/lib/seo/local-search";
 import { getSiteSettings } from "@/sanity/lib/site-settings";
 import "./globals.css";
+
+const bodyFont = Manrope({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-body",
+});
+
+const displayFont = Space_Grotesk({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-display",
+});
 
 export async function generateMetadata(): Promise<Metadata> {
   const settings = await getSiteSettings();
@@ -50,8 +63,8 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en-IN">
-      <body>
+    <html lang="en-IN" className={`${bodyFont.variable} ${displayFont.variable}`}>
+      <body style={{ fontFamily: "var(--font-body), ui-sans-serif, system-ui, sans-serif" }}>
         <PreviewBanner />
         {children}
       </body>
