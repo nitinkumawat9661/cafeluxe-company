@@ -13,6 +13,7 @@ export const footerGroups = [
     title: "Company",
     links: [
       { label: "About", href: "/about" },
+      { label: "Digital Marketing Sikar", href: "/digital-marketing-agency-sikar" },
       { label: "Work", href: "/work" },
       { label: "Contact", href: "/contact" },
     ],
@@ -47,6 +48,7 @@ export const footerGroups = [
 
 export const sitemapRoutes = [
   "/",
+  "/digital-marketing-agency-sikar",
   "/services",
   "/services/websites",
   "/services/meta-ads",
