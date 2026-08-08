@@ -26,6 +26,10 @@ export const footerGroups = [
       { label: "SEO", href: "/services/seo" },
       { label: "Social Media", href: "/services/social-media-management" },
       { label: "Websites", href: "/services/websites" },
+      {
+        label: "Custom Restaurant Billing Software in Sikar",
+        href: "/services/restaurant-billing-software",
+      },
       { label: "Lead Generation", href: "/services/lead-generation-systems" },
     ],
   },
@@ -51,6 +55,7 @@ export const sitemapRoutes = [
   "/digital-marketing-agency-sikar",
   "/services",
   "/services/websites",
+  "/services/restaurant-billing-software",
   "/services/meta-ads",
   "/services/google-ads",
   "/services/social-media-management",
