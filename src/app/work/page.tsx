@@ -60,6 +60,15 @@ export default async function WorkPage({ searchParams }: WorkPageProps) {
 
   return (
     <InnerPageShell eyebrow="Work" title="Case studies will live here." description={routePageContent.work.description}>
+      <section className="mx-auto max-w-6xl px-5 pb-6 md:px-6">
+        <RouteCard
+          title="Custom Restaurant Billing Software in Sikar"
+          description="Explore custom restaurant billing, POS, QR menu, GST billing, KDS, analytics and web application development by TrustFirst Solutions."
+          href="/services/restaurant-billing-software"
+          points={["QR Menu Billing", "Custom POS", "GST Billing", "Restaurant SaaS"]}
+        />
+      </section>
+
       <FilterBar
         action="/work"
         filters={[
