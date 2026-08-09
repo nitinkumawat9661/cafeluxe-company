@@ -11,7 +11,7 @@ const assets = [
   {
     output: "trustfirst-brand-intro-v1.webm",
     source: "trustfirst-brand-intro-regenerated.webm.b64",
-    sha256: "e28a2d5a71603415611cdb5198020beeeb7764290b55e52ecf3b7ad082e152bc",
+    sha256: "41dffe1571ae0022f3704fbabed6f05ab1c1c81fde229cab84eee9e0a147d5e3",
   },
   {
     output: "trustfirst-brand-poster-v1.webp",
