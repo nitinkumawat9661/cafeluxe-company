@@ -1,6 +1,6 @@
 /* TrustFirst branded offline service worker */
 
-const VERSION = "v1";
+const VERSION = "v2";
 const PRECACHE = `trustfirst-precache-${VERSION}`;
 const STATIC_CACHE = `trustfirst-static-${VERSION}`;
 const CACHE_PREFIX = "trustfirst-";
@@ -12,6 +12,8 @@ const PRECACHE_URLS = [
   "/brand/trustfirst-brand-intro-v1.webm",
   "/brand/trustfirst-brand-poster-v1.webp",
 ];
+
+let clientReportedOffline = false;
 
 const INLINE_OFFLINE_FALLBACK = `<!doctype html><html lang="en-IN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#080706"><title>You're offline | TrustFirst Solutions</title></head><body style="margin:0;min-height:100svh;display:grid;place-items:center;padding:24px;background:#030302;color:#fff7e8;font-family:system-ui,sans-serif;text-align:center"><main><img src="/trustfirst-logo-original.png" alt="TrustFirst Solutions" width="112" height="112" style="border-radius:20px;max-width:30vw;height:auto"><p style="margin:18px 0 0;color:#c89b45;font-size:12px;font-weight:800;letter-spacing:.22em">OFFLINE</p><h1 style="margin:12px 0 0;font-family:Georgia,serif;font-size:clamp(2.2rem,10vw,4rem);font-weight:600">You're offline</h1><p style="max-width:32rem;margin:14px auto 0;color:#d6c8ae;line-height:1.7">Check your internet connection and retry when you're back online.</p><button onclick="location.reload()" style="margin-top:22px;min-height:48px;padding:12px 24px;border:0;border-radius:999px;background:#c89b45;color:#080604;font-weight:800">Retry</button></main></body></html>`;
 
@@ -115,9 +117,12 @@ self.addEventListener("fetch", (event) => {
   if (url.pathname.startsWith("/api/")) return;
 
   if (request.mode === "navigate") {
-    event.respondWith(
-      fetch(request).catch(() => offlineFallback()),
-    );
+    if (clientReportedOffline) {
+      event.respondWith(offlineFallback());
+      return;
+    }
+
+    event.respondWith(fetch(request).catch(() => offlineFallback()));
     return;
   }
 
@@ -143,5 +148,10 @@ self.addEventListener("fetch", (event) => {
 self.addEventListener("message", (event) => {
   if (event.data === "SKIP_WAITING") {
     void self.skipWaiting();
+    return;
+  }
+
+  if (event.data?.type === "TRUSTFIRST_NETWORK_STATE") {
+    clientReportedOffline = Boolean(event.data.offline);
   }
 });
