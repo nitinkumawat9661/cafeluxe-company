@@ -10,8 +10,8 @@ const outputDir = path.join(root, "public", "brand");
 const assets = [
   {
     output: "trustfirst-brand-intro-v1.webm",
-    source: "trustfirst-brand-intro-v1.webm.b64",
-    sha256: "964ee644970639b0673be856d5d5ac15d4926d8b0e1db1cb66e291b6dd0fc440",
+    source: "trustfirst-brand-intro-regenerated.webm.b64",
+    sha256: "e28a2d5a71603415611cdb5198020beeeb7764290b55e52ecf3b7ad082e152bc",
   },
   {
     output: "trustfirst-brand-poster-v1.webp",
