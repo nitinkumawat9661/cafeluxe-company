@@ -2,6 +2,10 @@
 
 import { useEffect } from "react";
 
+type IdleCapableWindow = Window & {
+  requestIdleCallback?: (callback: IdleRequestCallback, options?: IdleRequestOptions) => number;
+};
+
 export function ServiceWorkerRegistration() {
   useEffect(() => {
     if (!("serviceWorker" in navigator)) return;
@@ -26,11 +30,15 @@ export function ServiceWorkerRegistration() {
     };
 
     const scheduleRegistration = () => {
-      if ("requestIdleCallback" in window) {
-        window.requestIdleCallback(() => void register(), { timeout: 2500 });
-      } else {
-        window.setTimeout(() => void register(), 400);
+      const idleWindow = window as IdleCapableWindow;
+      const requestIdle = idleWindow.requestIdleCallback;
+
+      if (typeof requestIdle === "function") {
+        requestIdle.call(window, () => void register(), { timeout: 2500 });
+        return;
       }
+
+      globalThis.setTimeout(() => void register(), 400);
     };
 
     if (document.readyState === "complete") {
