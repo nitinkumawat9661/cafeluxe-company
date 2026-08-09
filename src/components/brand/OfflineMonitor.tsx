@@ -10,18 +10,16 @@ export function OfflineMonitor() {
   const [offline, setOffline] = useState(false);
 
   useEffect(() => {
-    if (excludedRoute) {
-      setOffline(false);
-      return;
-    }
+    if (excludedRoute) return;
 
     const sync = () => setOffline(!navigator.onLine);
+    const initialSync = window.setTimeout(sync, 0);
 
-    sync();
     window.addEventListener("online", sync);
     window.addEventListener("offline", sync);
 
     return () => {
+      window.clearTimeout(initialSync);
       window.removeEventListener("online", sync);
       window.removeEventListener("offline", sync);
     };
@@ -39,10 +37,7 @@ export function OfflineMonitor() {
         onClick: () => {
           if (navigator.onLine) {
             window.location.reload();
-            return;
           }
-
-          setOffline(true);
         },
       }}
       secondaryAction={null}
