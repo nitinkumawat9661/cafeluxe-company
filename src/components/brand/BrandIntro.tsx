@@ -40,9 +40,9 @@ export function BrandIntro() {
     }
 
     introShownInMemory = true;
-    setVisible(true);
 
     timers.current.push(
+      window.setTimeout(() => setVisible(true), 0),
       window.setTimeout(() => setLeaving(true), INTRO_FADE_MS),
       window.setTimeout(() => setVisible(false), INTRO_REMOVE_MS),
     );
