@@ -172,7 +172,25 @@ try {
     "brand intro did not appear on first session visit",
   );
 
-  await delay(2700);
+  await delay(420);
+  const playback = await client.evaluate(`
+    (() => {
+      const video = document.querySelector('[data-testid="brand-animation-video"]');
+      if (!video) return { present: false, readyState: 0, currentTime: 0, error: -1 };
+      return {
+        present: true,
+        readyState: video.readyState,
+        currentTime: video.currentTime,
+        error: video.error?.code ?? 0
+      };
+    })()
+  `);
+  assert(playback.present, "optimized brand video was not rendered during the intro");
+  assert(playback.error === 0, `optimized brand video reported media error ${playback.error}`);
+  assert(playback.readyState >= 2, `optimized brand video did not decode enough data (readyState=${playback.readyState})`);
+  assert(playback.currentTime > 0, "optimized brand video did not begin playback");
+
+  await delay(2350);
   assert(
     !(await client.evaluate("Boolean(document.querySelector('[data-testid=\"brand-intro\"]'))")),
     "brand intro remained visible beyond the maximum duration",
