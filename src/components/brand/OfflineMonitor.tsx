@@ -1,12 +1,20 @@
 "use client";
 
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { BrandStateScreen } from "./BrandStateScreen";
 
 export function OfflineMonitor() {
+  const pathname = usePathname();
+  const excludedRoute = pathname.startsWith("/studio");
   const [offline, setOffline] = useState(false);
 
   useEffect(() => {
+    if (excludedRoute) {
+      setOffline(false);
+      return;
+    }
+
     const sync = () => setOffline(!navigator.onLine);
 
     sync();
@@ -17,9 +25,9 @@ export function OfflineMonitor() {
       window.removeEventListener("online", sync);
       window.removeEventListener("offline", sync);
     };
-  }, []);
+  }, [excludedRoute]);
 
-  if (!offline) return null;
+  if (excludedRoute || !offline) return null;
 
   return (
     <BrandStateScreen
