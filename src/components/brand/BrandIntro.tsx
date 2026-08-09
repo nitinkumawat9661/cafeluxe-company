@@ -1,5 +1,6 @@
 "use client";
 
+import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { BrandAnimation } from "./BrandAnimation";
 import styles from "./brand-state.module.css";
@@ -15,12 +16,14 @@ function shouldReduceMotion() {
 }
 
 export function BrandIntro() {
+  const pathname = usePathname();
+  const excludedRoute = pathname.startsWith("/studio");
   const [visible, setVisible] = useState(false);
   const [leaving, setLeaving] = useState(false);
   const timers = useRef<number[]>([]);
 
   useEffect(() => {
-    if (introShownInMemory || shouldReduceMotion()) {
+    if (excludedRoute || introShownInMemory || shouldReduceMotion()) {
       return;
     }
 
@@ -48,9 +51,9 @@ export function BrandIntro() {
       timers.current.forEach((timer) => window.clearTimeout(timer));
       timers.current = [];
     };
-  }, []);
+  }, [excludedRoute]);
 
-  if (!visible) return null;
+  if (excludedRoute || !visible) return null;
 
   return (
     <div
