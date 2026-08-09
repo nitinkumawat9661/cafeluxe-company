@@ -1,0 +1,316 @@
+.screen {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  min-height: 100svh;
+  width: 100%;
+  place-items: center;
+  overflow: hidden;
+  padding: clamp(1.25rem, 4vw, 3rem);
+  background:
+    radial-gradient(circle at 50% 22%, rgba(200, 155, 69, 0.12), transparent 24rem),
+    radial-gradient(circle at 12% 100%, rgba(244, 229, 195, 0.045), transparent 26rem),
+    linear-gradient(145deg, #030302 0%, #080706 52%, #030302 100%);
+  color: #fff7e8;
+  font-family: var(--font-body, "Segoe UI"), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100000;
+}
+
+.screen::before,
+.screen::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+}
+
+.screen::before {
+  inset: 0;
+  z-index: -2;
+  opacity: 0.22;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 32px 32px;
+  mask-image: linear-gradient(to bottom, transparent, #000 28%, #000 72%, transparent);
+}
+
+.screen::after {
+  z-index: -1;
+  width: min(68rem, 92vw);
+  height: 1px;
+  top: 18%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(90deg, transparent, rgba(200, 155, 69, 0.5), transparent);
+  box-shadow: 0 0 36px rgba(200, 155, 69, 0.18);
+}
+
+.card {
+  width: min(42rem, 100%);
+  text-align: center;
+}
+
+.eyebrow {
+  margin: 1.1rem 0 0;
+  color: #c89b45;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+
+.code {
+  display: inline-flex;
+  min-height: 2rem;
+  align-items: center;
+  justify-content: center;
+  margin: 1.1rem 0 0;
+  padding: 0.35rem 0.75rem;
+  border: 1px solid rgba(200, 155, 69, 0.28);
+  border-radius: 999px;
+  background: rgba(200, 155, 69, 0.055);
+  color: #c89b45;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.title {
+  max-width: 34rem;
+  margin: 0.9rem auto 0;
+  color: #f8efd9;
+  font-family: var(--font-display, Georgia), Georgia, "Times New Roman", serif;
+  font-size: clamp(2.25rem, 7.5vw, 4.35rem);
+  font-weight: 600;
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+}
+
+.message {
+  max-width: 34rem;
+  margin: 1rem auto 0;
+  color: #d6c8ae;
+  font-size: clamp(0.92rem, 2.7vw, 1.05rem);
+  line-height: 1.75;
+  text-wrap: pretty;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.actionPrimary,
+.actionSecondary {
+  display: inline-flex;
+  min-height: 3rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  padding: 0.78rem 1.25rem;
+  font: inherit;
+  font-size: 0.86rem;
+  font-weight: 800;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 180ms ease, background-color 180ms ease, border-color 180ms ease;
+}
+
+.actionPrimary {
+  border: 1px solid #c89b45;
+  background: #c89b45;
+  color: #080604;
+}
+
+.actionSecondary {
+  border: 1px solid rgba(200, 155, 69, 0.38);
+  background: rgba(255, 255, 255, 0.025);
+  color: #f8efd9;
+}
+
+.actionPrimary:hover,
+.actionSecondary:hover {
+  transform: translateY(-2px);
+}
+
+.actionSecondary:hover {
+  border-color: rgba(200, 155, 69, 0.7);
+  background: rgba(200, 155, 69, 0.08);
+}
+
+.actionPrimary:focus-visible,
+.actionSecondary:focus-visible {
+  outline: 2px solid #fff7e8;
+  outline-offset: 3px;
+}
+
+.animationFrame {
+  position: relative;
+  display: grid;
+  width: clamp(7rem, 24vw, 10.5rem);
+  aspect-ratio: 360 / 544;
+  place-items: center;
+  margin-inline: auto;
+  overflow: hidden;
+  border-radius: 1.65rem;
+}
+
+.animationGlow {
+  position: absolute;
+  width: 68%;
+  aspect-ratio: 1;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(200, 155, 69, 0.22), rgba(200, 155, 69, 0) 68%);
+  filter: blur(7px);
+}
+
+.animationFallback {
+  position: absolute;
+  z-index: 1;
+  width: 62%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 1rem;
+  filter: drop-shadow(0 0 24px rgba(200, 155, 69, 0.2));
+}
+
+.animationVideo {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.animation_pulse {
+  aspect-ratio: 1;
+  border: 1px solid rgba(200, 155, 69, 0.22);
+  background: rgba(200, 155, 69, 0.035);
+  box-shadow: 0 0 36px rgba(200, 155, 69, 0.09), inset 0 0 28px rgba(255, 255, 255, 0.025);
+  animation: brandPulse 1.7s ease-in-out infinite;
+}
+
+.animation_pulse .animationFallback {
+  width: 72%;
+}
+
+.animation_static {
+  aspect-ratio: 1;
+}
+
+.intro {
+  position: fixed;
+  inset: 0;
+  z-index: 100001;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 46%, rgba(200, 155, 69, 0.12), transparent 22rem),
+    #030302;
+  opacity: 1;
+  transition: opacity 300ms ease;
+}
+
+.introLeaving {
+  pointer-events: none;
+  opacity: 0;
+}
+
+.introInner {
+  width: min(92vw, 30rem);
+  text-align: center;
+}
+
+.introName {
+  margin-top: 0.75rem;
+  color: #f8efd9;
+  font-family: var(--font-display, Georgia), Georgia, "Times New Roman", serif;
+  font-size: clamp(2rem, 8vw, 3.4rem);
+  font-weight: 600;
+  letter-spacing: -0.035em;
+}
+
+.introTagline {
+  margin-top: 0.45rem;
+  color: #c89b45;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.27em;
+  text-transform: uppercase;
+}
+
+@keyframes brandPulse {
+  0%, 100% {
+    transform: scale(0.985);
+    box-shadow: 0 0 28px rgba(200, 155, 69, 0.07), inset 0 0 28px rgba(255, 255, 255, 0.02);
+  }
+  50% {
+    transform: scale(1);
+    box-shadow: 0 0 48px rgba(200, 155, 69, 0.14), inset 0 0 28px rgba(255, 255, 255, 0.035);
+  }
+}
+
+@media (min-width: 520px) {
+  .actions {
+    flex-direction: row;
+  }
+
+  .actionPrimary,
+  .actionSecondary {
+    min-width: 9.5rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .screen {
+    padding: 1rem;
+  }
+
+  .card {
+    width: 100%;
+  }
+
+  .title {
+    font-size: clamp(2.2rem, 11vw, 3rem);
+  }
+
+  .actions {
+    width: 100%;
+  }
+
+  .actionPrimary,
+  .actionSecondary {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animationVideo {
+    display: none;
+  }
+
+  .animation_pulse,
+  .actionPrimary,
+  .actionSecondary,
+  .intro {
+    animation: none;
+    transition: none;
+  }
+
+  .actionPrimary:hover,
+  .actionSecondary:hover {
+    transform: none;
+  }
+}
