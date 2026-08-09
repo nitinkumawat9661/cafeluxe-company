@@ -14,7 +14,7 @@ permissions:
 jobs:
   validate:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 25
 
     steps:
       - name: Checkout
@@ -29,6 +29,19 @@ jobs:
       - name: Install dependencies
         run: npm ci --no-audit --no-fund
 
+      - name: Create CI-only runtime error fixture
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p src/app/brand-ci-runtime-error
+          cat > src/app/brand-ci-runtime-error/page.tsx <<'EOF'
+          export const dynamic = "force-dynamic";
+
+          export default function BrandCiRuntimeError() {
+            throw new Error("BRAND_CI_RUNTIME_ERROR");
+          }
+          EOF
+
       - name: Lint
         run: npm run lint
 
@@ -39,3 +52,75 @@ jobs:
         env:
           NEXT_PUBLIC_SITE_URL: https://trustfirstsolutions.in
         run: npm run build
+
+      - name: Branded state browser smoke tests
+        shell: bash
+        env:
+          BRAND_TEST_BASE_URL: http://127.0.0.1:3100
+          BRAND_TEST_CDP_URL: http://127.0.0.1:9222
+        run: |
+          set -euo pipefail
+
+          npm start -- -H 127.0.0.1 -p 3100 > /tmp/trustfirst-next.log 2>&1 &
+          NEXT_PID=$!
+
+          CHROME_BIN="$(command -v google-chrome || command -v google-chrome-stable || command -v chromium || command -v chromium-browser || true)"
+          if [ -z "$CHROME_BIN" ]; then
+            echo "No Chrome/Chromium binary found on runner"
+            exit 1
+          fi
+
+          "$CHROME_BIN" \
+            --headless=new \
+            --no-sandbox \
+            --disable-gpu \
+            --disable-dev-shm-usage \
+            --remote-debugging-address=127.0.0.1 \
+            --remote-debugging-port=9222 \
+            --user-data-dir=/tmp/trustfirst-brand-cdp \
+            about:blank \
+            > /tmp/trustfirst-chrome.log 2>&1 &
+          CHROME_PID=$!
+
+          cleanup() {
+            kill "$CHROME_PID" >/dev/null 2>&1 || true
+            kill "$NEXT_PID" >/dev/null 2>&1 || true
+          }
+          trap cleanup EXIT
+
+          for attempt in $(seq 1 60); do
+            if curl -fsS http://127.0.0.1:3100/ >/dev/null 2>&1; then
+              break
+            fi
+            if [ "$attempt" -eq 60 ]; then
+              cat /tmp/trustfirst-next.log
+              exit 1
+            fi
+            sleep 0.25
+          done
+
+          for attempt in $(seq 1 60); do
+            if curl -fsS http://127.0.0.1:9222/json/version >/dev/null 2>&1; then
+              break
+            fi
+            if [ "$attempt" -eq 60 ]; then
+              cat /tmp/trustfirst-chrome.log
+              exit 1
+            fi
+            sleep 0.25
+          done
+
+          node scripts/brand-browser-smoke.mjs
+
+      - name: Brand asset size and offline shell checks
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -s public/brand/trustfirst-brand-intro-v1.webm
+          test -s public/brand/trustfirst-brand-poster-v1.webp
+          test "$(stat -c%s public/brand/trustfirst-brand-intro-v1.webm)" -lt 100000
+          test "$(stat -c%s public/brand/trustfirst-brand-poster-v1.webp)" -lt 50000
+          grep -Fq "You're offline" public/offline.html
+          grep -Fq 'url.pathname.startsWith("/api/")' public/sw.js
+          grep -Fq "prefers-reduced-motion" src/components/brand/brand-state.module.css
+          node --check public/sw.js
