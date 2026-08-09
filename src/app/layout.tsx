@@ -1,5 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, Manrope } from "next/font/google";
+import { BrandIntro } from "@/components/brand/BrandIntro";
+import { OfflineMonitor } from "@/components/brand/OfflineMonitor";
+import { ServiceWorkerRegistration } from "@/components/brand/ServiceWorkerRegistration";
 import { PreviewBanner } from "@/components/preview/preview-banner";
 import { createSeoMetadata } from "@/lib/seo";
 import { localSearchKeywords } from "@/lib/seo/local-search";
@@ -131,6 +134,9 @@ export default function RootLayout({
       </head>
       <body style={{ fontFamily: "var(--font-body), ui-sans-serif, system-ui, sans-serif" }}>
         <PreviewBanner />
+        <BrandIntro />
+        <OfflineMonitor />
+        <ServiceWorkerRegistration />
         {children}
       </body>
     </html>

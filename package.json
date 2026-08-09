@@ -3,11 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "prepare:brand-assets": "node scripts/prepare-brand-assets.mjs",
+    "predev": "npm run prepare:brand-assets",
     "dev": "next dev",
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
     "check": "npm run lint && npm run typecheck",
-    "prebuild": "npm run check",
+    "prebuild": "npm run check && npm run prepare:brand-assets",
     "build": "next build",
     "start": "next start"
   },
