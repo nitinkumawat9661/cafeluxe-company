@@ -18,7 +18,7 @@ export function InnerPageShell({
   description,
   children,
   ctaHref = "/contact",
-  ctaLabel = "Free Growth Audit",
+  ctaLabel = "Start a Project",
 }: InnerPageShellProps) {
   return (
     <>
