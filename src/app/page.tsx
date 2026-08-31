@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowUpRight, MessageCircle } from "lucide-react";
 import { SiteFooter } from "@/components/site-footer";
+import { SoftwareHeroVisual } from "@/components/software-hero";
 import { SplashIntro } from "@/components/splash-intro";
 import { StickyNavigation } from "@/components/sticky-navigation";
 import { WhatsAppFloating } from "@/components/whatsapp-floating";
@@ -89,7 +90,7 @@ export default async function Home() {
         <div className="trust-river-bg" aria-hidden="true" />
 
         <section className="mx-auto max-w-[92rem] px-5 pb-16 pt-32 md:px-8 md:pb-24 md:pt-40">
-          <div className="grid gap-10 lg:grid-cols-[1.05fr_.65fr] lg:items-end">
+          <div className="grid gap-10 lg:grid-cols-[1fr_.9fr] lg:items-center">
             <div className="hero-copy">
               <p className="text-xs font-black uppercase tracking-[.32em] text-[var(--gold)]">
                 Software Engineering Company · India
@@ -130,36 +131,7 @@ export default async function Home() {
               </div>
             </div>
 
-            <aside className="rounded-[2rem] border border-[rgba(201,155,71,.25)] bg-[linear-gradient(145deg,rgba(255,255,255,.05),rgba(201,155,71,.035),rgba(0,0,0,.35))] p-6 shadow-[0_28px_100px_rgba(0,0,0,.42)] md:p-8">
-              <div className="flex items-center justify-between gap-4">
-                <p className="text-xs font-black uppercase tracking-[.22em] text-[var(--gold)]">Engineering brief</p>
-                <span className="h-2 w-2 rounded-full bg-[var(--gold)] shadow-[0_0_18px_rgba(201,155,71,.8)]" />
-              </div>
-
-              <div className="mt-8 border-l border-[rgba(201,155,71,.28)] pl-5">
-                <p className="text-sm font-black text-[#f8efd9]">Start with the operation.</p>
-                <p className="mt-2 text-sm leading-7 text-[#bcae94]">
-                  Who uses it? What data matters? What must never break? What should happen offline? What needs approval?
-                </p>
-              </div>
-
-              <div className="mt-7 grid gap-3">
-                {[
-                  ["01", "Workflow", "How work moves through the business"],
-                  ["02", "Data", "What becomes the source of truth"],
-                  ["03", "Controls", "Permissions, validation and safe changes"],
-                  ["04", "Delivery", "Deployment, verification and iteration"],
-                ].map(([number, title, description]) => (
-                  <div key={number} className="grid grid-cols-[auto_1fr] gap-4 rounded-2xl border border-white/10 bg-black/25 p-4">
-                    <span className="text-xs font-black text-[var(--gold)]">{number}</span>
-                    <div>
-                      <b className="block text-sm text-[#f8efd9]">{title}</b>
-                      <p className="mt-1 text-xs leading-5 text-[#a99b82]">{description}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </aside>
+            <SoftwareHeroVisual />
           </div>
         </section>
 
@@ -191,9 +163,9 @@ export default async function Home() {
 
             <div className="grid gap-3 md:grid-cols-2">
               {capabilities.map((capability) => (
-                <article key={capability.number} className="rounded-[1.5rem] border border-white/10 bg-white/[.03] p-5 md:p-6">
+                <article key={capability.number} className="group rounded-[1.5rem] border border-white/10 bg-white/[.03] p-5 transition duration-300 hover:-translate-y-1 hover:border-[rgba(201,155,71,.3)] hover:bg-[rgba(201,155,71,.04)] md:p-6">
                   <span className="text-xs font-black tracking-[.18em] text-[var(--gold)]">{capability.number}</span>
-                  <h3 className="mt-5 text-2xl font-black tracking-[-0.035em] text-[#f8efd9]">{capability.title}</h3>
+                  <div className="mt-5 flex items-start justify-between gap-4"><h3 className="text-2xl font-black tracking-[-0.035em] text-[#f8efd9]">{capability.title}</h3><ArrowUpRight size={16} className="mt-1 text-[#645a49] transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[var(--gold)]" /></div>
                   <p className="mt-3 text-sm leading-7 text-[#bcae94]">{capability.description}</p>
                 </article>
               ))}
@@ -222,7 +194,22 @@ export default async function Home() {
                   <span className="text-xs font-black text-[#665d4d]">0{index + 1}</span>
                 </div>
 
-                <div className="mt-12 h-px bg-[linear-gradient(90deg,rgba(201,155,71,.7),rgba(201,155,71,0))]" />
+                <div className="mt-10 h-px bg-[linear-gradient(90deg,rgba(201,155,71,.7),rgba(201,155,71,0))]" />
+
+                <div className="mt-7 grid h-36 grid-cols-[.38fr_.62fr] gap-2 overflow-hidden rounded-[1.15rem] border border-white/10 bg-black/35 p-2" aria-hidden="true">
+                  <div className="grid gap-2">
+                    <span className="rounded-lg border border-[rgba(201,155,71,.18)] bg-[rgba(201,155,71,.06)]" />
+                    <span className="rounded-lg border border-white/10 bg-white/[.025]" />
+                  </div>
+                  <div className="grid grid-rows-[.6fr_.4fr] gap-2">
+                    <span className="rounded-lg border border-white/10 bg-[linear-gradient(135deg,rgba(255,255,255,.035),rgba(201,155,71,.035))]" />
+                    <div className="grid grid-cols-3 gap-2">
+                      <span className="rounded-md border border-white/10 bg-white/[.025]" />
+                      <span className="rounded-md border border-white/10 bg-white/[.025]" />
+                      <span className="rounded-md border border-[rgba(201,155,71,.16)] bg-[rgba(201,155,71,.045)]" />
+                    </div>
+                  </div>
+                </div>
 
                 <h3 className="mt-8 text-3xl font-black tracking-[-0.045em] text-[#f8efd9]">{system.title}</h3>
                 <p className="mt-4 text-sm leading-7 text-[#bcae94]">{system.description}</p>
