@@ -16,11 +16,24 @@ export default async function AboutPage() {
   const settings = await getSiteSettings();
 
   return (
-    <InnerPageShell eyebrow="About" title="A growth agency built around clarity, trust and practical execution." description={routePageContent.about.description}>
+    <InnerPageShell
+      eyebrow="About"
+      title="We build software around the way a business actually operates."
+      description={routePageContent.about.description}
+    >
       <section className="mx-auto grid max-w-6xl gap-4 px-5 pb-16 md:grid-cols-3 md:px-6">
-        <RouteCard title="Location" description={settings.address} />
-        <RouteCard title="Working style" description="Audit first, clear strategy, transparent execution and practical reporting." />
-        <RouteCard title="Focus" description="Meta Ads, Google Ads, SEO, social media, Google Business Profile, websites, landing pages and lead generation systems." />
+        <RouteCard
+          title="What we build"
+          description="Custom software, web applications, ERP and POS systems, mobile apps, automation and premium business platforms."
+        />
+        <RouteCard
+          title="How we work"
+          description="Understand the workflow first, define scope clearly, build in reviewable stages and verify the system before release."
+        />
+        <RouteCard
+          title="Where we work"
+          description={settings.address + ". We work with businesses in Rajasthan and across India."}
+        />
       </section>
     </InnerPageShell>
   );
