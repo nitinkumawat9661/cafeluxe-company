@@ -1,15 +1,15 @@
 export const siteConfig = {
   name: "TrustFirst Solutions",
-  tagline: "Aap Business Sambhaliye, Growth Hum Dekh Lenge.",
+  tagline: "Software systems built around real business operations.",
   description:
-    "TrustFirst Solutions is a digital growth agency helping businesses generate leads, improve visibility and convert attention into customers through ads, content, SEO, websites, landing pages and automation.",
+    "TrustFirst Solutions is a software engineering company building custom business software, web applications, ERP and POS systems, mobile apps and business automation.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://trustfirstsolutions.in",
   phone: "+91 7414853321",
   phoneHref: "tel:+917414853321",
   email: "hello@trustfirstsolutions.in",
   whatsapp: "917414853321",
   whatsappHref:
-    "https://wa.me/917414853321?text=Hi%20TrustFirst%20Solutions%2C%20I%20want%20a%20free%20digital%20growth%20audit.",
+    "https://wa.me/917414853321?text=Hi%20TrustFirst%20Solutions%2C%20I%20want%20to%20discuss%20a%20software%20project.",
   city: "Sikar",
   region: "Rajasthan",
   country: "India",
@@ -21,15 +21,12 @@ export const siteConfig = {
 };
 
 export const services = [
-  "Meta Ads",
-  "Google Ads",
-  "Social Media Management",
-  "Content Strategy and Creation",
-  "SEO",
-  "Google Business Profile Management",
-  "Websites",
-  "Landing Pages",
-  "Lead Generation Systems",
-  "Automation and Follow-up Systems",
-  "Business Growth Consultation",
+  "Custom Business Software",
+  "Web Applications",
+  "ERP Systems",
+  "POS and Billing Systems",
+  "Business Automation",
+  "Mobile Applications",
+  "AI Integrations",
+  "Premium Business Websites",
 ];

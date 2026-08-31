@@ -18,31 +18,21 @@ export async function SiteFooter() {
             </span>
             <b className="text-xl text-white">
               <span>
-                <span className="trust-shimmer">{settings.name.split(" ")[0]}</span>{settings.name.split(" ").slice(1).join(" ") ? ` ${settings.name.split(" ").slice(1).join(" ")}` : ""}
+                <span className="trust-shimmer">{settings.name.split(" ")[0]}</span>
+                {settings.name.split(" ").slice(1).join(" ") ? ` ${settings.name.split(" ").slice(1).join(" ")}` : ""}
               </span>
             </b>
           </div>
           <p className="mt-3 max-w-xs">{settings.tagline}</p>
           <div className="mt-4 grid gap-3">
-            <a
-              href={settings.phoneHref}
-              className="inline-flex items-center gap-2 rounded-full border border-[rgba(201,155,71,.3)] px-4 py-3 text-[#f7ecd2]"
-            >
-              <PhoneCall size={17} strokeWidth={1.9} /> Call Now
+            <a href={settings.phoneHref} className="inline-flex items-center gap-2 rounded-full border border-[rgba(201,155,71,.3)] px-4 py-3 text-[#f7ecd2]">
+              <PhoneCall size={17} strokeWidth={1.9} /> Call
             </a>
-            <a
-              href={settings.whatsappHref}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border border-[rgba(201,155,71,.3)] px-4 py-3 text-[#f7ecd2]"
-            >
+            <a href={settings.whatsappHref} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full border border-[rgba(201,155,71,.3)] px-4 py-3 text-[#f7ecd2]">
               <MessageCircle size={17} strokeWidth={1.9} /> WhatsApp
             </a>
-            <a
-              href={`mailto:${settings.email}`}
-              className="inline-flex items-center gap-2 rounded-full border border-[rgba(201,155,71,.3)] px-4 py-3 text-[#f7ecd2]"
-            >
-              <Mail size={17} strokeWidth={1.9} /> Email Us
+            <a href={`mailto:${settings.email}`} className="inline-flex items-center gap-2 rounded-full border border-[rgba(201,155,71,.3)] px-4 py-3 text-[#f7ecd2]">
+              <Mail size={17} strokeWidth={1.9} /> Email
             </a>
             {settings.address && (
               <span className="inline-flex items-center gap-2 rounded-full border border-[rgba(201,155,71,.3)] px-4 py-3 text-[#f7ecd2]">
@@ -50,13 +40,7 @@ export async function SiteFooter() {
               </span>
             )}
             {settings.socialLinks.map((link) => (
-              <a
-                key={link.url}
-                href={link.url}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-2 rounded-full border border-[rgba(201,155,71,.3)] px-4 py-3 text-[#f7ecd2]"
-              >
+              <a key={link.url} href={link.url} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full border border-[rgba(201,155,71,.3)] px-4 py-3 text-[#f7ecd2]">
                 {link.label} <ArrowUpRight size={15} strokeWidth={1.9} />
               </a>
             ))}

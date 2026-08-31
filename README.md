@@ -1,38 +1,46 @@
-This is the TrustFirst Solutions company website built with Next.js, TypeScript, Tailwind, App Router and Vercel.
+# TrustFirst Solutions
 
-## Getting Started
+Canonical source repository for the **TrustFirst Solutions** company website.
 
-First, run the development server:
+## Current direction
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+TrustFirst Solutions is being repositioned from a marketing-led website into a premium software engineering company brand focused on:
+
+- Custom business software
+- Web applications
+- ERP, POS and billing systems
+- Business automation
+- Mobile applications
+- AI integrations
+- Premium business websites
+
+The live production code currently remains on `main`.
+
+The new company rebuild is developed on:
+
+```
+rebuild/trustfirstsolutions-company
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Do not merge the rebuild into `main` until the replacement website has been reviewed and verified.
 
-Sanity Studio is available at `/studio` after Sanity environment variables are configured. Draft preview is available through the secure `/api/draft/enable` endpoint when `SANITY_PREVIEW_SECRET` and `SANITY_API_READ_TOKEN` are set.
+## Architecture
 
-## CMS setup
+- Next.js 16 App Router
+- React 19
+- TypeScript
+- Tailwind CSS 4
+- Framer Motion
+- Sanity CMS
+- Vercel-compatible deployment
 
-See [docs/cms-setup.md](docs/cms-setup.md) for Sanity project setup, required environment variables, `/studio` access, publishing flow and image guidance.
+Existing CMS, SEO, content infrastructure, deployment tooling, error/loading states and production history should be preserved unless a rebuild task explicitly replaces them.
 
-## Learn More
+## Rebuild documentation
 
-To learn more about Next.js, take a look at the following resources:
+See:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `docs/TRUSTFIRST_COMPANY_REBUILD.md`
+- `docs/cms-setup.md`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The separate `portfolio` repository is no longer the development source of truth. Its premium monochrome design research remains a design reference for this rebuild.

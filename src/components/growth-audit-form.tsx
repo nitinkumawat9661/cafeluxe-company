@@ -8,6 +8,9 @@ type GrowthAuditFormProps = {
   description?: string;
   compact?: boolean;
   testMode?: boolean;
+  submitLabel?: string;
+  servicePlaceholder?: string;
+  messagePlaceholder?: string;
 };
 
 type SubmitState = "idle" | "sending" | "success" | "error";
@@ -18,6 +21,9 @@ export function GrowthAuditForm({
   description = "Clean details go directly to the TrustFirst lead flow.",
   compact = false,
   testMode = false,
+  submitLabel = "Get Free Growth Audit",
+  servicePlaceholder = "What help do you need? *",
+  messagePlaceholder = "Short business challenge *",
 }: GrowthAuditFormProps) {
   const [state, setState] = useState<SubmitState>("idle");
   const [message, setMessage] = useState("");
@@ -33,7 +39,6 @@ export function GrowthAuditForm({
     if (state === "sending") return;
 
     const form = event.currentTarget;
-
     if (!form.reportValidity()) return;
 
     setState("sending");
@@ -79,34 +84,11 @@ export function GrowthAuditForm({
       <p className="mt-2 text-sm leading-6 text-[#d6c8ae]">{description}</p>
 
       <div className="mt-5 grid gap-4 md:grid-cols-2">
-        <input
-          required
-          minLength={2}
-          maxLength={60}
-          name="name"
-          defaultValue={testMode ? "TrustFirst UX Test" : undefined}
-          placeholder="Full Name *"
-          className="lead-input"
-        />
-        <input
-          required
-          minLength={10}
-          maxLength={13}
-          inputMode="numeric"
-          pattern="[0-9]{10,13}"
-          name="phone"
-          placeholder="Phone / WhatsApp *"
-          className="lead-input"
-        />
+        <input required minLength={2} maxLength={60} name="name" defaultValue={testMode ? "TrustFirst UX Test" : undefined} placeholder="Full Name *" className="lead-input" />
+        <input required minLength={10} maxLength={13} inputMode="numeric" pattern="[0-9]{10,13}" name="phone" placeholder="Phone / WhatsApp *" className="lead-input" />
         <select required name="service" defaultValue="" className="lead-input md:col-span-2">
-          <option value="" disabled>
-            What help do you need? *
-          </option>
-          {services.map((service) => (
-            <option key={service} value={service}>
-              {service}
-            </option>
-          ))}
+          <option value="" disabled>{servicePlaceholder}</option>
+          {services.map((service) => <option key={service} value={service}>{service}</option>)}
         </select>
         <textarea
           required
@@ -115,7 +97,7 @@ export function GrowthAuditForm({
           name="message"
           rows={compact ? 3 : 4}
           defaultValue={testMode ? "Async form submission verification. Please ignore." : undefined}
-          placeholder="Short business challenge *"
+          placeholder={messagePlaceholder}
           className="lead-input resize-none md:col-span-2"
         />
         <details className="rounded-xl border border-white/10 bg-white/[.035] p-4 md:col-span-2">
@@ -124,7 +106,7 @@ export function GrowthAuditForm({
             <input maxLength={70} name="business" placeholder="Business Name" className="lead-input" />
             <input maxLength={70} name="businessType" placeholder="Business Type" className="lead-input" />
             <input maxLength={70} name="location" placeholder="Location" className="lead-input" />
-            <input maxLength={120} name="onlineUrl" placeholder="Website / Instagram URL" className="lead-input" />
+            <input maxLength={120} name="onlineUrl" placeholder="Website / Existing System URL" className="lead-input" />
             <select name="budget" className="lead-input md:col-span-2">
               <option value="">Budget range optional</option>
               <option>Not sure yet</option>
@@ -142,26 +124,26 @@ export function GrowthAuditForm({
           aria-describedby={message ? statusId : undefined}
           className="lead-submit rounded-xl bg-[var(--gold)] px-6 py-4 font-black text-black transition hover:-translate-y-0.5 hover:shadow-[0_0_28px_rgba(201,155,71,.25)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--gold)] active:translate-y-0 disabled:pointer-events-none disabled:opacity-65 md:col-span-2"
         >
-          {state === "sending" ? "Sending..." : "Get Free Growth Audit"}
+          {state === "sending" ? "Sending..." : submitLabel}
         </button>
       </div>
 
       <div className="lead-status-slot">
         {message && (
-        <div
-          ref={statusRef}
-          id={statusId}
-          role={state === "error" ? "alert" : "status"}
-          tabIndex={-1}
-          className={[
-            "rounded-2xl border px-5 py-4 text-sm font-bold outline-none focus-visible:ring-2 focus-visible:ring-[var(--gold)]",
-            state === "success"
-              ? "border-[rgba(201,155,71,.35)] bg-[rgba(201,155,71,.10)] text-[#f8efd9]"
-              : "border-red-300/30 bg-red-500/10 text-red-100",
-          ].join(" ")}
-        >
-          {message}
-        </div>
+          <div
+            ref={statusRef}
+            id={statusId}
+            role={state === "error" ? "alert" : "status"}
+            tabIndex={-1}
+            className={[
+              "rounded-2xl border px-5 py-4 text-sm font-bold outline-none focus-visible:ring-2 focus-visible:ring-[var(--gold)]",
+              state === "success"
+                ? "border-[rgba(201,155,71,.35)] bg-[rgba(201,155,71,.10)] text-[#f8efd9]"
+                : "border-red-300/30 bg-red-500/10 text-red-100",
+            ].join(" ")}
+          >
+            {message}
+          </div>
         )}
       </div>
     </form>

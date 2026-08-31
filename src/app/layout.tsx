@@ -5,7 +5,6 @@ import { OfflineMonitor } from "@/components/brand/OfflineMonitor";
 import { ServiceWorkerRegistration } from "@/components/brand/ServiceWorkerRegistration";
 import { PreviewBanner } from "@/components/preview/preview-banner";
 import { createSeoMetadata } from "@/lib/seo";
-import { localSearchKeywords } from "@/lib/seo/local-search";
 import { getSiteSettings } from "@/sanity/lib/site-settings";
 import "./globals.css";
 
@@ -85,10 +84,9 @@ const premiumTypographyCss = `
 
 export async function generateMetadata(): Promise<Metadata> {
   const settings = await getSiteSettings();
-  const title = settings.defaultSeoTitle || "Digital Marketing Agency in Sikar | TrustFirst Solutions";
+  const title = "TrustFirst Solutions | Software Engineering Company";
   const description =
-    settings.defaultSeoDescription ||
-    "TrustFirst Solutions is a digital marketing agency in Sikar helping businesses with SEO, Google Ads, Meta Ads, social media, websites, Google Business Profile, lead generation and automation.";
+    "TrustFirst Solutions builds custom business software, web applications, ERP and POS systems, mobile apps, automation and AI integrations for businesses across India.";
 
   return {
     ...(await createSeoMetadata({
@@ -98,9 +96,21 @@ export async function generateMetadata(): Promise<Metadata> {
     })),
     metadataBase: new URL(settings.url),
     applicationName: settings.name,
-    category: "business",
-    classification: "Digital marketing, local SEO, advertising and website development",
-    keywords: [...localSearchKeywords, settings.name],
+    category: "technology",
+    classification: "Software engineering, custom business software and digital product development",
+    keywords: [
+      settings.name,
+      "software development company",
+      "custom software development",
+      "business software",
+      "web application development",
+      "ERP software",
+      "POS software",
+      "billing software",
+      "business automation",
+      "mobile app development",
+      "AI integrations",
+    ],
     creator: settings.name,
     publisher: settings.name,
     icons: settings.faviconUrl ? { icon: settings.faviconUrl } : undefined,
