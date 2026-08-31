@@ -1,9 +1,8 @@
 export const publicRoutes = [
   { label: "Home", href: "/" },
   { label: "Services", href: "/services" },
+  { label: "Products", href: "/products" },
   { label: "Work", href: "/work" },
-  { label: "Blog", href: "/blog" },
-  { label: "Resources", href: "/resources" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];
@@ -13,32 +12,28 @@ export const footerGroups = [
     title: "Company",
     links: [
       { label: "About", href: "/about" },
-      { label: "Digital Marketing Sikar", href: "/digital-marketing-agency-sikar" },
       { label: "Work", href: "/work" },
+      { label: "Products", href: "/products" },
       { label: "Contact", href: "/contact" },
     ],
   },
   {
-    title: "Services",
+    title: "Capabilities",
     links: [
-      { label: "Meta Ads", href: "/services/meta-ads" },
-      { label: "Google Ads", href: "/services/google-ads" },
-      { label: "SEO", href: "/services/seo" },
-      { label: "Social Media", href: "/services/social-media-management" },
-      { label: "Websites", href: "/services/websites" },
-      {
-        label: "Custom Restaurant Billing Software in Sikar",
-        href: "/services/restaurant-billing-software",
-      },
-      { label: "Lead Generation", href: "/services/lead-generation-systems" },
+      { label: "Custom Software", href: "/services#custom-software" },
+      { label: "Web Applications", href: "/services#web-applications" },
+      { label: "ERP & POS", href: "/services#erp-pos" },
+      { label: "Automation", href: "/services#automation" },
+      { label: "Mobile Apps", href: "/services#mobile-apps" },
+      { label: "AI Integrations", href: "/services#ai-integrations" },
     ],
   },
   {
-    title: "Resources",
+    title: "Explore",
     links: [
       { label: "Blog", href: "/blog" },
       { label: "Resources", href: "/resources" },
-      { label: "FAQ", href: "/#faq" },
+      { label: "Legacy Digital Marketing", href: "/digital-marketing-agency-sikar" },
     ],
   },
   {
@@ -52,7 +47,7 @@ export const footerGroups = [
 
 export const sitemapRoutes = [
   "/",
-  "/digital-marketing-agency-sikar",
+  "/products",
   "/services",
   "/services/websites",
   "/services/restaurant-billing-software",
@@ -66,6 +61,7 @@ export const sitemapRoutes = [
   "/services/lead-generation-systems",
   "/services/automation-follow-up-systems",
   "/services/business-growth-consultation",
+  "/digital-marketing-agency-sikar",
   "/work",
   "/blog",
   "/resources",
