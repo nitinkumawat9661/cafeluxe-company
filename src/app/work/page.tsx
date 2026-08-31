@@ -1,97 +1,63 @@
-import { ContentCard } from "@/components/cms/content-card";
-import { FilterBar } from "@/components/discovery/filter-bar";
-import { Pagination } from "@/components/discovery/pagination";
 import { InnerPageShell } from "@/components/inner-page-shell";
 import { RouteCard } from "@/components/route-card";
 import { routePageContent } from "@/lib/content";
-import {
-  buildHref,
-  getPageNumber,
-  getSearchParam,
-  paginateItems,
-  uniqueOptions,
-  workToDiscoveryItem,
-  type SearchParamsInput,
-} from "@/lib/discovery";
 import { createSeoMetadata } from "@/lib/seo";
-import { fetchSanityPreview } from "@/sanity/lib/fetch";
-import { caseStudyDiscoveryQuery, previewCaseStudyDiscoveryQuery } from "@/sanity/lib/queries";
-import type { CaseStudy } from "@/sanity/lib/types";
 
-type WorkPageProps = {
-  searchParams: Promise<SearchParamsInput>;
-};
-
-export async function generateMetadata({ searchParams }: WorkPageProps) {
-  const params = await searchParams;
-  return createSeoMetadata({
-    title: routePageContent.work.title,
-    description: routePageContent.work.description,
-    path: buildHref("/work", params, {}),
-  });
-}
-
-const fallbackCards = [
+const work = [
   {
-    title: "CMS content coming soon",
-    description: "Case studies will appear here after real business growth stories are published from TrustFirst Studio.",
+    title: "CafeLuxe POS Suite",
+    description:
+      "Restaurant operations software connecting billing, QR ordering, stock and staff workflows in one product family.",
+    points: ["Restaurant POS", "QR Ordering", "Inventory", "Staff Operations"],
   },
   {
-    title: "Growth story",
-    description: "Future case studies can explain the business context, goal, scope and verified result.",
+    title: "TrustFirst POS",
+    description:
+      "A business POS platform designed around reliable billing, durable local data, inventory workflows and universal online synchronization.",
+    points: ["Billing", "Inventory", "Offline-first", "Online Sync"],
   },
   {
-    title: "Outcome focus",
-    description: "Each case study should explain what changed for the business without inventing claims.",
+    title: "Business ERP & Client Platforms",
+    description:
+      "Custom operational systems for businesses that need controlled billing, stock, staff access, reports and client-facing workflows.",
+    points: ["ERP Workflows", "Role Access", "Reports", "Client Portal"],
   },
 ];
 
-export default async function WorkPage({ searchParams }: WorkPageProps) {
-  const params = await searchParams;
-  const industry = getSearchParam(params, "industry");
-  const serviceType = getSearchParam(params, "serviceType");
-  const caseStudies = (await fetchSanityPreview<CaseStudy[]>(caseStudyDiscoveryQuery, previewCaseStudyDiscoveryQuery)) ?? [];
-  const filtered = caseStudies.filter((study) => {
-    const industryMatch = !industry || study.industry === industry;
-    const serviceMatch = !serviceType || study.serviceType === serviceType;
-    return industryMatch && serviceMatch;
+export async function generateMetadata() {
+  return createSeoMetadata({
+    title: routePageContent.work.title,
+    description: routePageContent.work.description,
+    path: "/work",
   });
-  const pagination = paginateItems(filtered.map(workToDiscoveryItem), getPageNumber(params));
+}
 
+export default function WorkPage() {
   return (
-    <InnerPageShell eyebrow="Work" title="Case studies will live here." description={routePageContent.work.description}>
-      <section className="mx-auto max-w-6xl px-5 pb-6 md:px-6">
-        <RouteCard
-          title="Custom Restaurant Billing Software in Sikar"
-          description="Explore custom restaurant billing, POS, QR menu, GST billing, KDS, analytics and web application development by TrustFirst Solutions."
-          href="/services/restaurant-billing-software"
-          points={["QR Menu Billing", "Custom POS", "GST Billing", "Restaurant SaaS"]}
-        />
-      </section>
+    <InnerPageShell
+      eyebrow="Work"
+      title="Software systems built for real operations."
+      description={routePageContent.work.description}
+    >
+      <section className="mx-auto max-w-6xl px-5 pb-16 md:px-6">
+        <div className="grid gap-4 md:grid-cols-3">
+          {work.map((item) => (
+            <RouteCard
+              key={item.title}
+              title={item.title}
+              description={item.description}
+              points={item.points}
+            />
+          ))}
+        </div>
 
-      <FilterBar
-        action="/work"
-        filters={[
-          { label: "Industry", name: "industry", value: industry, options: uniqueOptions(caseStudies.map((study) => study.industry)) },
-          { label: "Service Type", name: "serviceType", value: serviceType, options: uniqueOptions(caseStudies.map((study) => study.serviceType)) },
-        ]}
-      />
-      <section className="mx-auto grid max-w-6xl gap-4 px-5 pb-16 md:grid-cols-3 md:px-6">
-        {pagination.items.length > 0
-          ? pagination.items.map((study) => (
-              <ContentCard
-                key={study.id}
-                href={study.href}
-                title={study.title}
-                description={study.description}
-                image={study.image}
-                meta={study.meta}
-                badges={study.badges}
-              />
-            ))
-          : fallbackCards.map((card) => <RouteCard key={card.title} title={card.title} description={card.description} />)}
+        <div className="mt-8 rounded-[1.5rem] border border-white/10 bg-white/[.03] p-6">
+          <p className="text-xs font-black uppercase tracking-[.18em] text-[var(--gold)]">Case studies in progress</p>
+          <p className="mt-3 max-w-3xl text-sm leading-7 text-[#d6c8ae]">
+            Detailed case studies will document the business problem, system scope, engineering decisions and verified outcomes without inventing metrics or claims.
+          </p>
+        </div>
       </section>
-      <Pagination pathname="/work" params={params} page={pagination.page} totalPages={pagination.totalPages} />
     </InnerPageShell>
   );
 }
