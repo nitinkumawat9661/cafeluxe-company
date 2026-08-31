@@ -7,6 +7,7 @@ const products = [
   {
     label: "Restaurant operations",
     title: "CafeLuxe POS Suite",
+    slug: "cafeluxe-pos-suite",
     description:
       "A connected restaurant system covering billing, QR ordering, staff workflows, stock and day-to-day operational control.",
     capabilities: ["POS & billing", "QR ordering", "Staff workflows", "Inventory"],
@@ -14,6 +15,7 @@ const products = [
   {
     label: "Business commerce",
     title: "TrustFirst POS",
+    slug: "trustfirst-pos",
     description:
       "A modern POS and business operations platform designed around reliable billing, local data and extensible synchronization.",
     capabilities: ["Billing", "Products & stock", "Offline-first workflows", "Online sync"],
@@ -21,6 +23,7 @@ const products = [
   {
     label: "Business operations",
     title: "ERP & Client Platforms",
+    slug: "business-erp-client-platform",
     description:
       "Custom operational systems for businesses that need billing, inventory, accounting-adjacent workflows, staff access and client-facing tools.",
     capabilities: ["ERP workflows", "Role-based access", "Reports", "Client portals"],
@@ -45,7 +48,7 @@ export default function ProductsPage() {
       <section className="mx-auto max-w-6xl px-5 pb-16 md:px-6">
         <div className="grid gap-4 lg:grid-cols-3">
           {products.map((product, index) => (
-            <article key={product.title} className="flex min-h-[24rem] flex-col rounded-[1.7rem] border border-white/10 bg-white/[.035] p-6">
+            <Link href={`/work/${product.slug}`} key={product.title} className="group flex min-h-[24rem] flex-col rounded-[1.7rem] border border-white/10 bg-white/[.035] p-6 transition duration-300 hover:-translate-y-1 hover:border-[rgba(201,155,71,.32)]">
               <div className="flex items-center justify-between gap-4">
                 <span className="text-xs font-black uppercase tracking-[.18em] text-[var(--gold)]">{product.label}</span>
                 <span className="text-sm font-black text-[#7f735f]">0{index + 1}</span>
@@ -59,10 +62,11 @@ export default function ProductsPage() {
                   </span>
                 ))}
               </div>
-              <div className="mt-auto pt-8 text-xs font-black uppercase tracking-[.14em] text-[var(--gold)]">
-                Built by TrustFirst Solutions
+              <div className="mt-auto flex items-center justify-between pt-8 text-xs font-black uppercase tracking-[.14em] text-[var(--gold)]">
+                <span>View case study</span>
+                <span className="transition group-hover:translate-x-1">↗</span>
               </div>
-            </article>
+            </Link>
           ))}
         </div>
 
