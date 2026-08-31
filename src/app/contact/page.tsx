@@ -14,24 +14,30 @@ export async function generateMetadata() {
 }
 
 const contactServices = [
-  "Free Digital Growth Audit / Not Sure",
-  "Meta Ads",
-  "Google Ads",
-  "Social Media Management",
-  "SEO",
-  "Google Business Profile",
-  "Website / Landing Page",
-  "Lead Generation / Automation",
-  "Business Growth Consultation",
+  "Not sure yet / Need guidance",
+  "Custom Business Software",
+  "Web Application",
+  "ERP / POS / Billing System",
+  "Business Automation",
+  "Mobile Application",
+  "AI Integration",
+  "Premium Business Website",
+  "Existing Software Improvement",
 ];
 
 export default async function ContactPage() {
   const settings = await getSiteSettings();
 
   return (
-    <InnerPageShell eyebrow="Contact" title="Request your free digital growth audit." description={routePageContent.contact.description}>
+    <InnerPageShell
+      eyebrow="Contact"
+      title="Tell us what the business needs the software to do."
+      description={routePageContent.contact.description}
+      ctaHref={settings.whatsappHref}
+      ctaLabel="WhatsApp Us"
+    >
       <section className="mx-auto grid max-w-6xl gap-5 px-5 pb-16 md:px-6 lg:grid-cols-[.8fr_1.2fr]">
-        <div className="grid gap-3">
+        <div className="grid content-start gap-3">
           <a href={settings.phoneHref} className="flex items-center gap-3 rounded-2xl border border-[rgba(201,155,71,.25)] bg-white/[.035] p-5">
             <PhoneCall className="text-[var(--gold)]" size={20} />
             <span>
@@ -46,19 +52,28 @@ export default async function ContactPage() {
               <span className="text-sm text-[#d6c8ae]">{settings.whatsappDisplay}</span>
             </span>
           </a>
-          <a href={`mailto:${settings.email}`} className="flex items-center gap-3 rounded-2xl border border-[rgba(201,155,71,.25)] bg-white/[.035] p-5">
+          <a href={"mailto:" + settings.email} className="flex items-center gap-3 rounded-2xl border border-[rgba(201,155,71,.25)] bg-white/[.035] p-5">
             <Mail className="text-[var(--gold)]" size={20} />
             <span>
               <b className="block text-[#f8efd9]">Email</b>
               <span className="text-sm text-[#d6c8ae]">{settings.email}</span>
             </span>
           </a>
+          <div className="rounded-2xl border border-white/10 bg-black/20 p-5">
+            <p className="text-xs font-black uppercase tracking-[.18em] text-[var(--gold)]">Useful project context</p>
+            <p className="mt-3 text-sm leading-6 text-[#d6c8ae]">
+              Existing workflow, number of users, current software, must-have features and the biggest operational problem are enough for a useful first discussion.
+            </p>
+          </div>
         </div>
 
         <GrowthAuditForm
           services={contactServices}
-          title="Growth audit enquiry"
-          description="Share the basics. The same Telegram lead flow used on the homepage remains active here."
+          title="Project enquiry"
+          description="Share the problem and current workflow. We will use it to understand the scope before discussing a build."
+          submitLabel="Send Project Enquiry"
+          servicePlaceholder="What are you looking to build? *"
+          messagePlaceholder="What should the software solve or improve? *"
           compact
         />
       </section>
