@@ -62,7 +62,7 @@ export function MobileNavigation({ routes, settings }: MobileNavigationProps) {
           </span>
           <div>
             <p className="text-sm font-black text-[#f8efd9]">{settings.name}</p>
-            <p className="mt-1 text-[10px] font-black uppercase tracking-[.2em] text-[var(--gold)]">Digital Growth Agency</p>
+            <p className="mt-1 text-[10px] font-black uppercase tracking-[.2em] text-[var(--gold)]">Software Engineering Company</p>
           </div>
         </div>
 
@@ -80,8 +80,8 @@ export function MobileNavigation({ routes, settings }: MobileNavigationProps) {
         </nav>
 
         <div className="grid gap-3 border-t border-white/10 p-4">
-          <Link href="/#audit" onClick={() => setOpen(false)} className="rounded-full bg-[var(--gold)] px-5 py-3 text-center text-sm font-black text-black">
-            Free Growth Audit
+          <Link href="/contact" onClick={() => setOpen(false)} className="rounded-full bg-[var(--gold)] px-5 py-3 text-center text-sm font-black text-black">
+            Start a Project
           </Link>
           <a href={settings.whatsappHref} target="_blank" rel="noreferrer" className="inline-flex items-center justify-center gap-2 rounded-full border border-[rgba(201,155,71,.35)] px-5 py-3 text-sm font-black text-[var(--gold)]">
             <MessageCircle size={17} /> WhatsApp Us
