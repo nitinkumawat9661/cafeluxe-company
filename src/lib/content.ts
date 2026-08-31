@@ -1,42 +1,47 @@
 export const routePageContent = {
   services: {
-    title: "Services",
+    title: "Software engineering capabilities",
     description:
-      "Digital growth services for businesses that need more leads, stronger visibility, better content and conversion-focused systems.",
+      "Custom software, web applications, ERP and POS systems, mobile apps, automation and AI integrations designed around real business workflows.",
+  },
+  products: {
+    title: "Products and platforms",
+    description:
+      "Software products and reusable platforms developed by TrustFirst Solutions for billing, operations, ordering and business workflows.",
   },
   work: {
-    title: "Work",
+    title: "Selected systems and client work",
     description:
-      "Case studies and capability stories from TrustFirst Solutions. Verified growth results will be published here as they are documented.",
+      "A growing record of software products, operational systems and client platforms built by TrustFirst Solutions.",
   },
   blog: {
-    title: "Blog",
+    title: "Engineering notes",
     description:
-      "Insights for business owners about digital marketing, Meta Ads, Google Ads, SEO, social media, websites and lead generation.",
+      "Practical writing on software architecture, product engineering, business systems, automation and building reliable digital products.",
   },
   resources: {
     title: "Resources",
     description:
-      "Guides, checklists and practical resources for improving visibility, content, ads, websites and follow-up systems.",
+      "Practical guides for businesses planning software, ERP, POS, automation, websites and digital product projects.",
   },
   about: {
-    title: "About TrustFirst",
+    title: "About TrustFirst Solutions",
     description:
-      "TrustFirst Solutions is a Sikar-based digital growth agency helping businesses in Rajasthan and across India build visibility, trust and qualified leads.",
+      "TrustFirst Solutions is a software engineering company in Rajasthan building practical digital systems for businesses across India.",
   },
   contact: {
-    title: "Contact",
+    title: "Start a project",
     description:
-      "Request a free digital growth audit or start a focused conversation about ads, SEO, social media, websites and lead generation.",
+      "Tell us what your business needs to run better. We can discuss the workflow, users, constraints and the right software approach.",
   },
   privacy: {
     title: "Privacy Policy",
     description:
-      "How TrustFirst Solutions handles enquiry details, audit information and communication data.",
+      "How TrustFirst Solutions handles enquiry details, project information and communication data.",
   },
   terms: {
     title: "Terms",
     description:
-      "Basic terms for discussing growth services, proposals, communication and website use.",
+      "Basic terms for project discussions, proposals, communication and use of the TrustFirst Solutions website.",
   },
 };
