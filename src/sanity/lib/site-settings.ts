@@ -77,14 +77,14 @@ function normalizeSocialLinks(settings?: SiteSettings | null): ResolvedSocialLin
 
 function resolveSiteSettings(settings?: SiteSettings | null): ResolvedSiteSettings {
   const name = settings?.brandName || siteConfig.name;
-  const tagline = settings?.tagline || siteConfig.tagline;
-  const description = settings?.description || siteConfig.description;
+  const tagline = siteConfig.tagline;
+  const description = siteConfig.description;
   const phone = resolveCanonicalContactNumber(settings?.phone);
   const whatsapp = normalizeWhatsAppNumber(resolveCanonicalContactNumber(settings?.whatsapp));
   const email = settings?.email || siteConfig.email;
   const address = settings?.address || siteConfig.location;
-  const defaultSeoTitle = settings?.defaultSeoTitle || name;
-  const defaultSeoDescription = settings?.defaultSeoDescription || description;
+  const defaultSeoTitle = "TrustFirst Solutions | Software Engineering Company";
+  const defaultSeoDescription = siteConfig.description;
 
   return {
     name,
@@ -95,7 +95,7 @@ function resolveSiteSettings(settings?: SiteSettings | null): ResolvedSiteSettin
     phoneHref: normalizePhoneHref(phone),
     whatsapp,
     whatsappDisplay: formatIndiaPhone(whatsapp),
-    whatsappHref: `https://wa.me/${whatsapp}?text=Hi%20${encodeURIComponent(name)}%2C%20I%20want%20a%20free%20digital%20growth%20audit.`,
+    whatsappHref: `https://wa.me/${whatsapp}?text=Hi%20${encodeURIComponent(name)}%2C%20I%20want%20to%20discuss%20a%20software%20project.`,
     email,
     address,
     socialLinks: normalizeSocialLinks(settings),
