@@ -45,18 +45,21 @@ const systems = [
   {
     label: "Restaurant operations",
     title: "CafeLuxe POS Suite",
+    slug: "cafeluxe-pos-suite",
     description: "Billing, QR ordering, staff workflows and restaurant operations designed as one connected system.",
     tags: ["POS", "QR Ordering", "Inventory", "Staff App"],
   },
   {
     label: "Commerce platform",
     title: "TrustFirst POS",
+    slug: "trustfirst-pos",
     description: "A billing and operations platform built around durable local data, business workflows and online synchronization.",
     tags: ["Billing", "Stock", "Offline-first", "Sync"],
   },
   {
     label: "Client operations",
     title: "ERP & Client Platforms",
+    slug: "business-erp-client-platform",
     description: "Custom systems for businesses that need operational control, staff access, reporting and client-facing workflows.",
     tags: ["ERP", "Roles", "Reports", "Client Portal"],
   },
@@ -188,7 +191,7 @@ export default async function Home() {
 
           <div className="mt-10 grid gap-4 lg:grid-cols-3">
             {systems.map((system, index) => (
-              <article key={system.title} className="group flex min-h-[29rem] flex-col overflow-hidden rounded-[1.8rem] border border-white/10 bg-[#090806] p-6 transition hover:border-[rgba(201,155,71,.35)] md:p-7">
+              <Link href={`/work/${system.slug}`} key={system.title} className="group flex min-h-[29rem] flex-col overflow-hidden rounded-[1.8rem] border border-white/10 bg-[#090806] p-6 transition duration-300 hover:-translate-y-1 hover:border-[rgba(201,155,71,.35)] md:p-7">
                 <div className="flex items-center justify-between gap-4">
                   <span className="text-[10px] font-black uppercase tracking-[.2em] text-[var(--gold)]">{system.label}</span>
                   <span className="text-xs font-black text-[#665d4d]">0{index + 1}</span>
@@ -223,10 +226,10 @@ export default async function Home() {
                 </div>
 
                 <div className="mt-auto flex items-center justify-between pt-10 text-xs font-black uppercase tracking-[.15em] text-[#8d806a]">
-                  <span>TrustFirst system</span>
+                  <span>View case study</span>
                   <ArrowUpRight size={16} className="text-[var(--gold)] transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                 </div>
-              </article>
+              </Link>
             ))}
           </div>
         </section>
